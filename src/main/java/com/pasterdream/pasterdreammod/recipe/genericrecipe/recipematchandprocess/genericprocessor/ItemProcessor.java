@@ -50,7 +50,7 @@ public class ItemProcessor
                 }
                     else
                     {
-                        if(ItemStack.isSameItem(matchedItemStack, machineItemStack) && NBTContainRelationCalculator.calculator(matchedItemStack.getTag(), machineItemStack.getTag()))
+                        if(ItemStack.isSameItem(matchedItemStack, machineItemStack)/* && NBTContainRelationCalculator.calculator(matchedItemStack.getTag(), machineItemStack.getTag())*/)
                         {
                             if(machineItemCount >= matchedItemCount)
                             {
