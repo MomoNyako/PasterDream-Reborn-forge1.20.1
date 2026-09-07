@@ -21,6 +21,7 @@ import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModLevelStems {
@@ -56,6 +57,32 @@ public class ModLevelStems {
         }
     }
 
+    private static void addSurfacePoint(List<Pair<Climate.ParameterPoint, Holder<Biome>>> points,
+                                         Climate.Parameter temp, Climate.Parameter humidity,
+                                         Climate.Parameter continentalness, Climate.Parameter erosion,
+                                         Climate.Parameter weirdness, Holder<Biome> biome) {
+        points.add(Pair.of(new Climate.ParameterPoint(temp, humidity, continentalness, erosion,
+                Climate.Parameter.point(0.0F), weirdness, 0L), biome));
+        points.add(Pair.of(new Climate.ParameterPoint(temp, humidity, continentalness, erosion,
+                Climate.Parameter.point(1.0F), weirdness, 0L), biome));
+    }
+
+    private static void addLandSurfacePoint(List<Pair<Climate.ParameterPoint, Holder<Biome>>> points,
+                                             Climate.Parameter temp, Climate.Parameter humidity,
+                                             Climate.Parameter continentalness, Climate.Parameter erosion,
+                                             Climate.Parameter wNeg, Climate.Parameter wPos, Holder<Biome> biome) {
+        addSurfacePoint(points, temp, humidity, continentalness, erosion, wNeg, biome);
+        addSurfacePoint(points, temp, humidity, continentalness, erosion, wPos, biome);
+    }
+
+    private static void addCavePoint(List<Pair<Climate.ParameterPoint, Holder<Biome>>> points,
+                                      Climate.Parameter temp, Climate.Parameter humidity,
+                                      Climate.Parameter continentalness, Climate.Parameter erosion,
+                                      Climate.Parameter weirdness, Holder<Biome> biome) {
+        points.add(Pair.of(new Climate.ParameterPoint(temp, humidity, continentalness, erosion,
+                Climate.Parameter.span(0.2F, 0.9F), weirdness, 0L), biome));
+    }
+
     public static void bootstrap(BootstapContext<LevelStem> context) {
         // 获取依赖注册表的引用
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -63,90 +90,84 @@ public class ModLevelStems {
         HolderGetter<NoiseGeneratorSettings> noiseSettings = context.lookup(Registries.NOISE_SETTINGS);
 
         // 引用染梦维度群系
-        Holder<Biome> dyedreamPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_PLAINS);
-        Holder<Biome> dyedreamMushroomMountains = biomes.getOrThrow(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS);
-        Holder<Biome> dyedreamSnowyPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PLAINS);
         Holder<Biome> dyedreamFrozenOcean = biomes.getOrThrow(ModBiomes.DYEDREAM_FROZEN_OCEAN);
+        Holder<Biome> dyedreamColdOcean = biomes.getOrThrow(ModBiomes.DYEDREAM_COLD_OCEAN);
         Holder<Biome> dyedreamOcean = biomes.getOrThrow(ModBiomes.DYEDREAM_OCEAN);
+        Holder<Biome> dyedreamBeach = biomes.getOrThrow(ModBiomes.DYEDREAM_BEACH);
+        Holder<Biome> dyedreamRiver = biomes.getOrThrow(ModBiomes.DYEDREAM_RIVER);
+        Holder<Biome> dyedreamFrozenRiver = biomes.getOrThrow(ModBiomes.DYEDREAM_FROZEN_RIVER);
+        Holder<Biome> dyedreamSnowyPeaks = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PEAKS);
+        Holder<Biome> dyedreamSnowySlopes = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_SLOPES);
+        Holder<Biome> dyedreamSnowyGrove = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_GROVE);
+        Holder<Biome> dyedreamSnowyPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PLAINS);
+        Holder<Biome> dyedreamSnowyTaiga = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_TAIGA);
+        Holder<Biome> dyedreamMushroomMountains = biomes.getOrThrow(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS);
+        Holder<Biome> dyedreamPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_PLAINS);
+        Holder<Biome> dyedreamForest = biomes.getOrThrow(ModBiomes.DYEDREAM_FOREST);
+        Holder<Biome> dyedreamCaves = biomes.getOrThrow(ModBiomes.DYEDREAM_CAVES);
+        Holder<Biome> dyedreamLushCaves = biomes.getOrThrow(ModBiomes.DYEDREAM_LUSH_CAVES);
+        Holder<Biome> dyedreamDripstoneCaves = biomes.getOrThrow(ModBiomes.DYEDREAM_DRIPSTONE_CAVES);
         // 引用自定义的维度类型和噪声设置
         Holder<DimensionType> dimType = dimensionTypes.getOrThrow(ModDimensionTypes.DYEDREAM_WORLD);
         Holder<NoiseGeneratorSettings> dimNoise = noiseSettings.getOrThrow(ModNoiseSettings.DYEDREAM_WORLD);
 
-        // 多噪声群系源 — 参数值域[-2,2]，大陆性C是海洋/陆地的唯一区分维度
-        //  群系     温度          湿度          大陆性         侵蚀          怪异度
-        //  冻洋  T[-2.0,2.0]  H[-2.0,2.0]  C[-2.0,-0.19]  E[-2.0,2.0]  W[-2.0,-0.5]
-        //  暖洋  T[-2.0,2.0]  H[-2.0,2.0]  C[-2.0,-0.19]  E[-2.0,2.0]  W[-0.5, 2.0]
-        //  雪原  T[-2.0,-0.1]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
-        //  平原  T[ 0.0, 0.8]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
-        //  菇山  T[ 0.8,2.0]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
-        //  估算占比: 冻洋~18% 暖洋~31% 雪原~27% 平原~14% 菇山~10%
-        Climate.ParameterList<Holder<Biome>> biomeParams = new Climate.ParameterList<>(List.<Pair<Climate.ParameterPoint, Holder<Biome>>>of(
-                // 染梦冻洋 — 暖/寒海域由怪异度[-2.0,-0.5]定义
-                Pair.of(
-                        new Climate.ParameterPoint(
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-2.0F, -0.19F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.point(0.0F),
-                                Climate.Parameter.span(-2.0F, -0.5F),
-                                0L
-                        ),
-                        dyedreamFrozenOcean
-                ),
-                // 染梦海洋 — 怪异度[-0.5,2.0]与冻洋互补
-                Pair.of(
-                        new Climate.ParameterPoint(
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-2.0F, -0.19F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.point(0.0F),
-                                Climate.Parameter.span(-0.5F, 2.0F),
-                                0L
-                        ),
-                        dyedreamOcean
-                ),
-                // 染梦雪原 — 寒冷陆地 T[-2.0,-0.1] H[-2.0,2.0] E[-2.0,2.0]（温度带向中心扩展，成为占比最大的陆地群系）
-                Pair.of(
-                        new Climate.ParameterPoint(
-                                Climate.Parameter.span(-2.0F, -0.1F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-0.19F, 2.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.point(0.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                0L
-                        ),
-                        dyedreamSnowyPlains
-                ),
-                // 染梦平原 — 温带陆地 T[0.0,0.8] H[-2.0,2.0] E[-2.0,2.0]（让出温暖温度带给菇山）
-                Pair.of(
-                        new Climate.ParameterPoint(
-                                Climate.Parameter.span(0.0F, 0.8F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-0.19F, 2.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.point(0.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                0L
-                        ),
-                        dyedreamPlains
-                ),
-                // 粉顶菇山地 — 温暖高地 T[0.8,2.0] H[-2.0,2.0] E[-2.0,2.0]（下探温度带并放开湿度/侵蚀，扩大面积）
-                Pair.of(
-                        new Climate.ParameterPoint(
-                                Climate.Parameter.span(0.8F, 2.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.span(-0.19F, 2.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                Climate.Parameter.point(0.0F),
-                                Climate.Parameter.span(-2.0F, 2.0F),
-                                0L
-                        ),
-                        dyedreamMushroomMountains
-                )
-        ));
+        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），17 群系
+        //  海洋类 C[-1.05,-0.19]；海岸带平坦侵蚀为沙滩、陡峭侵蚀归陡坡/山峰陆地群系
+        //  河流占山脊谷带 W[-0.05,0.05]；陆地/沙滩排除谷带（W 双点）
+        //  地表群系 depth 双点位 {0,1}；洞穴群系 depth [0.2,0.9]
+        Climate.Parameter tCold = Climate.Parameter.span(-1.0F, -0.15F);
+        Climate.Parameter tColdOcean0 = Climate.Parameter.span(-1.0F, -0.45F);
+        Climate.Parameter tColdOcean1 = Climate.Parameter.span(-0.45F, -0.15F);
+        Climate.Parameter tWarm = Climate.Parameter.span(-0.15F, 1.0F);
+        Climate.Parameter tFull = Climate.Parameter.span(-1.0F, 1.0F);
+        Climate.Parameter hDry = Climate.Parameter.span(-1.0F, 0.1F);
+        Climate.Parameter hWet = Climate.Parameter.span(0.1F, 1.0F);
+        Climate.Parameter hFull = Climate.Parameter.span(-1.0F, 1.0F);
+        Climate.Parameter cOcean = Climate.Parameter.span(-1.05F, -0.19F);
+        Climate.Parameter cCoast = Climate.Parameter.span(-0.19F, -0.11F);
+        Climate.Parameter cLand = Climate.Parameter.span(-0.11F, 1.0F);
+        Climate.Parameter cSteepLand = Climate.Parameter.span(-0.19F, 1.0F);
+        Climate.Parameter cRiver = Climate.Parameter.span(-0.19F, 1.0F);
+        Climate.Parameter eFull = Climate.Parameter.span(-1.0F, 1.0F);
+        Climate.Parameter ePeak = Climate.Parameter.span(-1.0F, -0.78F);
+        Climate.Parameter eSlope = Climate.Parameter.span(-0.78F, -0.2225F);
+        Climate.Parameter eFlat = Climate.Parameter.span(-0.2225F, 1.0F);
+        Climate.Parameter eMountain = Climate.Parameter.span(-1.0F, -0.2225F);
+        Climate.Parameter wFull = Climate.Parameter.span(-1.0F, 1.0F);
+        Climate.Parameter wValley = Climate.Parameter.span(-0.05F, 0.05F);
+        Climate.Parameter wNeg = Climate.Parameter.span(-1.0F, -0.05F);
+        Climate.Parameter wPos = Climate.Parameter.span(0.05F, 1.0F);
+        Climate.Parameter cCaveNonInland = Climate.Parameter.span(-1.0F, 0.8F);
+        Climate.Parameter cCaveInland = Climate.Parameter.span(0.8F, 1.0F);
+        Climate.Parameter hCaveDry = Climate.Parameter.span(-1.0F, 0.7F);
+        Climate.Parameter hCaveWet = Climate.Parameter.span(0.7F, 1.0F);
+
+        List<Pair<Climate.ParameterPoint, Holder<Biome>>> dyedreamBiomePoints = new ArrayList<>();
+        // 海洋（W 全区间）
+        addSurfacePoint(dyedreamBiomePoints, tColdOcean0, hFull, cOcean, eFull, wFull, dyedreamFrozenOcean);
+        addSurfacePoint(dyedreamBiomePoints, tColdOcean1, hFull, cOcean, eFull, wFull, dyedreamColdOcean);
+        addSurfacePoint(dyedreamBiomePoints, tWarm, hFull, cOcean, eFull, wFull, dyedreamOcean);
+        // 沙滩（独占海岸带平坦侵蚀 E[-0.2225,1]，排除河谷；陡峭海岸交还陆地群系）
+        addLandSurfacePoint(dyedreamBiomePoints, tFull, hFull, cCoast, eFlat, wNeg, wPos, dyedreamBeach);
+        // 河流（占山脊谷带，冷/暖按温度拆分；仅平坦侵蚀 E[-0.2225,1]——陡坡/山峰谷地高于海平面会成干河，交还陆地群系）
+        addSurfacePoint(dyedreamBiomePoints, tWarm, hFull, cRiver, eFlat, wValley, dyedreamRiver);
+        addSurfacePoint(dyedreamBiomePoints, tCold, hFull, cRiver, eFlat, wValley, dyedreamFrozenRiver);
+        // 寒冷陆地（陡坡/山峰群系大陆性下探到海岸带，覆盖陡峭海岸悬崖）
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hFull, cSteepLand, ePeak, wNeg, wPos, dyedreamSnowyPeaks);
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cSteepLand, eSlope, wNeg, wPos, dyedreamSnowySlopes);
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cSteepLand, eSlope, wNeg, wPos, dyedreamSnowyGrove);
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cLand, eFlat, wNeg, wPos, dyedreamSnowyPlains);
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cLand, eFlat, wNeg, wPos, dyedreamSnowyTaiga);
+        // 温暖陆地（菇山陡坡下探到海岸带）
+        addLandSurfacePoint(dyedreamBiomePoints, tWarm, hFull, cSteepLand, eMountain, wNeg, wPos, dyedreamMushroomMountains);
+        addLandSurfacePoint(dyedreamBiomePoints, tWarm, hDry, cLand, eFlat, wNeg, wPos, dyedreamPlains);
+        addLandSurfacePoint(dyedreamBiomePoints, tWarm, hWet, cLand, eFlat, wNeg, wPos, dyedreamForest);
+        // 洞穴（depth [0.2,0.9]，按 大陆性 C=0.8 / 湿度 H=0.7 互补切分）
+        addCavePoint(dyedreamBiomePoints, tFull, hCaveDry, cCaveNonInland, eFull, wFull, dyedreamCaves);
+        addCavePoint(dyedreamBiomePoints, tFull, hCaveWet, cCaveNonInland, eFull, wFull, dyedreamLushCaves);
+        addCavePoint(dyedreamBiomePoints, tFull, hFull, cCaveInland, eFull, wFull, dyedreamDripstoneCaves);
+
+        Climate.ParameterList<Holder<Biome>> biomeParams = new Climate.ParameterList<>(dyedreamBiomePoints);
         MultiNoiseBiomeSource biomeSource = createMultiNoiseSource(biomeParams);
         ChunkGenerator chunkGenerator = new NoiseBasedChunkGenerator(biomeSource, dimNoise);
 

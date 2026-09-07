@@ -74,18 +74,146 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "molten_gold_ore_patch", ModPlacedFeatures.MOLTEN_GOLD_ORE_PATCH, featureLookup, BiomeTags.IS_NETHER);
             addPatch(entries, "soul_ore_patch", ModPlacedFeatures.SOUL_ORE_PATCH, featureLookup, TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_soul_ore_spawn_biome")));
 
-            TagKey<Biome> dyedreamWorldTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_biome"));
-            addPatch(entries, "dyedream_lily_pad_biome_modifier", ModPlacedFeatures.DYEDREAM_LILY_PAD_PATCH, featureLookup, dyedreamWorldTag);
-            addPatch(entries, "dyedream_lotus_biome_modifier", ModPlacedFeatures.DYEDREAM_LOTUS_PATCH, featureLookup, dyedreamWorldTag);
+            // ===== 染梦维度地物分组注入（标签见 ModBiomeTagsProvider） =====
+            TagKey<Biome> tAll = dyeTag("dyedream_world_biome");
+            TagKey<Biome> tWater = dyeTag("dyedream_world_water_biome");
+            TagKey<Biome> tSeagrass = dyeTag("dyedream_world_seagrass_biome");
+            TagKey<Biome> tWarmLand = dyeTag("dyedream_world_warm_land_biome");
+            TagKey<Biome> tWarmIce = dyeTag("dyedream_world_warm_ice_biome");
+            TagKey<Biome> tCold = dyeTag("dyedream_world_cold_biome");
+            TagKey<Biome> tFreeze = dyeTag("dyedream_world_freeze_biome");
+            TagKey<Biome> tCommonVeg = dyeTag("dyedream_world_common_veg_biome");
+            TagKey<Biome> tFrozenRiverVeg = dyeTag("dyedream_world_frozen_river_veg_biome");
+            TagKey<Biome> tPlains = dyeTag("dyedream_world_plains_biome");
+            TagKey<Biome> tStem = dyeTag("dyedream_world_stem_biome");
+            TagKey<Biome> tVine = dyeTag("dyedream_world_vine_biome");
+            TagKey<Biome> tForest = dyeTag("dyedream_world_forest_biome");
+            TagKey<Biome> tMushroom = dyeTag("dyedream_world_mushroom_biome");
+            TagKey<Biome> tSnowyIcePillar = dyeTag("dyedream_world_snowy_ice_pillar_biome");
+            TagKey<Biome> tEdelweiss = dyeTag("dyedream_world_edelweiss_biome");
+            TagKey<Biome> tCloudPillar = dyeTag("dyedream_world_cloud_pillar_biome");
+            TagKey<Biome> tSnowyTree = dyeTag("dyedream_world_snowy_tree_biome");
+            TagKey<Biome> tColdForest = dyeTag("dyedream_world_cold_forest_biome");
+            TagKey<Biome> tSnowyPool = dyeTag("dyedream_world_snowy_pool_biome");
+            TagKey<Biome> tKelp = dyeTag("dyedream_world_kelp_biome");
+            TagKey<Biome> tIceberg = dyeTag("dyedream_world_iceberg_biome");
+            TagKey<Biome> tLush = dyeTag("dyedream_world_lush_biome");
+            TagKey<Biome> tDripstone = dyeTag("dyedream_world_dripstone_biome");
+            TagKey<Biome> tLand = dyeTag("dyedream_world_land_biome");
+            TagKey<Biome> tOcean = dyeTag("dyedream_world_ocean_biome");
+            ResourceKey<PlacedFeature> freezeTop = ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath("minecraft", "freeze_top_layer"));
 
-            TagKey<Biome> dyedreamWorldLandTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_land_biome"));
+            // 全维度通用：矿石 / 晶芽 / 晶洞
+            addFeature(entries, "dyedream_titanium_ore", ModPlacedFeatures.TITANIUM_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_amber_candy_ore", ModPlacedFeatures.AMBER_CANDY_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_dust_ore", ModPlacedFeatures.DYEDREAM_DUST_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_quartz_ore", ModPlacedFeatures.DYEDREAM_QUARTZ_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_small_bud", ModPlacedFeatures.SMALL_DYEDREAM_BUD_PATCH, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_DECORATION);
+            addFeature(entries, "dyedream_medium_bud", ModPlacedFeatures.MEDIUM_DYEDREAM_BUD_PATCH, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_DECORATION);
+            addFeature(entries, "dyedream_large_bud", ModPlacedFeatures.LARGE_DYEDREAM_BUD_PATCH, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_DECORATION);
+            addFeature(entries, "dyedream_geode", ModPlacedFeatures.DYEDREAM_GEODE, featureLookup, tAll, GenerationStep.Decoration.LOCAL_MODIFICATIONS);
+
+            // 水面植物（海洋/沿岸/河流）
+            addPatch(entries, "dyedream_lily_pad_biome_modifier", ModPlacedFeatures.DYEDREAM_LILY_PAD_PATCH, featureLookup, tWater);
+            addPatch(entries, "dyedream_lotus_biome_modifier", ModPlacedFeatures.DYEDREAM_LOTUS_PATCH, featureLookup, tWater);
+
+            // 海草（陆地水边 + 海洋 + 沿岸/河流）
+            addFeature(entries, "dyedream_seagrass", ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH, featureLookup, tSeagrass, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+            // 温暖冰团（平原/菇山/森林/海洋）
+            addFeature(entries, "dyedream_warm_ice_blob", ModPlacedFeatures.DYEDREAM_ICE_BLOBS, featureLookup, tWarmIce, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_warm_packed_ice_blob", ModPlacedFeatures.DYEDREAM_PACKED_ICE_BLOBS, featureLookup, tWarmIce, GenerationStep.Decoration.UNDERGROUND_ORES);
+
+            // 寒冷冰矿石 / 冰晶芽（雪山/雪坡/雪林/雪原/雪针/冻河/冻洋）
+            addFeature(entries, "dyedream_cold_ice_stone", ModPlacedFeatures.DYEDREAM_ICE_STONE_BLOBS, featureLookup, tCold, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_cold_vanilla_ice", ModPlacedFeatures.VANILLA_ICE_BLOBS, featureLookup, tCold, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_cold_vanilla_packed_ice", ModPlacedFeatures.VANILLA_PACKED_ICE_BLOBS, featureLookup, tCold, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_cold_ice_bud", ModPlacedFeatures.ICE_BUD_PATCH, featureLookup, tCold, GenerationStep.Decoration.UNDERGROUND_DECORATION);
+
+            // 雪顶（寒冷陆地 + 冻河）
+            addFeature(entries, "dyedream_freeze_top", freezeTop, featureLookup, tFreeze, GenerationStep.Decoration.TOP_LAYER_MODIFICATION);
+
+            // 温暖陆地共享花草（平原/菇山/森林）
+            addPatch(entries, "dyedream_warm_lotus", ModPlacedFeatures.DREAMING_LOTUS_PATCH, featureLookup, tWarmLand);
+            addPatch(entries, "dyedream_warm_linht", ModPlacedFeatures.LINHT_FLOWER_PATCH, featureLookup, tWarmLand);
+            addPatch(entries, "dyedream_warm_fern", ModPlacedFeatures.SINGULARITY_FERN_PATCH, featureLookup, tWarmLand);
+
+            // 通用植被（温暖陆地 + 海洋 + 冻洋）
+            addPatch(entries, "dyedream_common_moss", ModPlacedFeatures.DYEDREAM_MOSS_PATCH, featureLookup, tCommonVeg);
+            addPatch(entries, "dyedream_common_coral_tree", ModPlacedFeatures.CORAL_TREE_PATCH, featureLookup, tCommonVeg);
+            addPatch(entries, "dyedream_common_coral_claw", ModPlacedFeatures.CORAL_CLAW_PATCH, featureLookup, tCommonVeg);
+            addPatch(entries, "dyedream_common_coral_mushroom", ModPlacedFeatures.CORAL_MUSHROOM_PATCH, featureLookup, tCommonVeg);
+            addPatch(entries, "dyedream_common_sea_pickle", ModPlacedFeatures.SEA_PICKLE_PATCH, featureLookup, tCommonVeg);
+            addPatch(entries, "dyedream_common_calcite_boulder", ModPlacedFeatures.CALCITE_BOULDER, featureLookup, tCommonVeg);
+            // 冻河通用植被（无海泡菜）
+            addPatch(entries, "dyedream_frozen_river_moss", ModPlacedFeatures.DYEDREAM_MOSS_PATCH, featureLookup, tFrozenRiverVeg);
+            addPatch(entries, "dyedream_frozen_river_coral_tree", ModPlacedFeatures.CORAL_TREE_PATCH, featureLookup, tFrozenRiverVeg);
+            addPatch(entries, "dyedream_frozen_river_coral_claw", ModPlacedFeatures.CORAL_CLAW_PATCH, featureLookup, tFrozenRiverVeg);
+            addPatch(entries, "dyedream_frozen_river_coral_mushroom", ModPlacedFeatures.CORAL_MUSHROOM_PATCH, featureLookup, tFrozenRiverVeg);
+            addPatch(entries, "dyedream_frozen_river_calcite_boulder", ModPlacedFeatures.CALCITE_BOULDER, featureLookup, tFrozenRiverVeg);
+
+            // 平原（树 + 花田）
+            addPatch(entries, "dyedream_plains_tree", ModPlacedFeatures.DYEDREAM_TREE, featureLookup, tPlains);
+            addPatch(entries, "dyedream_plains_corolla", ModPlacedFeatures.DYEDREAM_COROLLA_PATCH, featureLookup, tPlains);
+            addPatch(entries, "dyedream_plains_light_ball", ModPlacedFeatures.LIGHT_BALL_PATCH, featureLookup, tPlains);
+            addPatch(entries, "dyedream_plains_cloud_crop", ModPlacedFeatures.CLOUD_CROP_PATCH, featureLookup, tPlains);
+
+            // 平原/森林共享装饰（茎草/铃兰/藤/方解石笋）
+            addPatch(entries, "dyedream_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tStem);
+            addPatch(entries, "dyedream_tall_stem_grass", ModPlacedFeatures.TALL_STEM_GRASS_PATCH, featureLookup, tStem);
+            addPatch(entries, "dyedream_lily", ModPlacedFeatures.DYEDREAM_LILY_PATCH, featureLookup, tStem);
+            addPatch(entries, "dyedream_vine", ModPlacedFeatures.DYEDREAM_VINE_PATCH, featureLookup, tVine);
+            addPatch(entries, "dyedream_calcite_stalicripe", ModPlacedFeatures.CALCITE_STALICRIPE, featureLookup, tStem);
+            addPatch(entries, "dyedream_small_calcite_stalicripe", ModPlacedFeatures.SMALL_CALCITE_STALICRIPE, featureLookup, tStem);
+
+            // 森林（稠密树 + 稀疏粉顶菇）
+            addPatch(entries, "dyedream_forest_dense_tree", ModPlacedFeatures.DYEDREAM_TREE_DENSE, featureLookup, tForest);
+            addPatch(entries, "dyedream_forest_mushroom", ModPlacedFeatures.PINK_HUGE_MUSHROOM_SPARSE, featureLookup, tForest);
+
+            // 菇山（粉顶菇系列）
+            addPatch(entries, "dyedream_mushroom_tree", ModPlacedFeatures.PINK_MUSHROOM_TREE, featureLookup, tMushroom);
+            addPatch(entries, "dyedream_mushroom_huge", ModPlacedFeatures.PINK_HUGE_MUSHROOM, featureLookup, tMushroom);
+            addPatch(entries, "dyedream_mushroom_patch", ModPlacedFeatures.PINK_MUSHROOM_PATCH, featureLookup, tMushroom);
+            addPatch(entries, "dyedream_tall_mushroom_patch", ModPlacedFeatures.TALL_PINK_MUSHROOM_PATCH, featureLookup, tMushroom);
+
+            // 寒冷陆地冰雪装饰（冰柱/雪绒花/云柱）
+            addPatch(entries, "dyedream_ice_pillar", ModPlacedFeatures.DYEDREAM_ICE_PILLAR, featureLookup, tSnowyIcePillar);
+            addPatch(entries, "dyedream_packed_ice_pillar", ModPlacedFeatures.DYEDREAM_PACKED_ICE_PILLAR, featureLookup, tSnowyIcePillar);
+            addPatch(entries, "dyedream_edelweiss", ModPlacedFeatures.EDELWEISS_PATCH, featureLookup, tEdelweiss);
+            addPatch(entries, "dyedream_cloud_pillar_small", ModPlacedFeatures.CLOUD_PILLAR_SMALL, featureLookup, tCloudPillar);
+            addPatch(entries, "dyedream_cloud_pillar_large", ModPlacedFeatures.CLOUD_PILLAR_LARGE, featureLookup, tCloudPillar);
+
+            // 雪原稀疏树 / 雪林·雪针稠密针叶树 / 雪原水池
+            addPatch(entries, "dyedream_snowy_tree", ModPlacedFeatures.DYEDREAM_TREE, featureLookup, tSnowyTree);
+            addPatch(entries, "dyedream_cold_forest_spruce", ModPlacedFeatures.DYEDREAM_TREE_COLD_SPRUCE_DENSE, featureLookup, tColdForest);
+            addFeature(entries, "dyedream_snowy_water_pool", ModPlacedFeatures.SNOWY_WATER_POOL, featureLookup, tSnowyPool, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+            // 冷海/海洋海带
+            addPatch(entries, "dyedream_kelp", ModPlacedFeatures.DYEDREAM_KELP_PATCH, featureLookup, tKelp);
+
+            // 冻洋冰山
+            addFeature(entries, "dyedream_iceberg_packed", ModPlacedFeatures.DYEDREAM_ICEBERG_PACKED, featureLookup, tIceberg, GenerationStep.Decoration.LOCAL_MODIFICATIONS);
+            addFeature(entries, "dyedream_iceberg_blue", ModPlacedFeatures.DYEDREAM_ICEBERG_BLUE, featureLookup, tIceberg, GenerationStep.Decoration.LOCAL_MODIFICATIONS);
+
+            // 洞穴
+            addPatch(entries, "dyedream_lush_mushroom_tree", ModPlacedFeatures.LUSH_CAVE_MUSHROOM_TREE, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_small_mushroom", ModPlacedFeatures.SMALL_PINK_MUSHROOM_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_mushroom_patch", ModPlacedFeatures.LUSH_CAVE_MUSHROOM_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_tall_mushroom_patch", ModPlacedFeatures.LUSH_CAVE_TALL_MUSHROOM_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_stem_grass", ModPlacedFeatures.LUSH_CAVE_STEM_GRASS_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_tall_stem_grass", ModPlacedFeatures.LUSH_CAVE_TALL_STEM_GRASS_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_fern", ModPlacedFeatures.LUSH_CAVE_FERN_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_vine", ModPlacedFeatures.LUSH_CAVE_VINE_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_shroom_block", ModPlacedFeatures.LUSH_CAVE_SHROOM_BLOCK_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_dripstone_cone", ModPlacedFeatures.CALCITE_CONE_PATCH, featureLookup, tDripstone);
+            addFeature(entries, "dyedream_dripstone_cluster", ModPlacedFeatures.CALCITE_CONE_CLUSTER_PATCH, featureLookup, tDripstone, GenerationStep.Decoration.LOCAL_MODIFICATIONS);
 
             // 方解石尖锥（陆地）— 表面结构 step，自定义 Feature 生成
-            addFeature(entries, "calcite_spike", ModPlacedFeatures.CALCITE_SPIKE, featureLookup, dyedreamWorldLandTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
+            addFeature(entries, "calcite_spike", ModPlacedFeatures.CALCITE_SPIKE, featureLookup, tLand, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
             // 方解石尖锥（海洋变体）— 表面结构 step，NBT 结构放置，浮于海面
-            TagKey<Biome> dyedreamWorldOceanTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_ocean_biome"));
-            addFeature(entries, "stone_pillar_ocean", ModPlacedFeatures.STONE_PILLAR_OCEAN, featureLookup, dyedreamWorldOceanTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
+            addFeature(entries, "stone_pillar_ocean", ModPlacedFeatures.STONE_PILLAR_OCEAN, featureLookup, tOcean, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
             // ===== 阴影群系标签 =====
             TagKey<Biome> shadowNyliumWastesSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_nylium_wastes_spawn_biome"));
@@ -94,8 +222,8 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> shadowRuinsSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ruins_spawn_biome"));
 
             // ===== 非阴影实体生成（染梦世界等） =====
-            addSpawns(entries, "pink_chicken_biome_modifier", ModEntities.PINK_CHICKEN, dyedreamWorldTag, 5, 4, 4);
-            addSpawns(entries, "pink_slime_biome_modifier", ModEntities.PINK_SLIME, dyedreamWorldTag, 20, 5, 6);
+            addSpawns(entries, "pink_chicken_biome_modifier", ModEntities.PINK_CHICKEN, tAll, 5, 4, 4);
+            addSpawns(entries, "pink_slime_biome_modifier", ModEntities.PINK_SLIME, tAll, 20, 5, 6);
 
             // ===== 灯影之下维度实体生成（对照原作 NOT_MODIFY 中的 biome_modifier + 群系 JSON） =====
             // biome_shadow_0（菌索荒原）: terrorbeak(10,1-2), shadow_hand(15,1-3)
@@ -128,6 +256,10 @@ public class ModBiomeModifierProvider implements DataProvider
     private void addPatch(Map<ResourceLocation, JsonObject> map, String name, ResourceKey<PlacedFeature> featureKey, HolderLookup.RegistryLookup<PlacedFeature> featureLookup, TagKey<Biome> biomeTag)
     {
         addFeature(map, name, featureKey, featureLookup, biomeTag, GenerationStep.Decoration.VEGETAL_DECORATION);
+    }
+
+    private TagKey<Biome> dyeTag(String name) {
+        return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
     }
 
     private void addSpawns(Map<ResourceLocation, JsonObject> map, String name, net.minecraftforge.registries.RegistryObject<? extends EntityType<?>> entityType, TagKey<Biome> biomeTag, int weight, int minCount, int maxCount) {
