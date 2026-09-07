@@ -1,8 +1,8 @@
 package com.pasterdream.pasterdreammod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import net.minecraft.client.Minecraft;
@@ -41,22 +41,22 @@ public class MeltDreamEnergyTank
             }
 
             boolean sneaking = player.isShiftKeyDown();
-            boolean visible = Config.meltDreamEnergyBarAlwaysShow
-                    || (Config.meltDreamEnergyBarShowOnChange && changeTimer > 0)
-                    || (Config.meltDreamEnergyBarShowOnSneak && sneaking);
+            boolean visible = PasterDreamClientConfig.meltDreamEnergyBarAlwaysShow
+                    || (PasterDreamClientConfig.meltDreamEnergyBarShowOnChange && changeTimer > 0)
+                    || (PasterDreamClientConfig.meltDreamEnergyBarShowOnSneak && sneaking);
 
             if (!visible) return;
 
             RenderSystem.enableBlend();
-            int barX = Config.meltDreamEnergyBarX;
-            int barY = height - Config.meltDreamEnergyBarYFromBottom;
+            int barX = PasterDreamClientConfig.meltDreamEnergyBarX;
+            int barY = height - PasterDreamClientConfig.meltDreamEnergyBarYFromBottom;
             GUIBackGroundRender.rendMeltDreamEnergyBar(guiGraphics, barX, barY);
             GUIBackGroundRender.rendMeltDreamEnergyAmountBar(guiGraphics, barX + 3, barY + 4, value / max);
 
-            String text = String.format("%." + Config.meltDreamEnergyBarDecimalPlaces + "f", value)
+            String text = String.format("%." + PasterDreamClientConfig.meltDreamEnergyBarDecimalPlaces + "f", value)
                     + "/" + String.format("%.0f", max);
             int textX = barX + BAR_WIDTH / 2;
-            int textY = Config.meltDreamEnergyBarTextCentered
+            int textY = PasterDreamClientConfig.meltDreamEnergyBarTextCentered
                     ? barY + (BAR_HEIGHT - Minecraft.getInstance().font.lineHeight) / 2
                     : barY - 8;
 
@@ -69,7 +69,7 @@ public class MeltDreamEnergyTank
                 guiGraphics.pose().pushPose();
                 guiGraphics.pose().scale(0.5f, 0.5f, 1f);
                 int scaledTextX = textX * 2;
-                int scaledTextY = Config.meltDreamEnergyBarTextCentered
+                int scaledTextY = PasterDreamClientConfig.meltDreamEnergyBarTextCentered
                         ? (barY + 2) * 2
                         : (barY - 4) * 2;
                 guiGraphics.drawCenteredString(Minecraft.getInstance().font, text, scaledTextX, scaledTextY, 0xFFFFFF);
