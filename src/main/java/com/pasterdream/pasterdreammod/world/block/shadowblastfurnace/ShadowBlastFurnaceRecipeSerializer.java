@@ -69,6 +69,6 @@ public class ShadowBlastFurnaceRecipeSerializer extends GenericPasterDreamRecipe
         {
             ingredient.toNetwork(buffer);
         }
-        buffer.writeVarInt(recipe.getProcessingTime());
+        buffer.writeVarInt(recipe.getRecipeTime());
     }
 }

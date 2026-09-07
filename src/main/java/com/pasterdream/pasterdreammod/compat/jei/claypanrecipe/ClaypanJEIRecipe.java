@@ -16,7 +16,7 @@ public class ClaypanJEIRecipe
     {
         this.inputFluidIngredients = recipe.getInputFluidIngredients() != null ? recipe.getInputFluidIngredients() : List.of();
         this.outputItemIngredients = recipe.getOutputItemIngredients() != null ? recipe.getOutputItemIngredients() : List.of();
-        this.processingTime = recipe.getProcessingTime();
+        this.processingTime = recipe.getRecipeTime();
     }
 
     public List<FluidIngredient> getInputFluidIngredients()

@@ -14,7 +14,7 @@ public interface IGenericPasterDreamRecipe
     List<ItemIngredient> getInputItemIngredients();
     List<FluidIngredient> getOutputFluidIngredients();
     List<ItemIngredient> getOutputItemIngredients();
-    int getProcessingTime();
+    int getRecipeTime();
 
 
     boolean matches(List<FluidStack> fluidStacks, List<ItemStack> itemStacks);

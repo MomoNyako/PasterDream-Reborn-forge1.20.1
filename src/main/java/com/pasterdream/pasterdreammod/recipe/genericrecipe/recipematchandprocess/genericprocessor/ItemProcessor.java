@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.genericprocessor;
 
+import com.pasterdream.pasterdreammod.helper.nbthelper.NBTContainRelationCalculator;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ItemProcessor
 
                 if(isAdd)
                 {
-                    if(ItemStack.isSameItemSameTags(matchedItemStack, machineItemStack) || machineItemStack.isEmpty())
+                    if(ItemStack.isSameItemSameTags(matchedItemStack, machineItemStack))
                     {
                         int itemMaxStackSize = matchedItemStack.getMaxStackSize();
                         if(machineItemCount + matchedItemCount <= itemMaxStackSize)
@@ -39,10 +40,17 @@ public class ItemProcessor
                                 matchedItemStack.shrink(itemMaxStackSize - machineItemCount);
                             }
                     }
+                    else
+                        if(machineItemStack.isEmpty())
+                        {
+                            processedItemStacks.set(j, matchedItemStack.copy());
+                            remainingItemStacks.set(i, ItemStack.EMPTY);
+                            break;
+                        }
                 }
                     else
                     {
-                        if(ItemStack.isSameItem(matchedItemStack, machineItemStack))
+                        if(ItemStack.isSameItem(matchedItemStack, machineItemStack) && NBTContainRelationCalculator.calculator(matchedItemStack.getTag(), machineItemStack.getTag()))
                         {
                             if(machineItemCount >= matchedItemCount)
                             {

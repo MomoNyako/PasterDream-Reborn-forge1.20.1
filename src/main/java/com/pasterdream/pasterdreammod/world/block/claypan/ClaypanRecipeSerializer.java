@@ -55,6 +55,6 @@ public class ClaypanRecipeSerializer extends GenericPasterDreamRecipeSerializer<
         {
             ingredient.toNetwork(buffer);
         }
-        buffer.writeVarInt(recipe.getProcessingTime());
+        buffer.writeVarInt(recipe.getRecipeTime());
     }
 }

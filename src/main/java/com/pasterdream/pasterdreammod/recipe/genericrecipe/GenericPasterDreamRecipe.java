@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.recipe.genericrecipe;
 
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
-import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.IProcessingRecipe;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.IGenericRecipe;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class GenericPasterDreamRecipe implements IProcessingRecipe, IGenericPasterDreamRecipe, Recipe<Container>
+public abstract class GenericPasterDreamRecipe implements IGenericRecipe, IGenericPasterDreamRecipe, Recipe<Container>
 {
     private final ResourceLocation id;
     private final List<FluidIngredient> inputFluidIngredients;
@@ -172,7 +172,7 @@ public abstract class GenericPasterDreamRecipe implements IProcessingRecipe, IGe
     }
 
     @Override
-    public int getProcessingTime()
+    public int getRecipeTime()
     {
         return processingTime;
     }

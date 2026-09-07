@@ -3,8 +3,6 @@ package com.pasterdream.pasterdreammod.world.item.mortar;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
@@ -190,7 +188,7 @@ public class MortarMenu extends AbstractContainerMenuWithFluidSlot
         List<MortarRecipe> recipes = playerInventory.player.level().getRecipeManager().getAllRecipesFor(ModRecipes.MORTAR.get());
 
         ItemStackHandler itemHandler = mortarInventory.getItemHandler();
-        FluidTank[] tanks = mortarInventory.getFluidTanks();
+        FluidTank[] fluidTanks = mortarInventory.getFluidTanks();
 
         List<ItemStack> inputItems = new ArrayList<>(8);
         for (int i = 0; i < 8; i++)
@@ -207,64 +205,46 @@ public class MortarMenu extends AbstractContainerMenuWithFluidSlot
         List<FluidStack> inputFluids = new ArrayList<>(4);
         for (int i = 0; i < 4; i++)
         {
-            inputFluids.add(tanks[i].getFluid().copy());
+            inputFluids.add(fluidTanks[i].getFluid().copy());
         }
 
         List<FluidStack> outputFluids = new ArrayList<>(2);
         for (int i = 4; i < 6; i++)
         {
-            outputFluids.add(tanks[i].getFluid().copy());
+            outputFluids.add(fluidTanks[i].getFluid().copy());
         }
 
-        //配方匹配
-        MatchedRecipeResult<MortarRecipe> matched = RecipeMatcher.match(inputItems, inputFluids, recipes);
-        if (matched == null)
+        GenericRecipeInventory matchedResult = GenericRecipeMatcher.match(inputItems, inputFluids, recipes);
+        if(matchedResult != null)
         {
-            return;
+            GenericRecipeInventory processedResult = GenericRecipeProcesser.processing(matchedResult, new GenericRecipeInventory(inputItems, inputFluids, outputItems, outputFluids, 0, 1000));
+            if(processedResult != null)
+            {
+                for(int i = 0; i < processedResult.inputItemStacks().size(); i++)
+                {
+                    itemHandler.setStackInSlot(i, processedResult.inputItemStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.inputFluidStacks().size(); i++)
+                {
+                    fluidTanks[i].setFluid(processedResult.inputFluidStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.outputItemStacks().size(); i++)
+                {
+                    itemHandler.setStackInSlot(i + 8, processedResult.outputItemStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.outputFluidStacks().size(); i++)
+                {
+                    fluidTanks[i + 4].setFluid(processedResult.outputFluidStacks().get(i));
+                }
+
+                //同步
+                broadcastChanges();
+                FluidStack[] allFluids = getFluidSlots().stream().map(FluidSlot::getFluid).toArray(FluidStack[]::new);
+                ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) playerInventory.player), new FluidSyncPacket(this.containerId, allFluids));
+            }
         }
-
-        MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
-
-        List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
-        List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
-        List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
-        List<FluidStack> outputFluidsRecipe = matchedRecipeInputsAndOutputs.outputFluidStacks();
-
-        MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, outputFluidsRecipe);
-        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), outputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), 1000);
-        MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
-
-        if (result == null)
-        {
-            return;
-        }
-
-        //获取结果
-        List<ItemStack> newInputItems = result.inputItemStacks();
-        List<ItemStack> newOutputItems = result.outputItemStacks();
-        for (int i = 0; i < 8; i++)
-        {
-            itemHandler.setStackInSlot(i, newInputItems.get(i));
-        }
-        for (int i = 8; i < 12; i++)
-        {
-            itemHandler.setStackInSlot(i, newOutputItems.get(i - 8));
-        }
-
-        List<FluidStack> newInputFluids = result.inputFluidStacks();
-        List<FluidStack> newOutputFluids = result.outputFluidStacks();
-        for (int i = 0; i < 4; i++)
-        {
-            tanks[i].setFluid(newInputFluids.get(i));
-        }
-        for (int i = 4; i < 6; i++)
-        {
-            tanks[i].setFluid(newOutputFluids.get(i - 4));
-        }
-
-        //同步
-        broadcastChanges();
-        FluidStack[] allFluids = getFluidSlots().stream().map(FluidSlot::getFluid).toArray(FluidStack[]::new);
-        ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) playerInventory.player), new FluidSyncPacket(this.containerId, allFluids));
     }
 }
