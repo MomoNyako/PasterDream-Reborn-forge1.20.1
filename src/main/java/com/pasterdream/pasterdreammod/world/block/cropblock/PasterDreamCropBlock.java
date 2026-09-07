@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IPlantable;
@@ -35,6 +36,8 @@ import net.minecraftforge.common.util.FakePlayer;
 public class PasterDreamCropBlock extends BushBlock implements IPlantable
 {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
+
+    private static final VoxelShape CROP_SHAPE = box(4, 0, 4, 12, 12, 12);
 
     public PasterDreamCropBlock(Properties properties)
     {
@@ -69,7 +72,8 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
-        return box(4, 0, 4, 12, 12, 12);
+        Vec3 offset = state.getOffset(world, pos);
+        return CROP_SHAPE.move(offset.x, offset.y, offset.z);
     }
 
     @Override
