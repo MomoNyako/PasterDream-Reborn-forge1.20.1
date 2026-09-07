@@ -1,8 +1,8 @@
 package com.pasterdream.pasterdreammod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import net.minecraft.client.Minecraft;
@@ -33,7 +33,7 @@ public class SanTank
 
             if (maxSanValue != 0)
             {
-                if (Config.sanBarPreset == 2) {
+                if (PasterDreamClientConfig.sanBarPreset == 2) {
                     renderPreset2(guiGraphics, width, height, sanValue, maxSanValue);
                 } else {
                     renderPreset1(guiGraphics, width, height, sanValue, maxSanValue);
@@ -48,20 +48,20 @@ public class SanTank
         var player = Minecraft.getInstance().player;
         boolean sneaking = player != null && player.isShiftKeyDown();
 
-        if (Config.sanBarPreset1SneakShowBar && !sneaking) return;
+        if (PasterDreamClientConfig.sanBarPreset1SneakShowBar && !sneaking) return;
 
         RenderSystem.enableBlend();
-        int barX = width - Config.sanBarXFromRight;
-        int barY = height - Config.sanBarYFromBottom;
+        int barX = width - PasterDreamClientConfig.sanBarXFromRight;
+        int barY = height - PasterDreamClientConfig.sanBarYFromBottom;
         GUIBackGroundRender.rendSanBar(guiGraphics, barX, barY);
         GUIBackGroundRender.rendSanAmountBar(guiGraphics, barX, barY, sanValue / maxSanValue);
 
-        if (Config.sanBarPreset1SneakPrecise && !sneaking) {
+        if (PasterDreamClientConfig.sanBarPreset1SneakPrecise && !sneaking) {
             RenderSystem.disableBlend();
             return;
         }
 
-        String sanString = String.format("%." + Config.sanBarPreset1DecimalPlaces + "f", sanValue)
+        String sanString = String.format("%." + PasterDreamClientConfig.sanBarPreset1DecimalPlaces + "f", sanValue)
                 + "/" + String.format("%.0f", maxSanValue);
         if (Minecraft.getInstance().font.width(sanString) <= 38)
         {
@@ -82,15 +82,15 @@ public class SanTank
     {
         var player = Minecraft.getInstance().player;
         if (player == null) return;
-        if (Config.sanBarPreset2SneakShowInCreative && player.isCreative() && !player.isShiftKeyDown()) return;
+        if (PasterDreamClientConfig.sanBarPreset2SneakShowInCreative && player.isCreative() && !player.isShiftKeyDown()) return;
 
         RenderSystem.enableBlend();
-        float scale = (float) Config.sanBarPreset2Scale;
+        float scale = (float) PasterDreamClientConfig.sanBarPreset2Scale;
         int scaledWidth = (int) (BAR_WIDTH * scale);
         int barX = width / 2 - scaledWidth / 2;
         int barY = height - 48 - (player.isCreative() ? 14 : 0);
         double ratio = sanValue / maxSanValue;
-        boolean lowSan = ratio < Config.sanBarPreset2LowThreshold;
+        boolean lowSan = ratio < PasterDreamClientConfig.sanBarPreset2LowThreshold;
 
         int sx = (int) (barX / scale);
         int syBase = (int) (barY / scale);

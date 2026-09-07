@@ -2,13 +2,20 @@ package com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
+import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.recipe.weaponworkshopcraftingtable.WeaponWorkshopCraftingTableRecipeInventory;
+import com.pasterdream.pasterdreammod.recipe.weaponworkshopcraftingtable.WeaponWorkshopCraftingTableRecipeMatcher;
+import com.pasterdream.pasterdreammod.recipe.weaponworkshopcraftingtable.WeaponWorkshopCraftingTableRecipeProcessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,6 +29,9 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WeaponWorkshopCraftingTableBlockEntity extends BlockEntity implements MenuProvider
 {
@@ -189,5 +199,43 @@ public class WeaponWorkshopCraftingTableBlockEntity extends BlockEntity implemen
     public ItemStackHandler getItemHandler()
     {
         return itemHandler;
+    }
+
+    public void craft(ServerPlayer player)
+    {
+        List<WeaponWorkshopCraftingTableRecipe> recipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+
+        List<ItemStack> inputItems = new ArrayList<>(5);
+        for(int i = 0; i < 5; i++)
+        {
+            inputItems.add(itemHandler.getStackInSlot(i).copy());
+        }
+        ItemStack enhanceStone = itemHandler.getStackInSlot(5).copy();
+        ItemStack outputItem = itemHandler.getStackInSlot(6).copy();
+        WeaponWorkshopCraftingTableRecipeInventory inventory = new WeaponWorkshopCraftingTableRecipeInventory(inputItems, enhanceStone, outputItem);
+
+        WeaponWorkshopCraftingTableRecipeInventory matchedResult = WeaponWorkshopCraftingTableRecipeMatcher.matches(inventory, recipes);
+        if(matchedResult != null)
+        {
+            System.out.println("matchedResult != null");
+            double playerLuckValue = player.getAttributeValue(Attributes.LUCK);
+            if(player.getEffect(MobEffects.LUCK) != null)
+            {
+                playerLuckValue += player.getEffect(MobEffects.LUCK).getAmplifier();
+            }
+
+            WeaponWorkshopCraftingTableRecipeInventory processedResult = WeaponWorkshopCraftingTableRecipeProcessor.processing(matchedResult, inventory, level.getRandom(), playerLuckValue);
+
+            if(processedResult != null)
+            {
+                System.out.println("processedResult != null");
+                for(int i = 0; i < processedResult.inputItemStacks().size(); i++)
+                {
+                    itemHandler.setStackInSlot(i, processedResult.inputItemStacks().get(i));
+                }
+                itemHandler.setStackInSlot(5, processedResult.enhanceStone());
+                itemHandler.setStackInSlot(6, processedResult.outputItemStack());
+            }
+        }
     }
 }

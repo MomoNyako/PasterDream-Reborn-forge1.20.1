@@ -1,7 +1,10 @@
 package com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable;
 
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,6 +22,8 @@ public class WeaponWorkshopCraftingTableScreen extends AbstractContainerScreen<W
     protected void init()
     {
         super.init();
+        Button weaponWorkshopCraftingTableButton = Button.builder(Component.translatable("button.pasterdream.锻造"), button -> ModNetwork.CHANNEL.sendToServer(new WeaponWorkshopCraftingTableCraftPacket(menu.getBlockEntity().getBlockPos()))).pos(leftPos + 25, topPos + 47).size(32, 16).build();
+        addRenderableWidget(weaponWorkshopCraftingTableButton);
     }
 
     @Override

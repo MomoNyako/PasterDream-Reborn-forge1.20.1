@@ -283,5 +283,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get())
                 .add(ModItems.AARONCOS_MUSIC_DISC.get())
                 .add(ModItems.WIND_JOURNEY_MUSIC_DISC.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "enhance_stone")))
+                .add(Items.AIR)
+                .add(ModItems.ATTACK_ENHANCE_STONE.get())
+                .add(ModItems.LUCK_ENHANCE_STONE.get());
     }
 }

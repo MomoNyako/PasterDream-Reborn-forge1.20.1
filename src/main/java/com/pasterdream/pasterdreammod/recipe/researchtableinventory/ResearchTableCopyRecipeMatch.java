@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.recipe.researchtableinventory;
 
-import com.pasterdream.pasterdreammod.recipe.genericrecipe.MatchSingleFluid;
-import com.pasterdream.pasterdreammod.recipe.genericrecipe.MatchSingleItem;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.genericmatcher.SingleFluidMatcher;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.genericmatcher.SingleItemMatcher;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableCopyRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -19,25 +19,25 @@ public class ResearchTableCopyRecipeMatch
 
         for(ResearchTableCopyRecipe recipe : recipes)
         {
-            matchedFluidInput = MatchSingleFluid.match(recipe.getFluidInput(), inventory.fluidStack());
+            matchedFluidInput = SingleFluidMatcher.match(recipe.getFluidInput(), inventory.fluidStack());
             if(matchedFluidInput == null)
             {
                 continue;
             }
 
-            matchedPen = MatchSingleItem.match(recipe.getPen(), inventory.pen());
+            matchedPen = SingleItemMatcher.matchWithNotCompareNBT(recipe.getPen(), inventory.pen());
             if(matchedPen == null)
             {
                 continue;
             }
 
-            matchedSourceBook = MatchSingleItem.match(recipe.getSourceBook(), inventory.sourceBook());
+            matchedSourceBook = SingleItemMatcher.matchWithNotCompareNBT(recipe.getSourceBook(), inventory.sourceBook());
             if(matchedSourceBook == null)
             {
                 continue;
             }
 
-            matchedMaterial = MatchSingleItem.match(recipe.getMaterial(), inventory.material());
+            matchedMaterial = SingleItemMatcher.matchWithNotCompareNBT(recipe.getMaterial(), inventory.material());
             if(matchedMaterial == null)
             {
                 continue;

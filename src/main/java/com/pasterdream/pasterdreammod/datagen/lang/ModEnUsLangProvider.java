@@ -681,6 +681,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("button.pasterdream.mortarbutton", "grinding");
         add("button.pasterdream.copy_button", "Copy");
         add("button.pasterdream.research_button", "Research");
+        add("button.pasterdream.锻造", "Forge");
 
         add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
         add("tooltip.pasterdreammod.goldenrod_tea", "§dContinuously removes Hunger and Nausea");
@@ -689,13 +690,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.dyedream_perfume.flavor", "§7§oWhen you're wondering why perfume is meant to be drunk,\nmaybe you should first consider: are you dreaming?");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdreammod.upgrade_kit", "§7Used at the smithing table to upgrade equipment Can preserve the original enhancement properties of the equipment");
-        add("tooltip.pasterdream.enhance_stone.usage", "§7Used to enhance synthesis embryos at the Weapon Workshop");
+        add("tooltip.pasterdream.enhance_stone.usage", "§7Used to enhance Weapons/Tools/Armor at the Weapon Workshop Crafting Table");
         add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9+0.5 Swim Speed while held (does not stack)");
         add("tooltip.pasterdream.thermal_dagger", "§7§o-- Subnautica");
         add("tooltip.pasterdream.deep_treasure", "§7Splashing waves push us into the distance");
         add("tooltip.pasterdream.shadow_deep_treasure", "§7Shadows still seem to flow across its surface");
-        add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +0.1~+0.5");
-        add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+2");
+        add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +1~+3");
+        add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+3");
         add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
         add("tooltip.pasterdream.此方块仅用于提供粒子效果，生存模式无法获取", "§7This block only use to provide particle effect, Can't get on Survival mode");
         add("tooltip.pasterdream.左键实体：直接删除此实体", "§7Left Button Press Entity: Delete This Entity");

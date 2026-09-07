@@ -5,12 +5,15 @@ import com.pasterdream.pasterdreammod.compat.jei.brewingrecipe.FortuneJellyJeiBr
 import com.pasterdream.pasterdreammod.compat.jei.fluidcontainerrelation.FluidContainerRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.weaponworkshopcraftingtablerecipe.WeaponWorkshopCraftingTableJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.weaponworkshopcraftingtablerecipe.WeaponWorkshopCraftingTableRecipeCategory;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRelation;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GetAllFluidContainerCapability;
 import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
 import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipe;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceScreen;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import mezz.jei.api.recipe.vanilla.IJeiBrewingRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanRecipeCategory;
@@ -30,7 +33,6 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModPotions;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
@@ -98,6 +100,7 @@ public class ModJEIPlugin implements IModPlugin
             List<ResearchTableResearchRecipe> researchTableResearchRecipes = recipeManager.getAllRecipesFor(ModRecipes.RESEARCH_TABLE_RESEARCH.get());
             List<DreamAccumulatorRecipe> dreamAccumulatorRecipes = recipeManager.getAllRecipesFor(ModRecipes.DREAM_ACCUMULATOR.get());
             List<ShadowBlastFurnaceRecipe> shadowBlastFurnaceRecipes = recipeManager.getAllRecipesFor(ModRecipes.SHADOW_BLAST_FURNACE.get());
+            List<WeaponWorkshopCraftingTableRecipe> weaponWorkshopCraftingTableRecipes = recipeManager.getAllRecipesFor(ModRecipes.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
             List<FluidContainerRelation> fluidContainerRelations = GetAllFluidContainerCapability.getAllContainer();
 
             registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE, claypanRecipes.stream().map(ClaypanJEIRecipe::new).collect(Collectors.toList()));
@@ -107,6 +110,7 @@ public class ModJEIPlugin implements IModPlugin
             registration.addRecipes(ResearchTableResearchRecipeCategory.RESEARCH_TABLE_RESEARCH_RECIPE_TYPE, researchTableResearchRecipes.stream().map(ResearchTableResearchJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(DreamAccumulatorRecipeCategory.DREAM_ACCUMULATOR_RECIPE_TYPE, dreamAccumulatorRecipes.stream().map(DreamAccumulatorJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE, shadowBlastFurnaceRecipes.stream().map(ShadowBlastFurnaceJEIRecipe::new).collect(Collectors.toList()));
+            registration.addRecipes(WeaponWorkshopCraftingTableRecipeCategory.WEAPON_WORKSHOP_CRAFTING_TABLE_RECIPE_TYPE, weaponWorkshopCraftingTableRecipes.stream().map(WeaponWorkshopCraftingTableJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(FluidContainerRecipeCategory.FLUID_CONTAINER_RELATION, fluidContainerRelations);
 
             // ===== 幸运药水酿造配方（原版样式，每步独立注册）=====
@@ -158,6 +162,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESEARCH_TABLE.get()), ResearchTableResearchRecipeCategory.RESEARCH_TABLE_RESEARCH_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DREAM_ACCUMULATOR.get()), DreamAccumulatorRecipeCategory.DREAM_ACCUMULATOR_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SHADOW_BLAST_FURNACE.get()), ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get()), WeaponWorkshopCraftingTableRecipeCategory.WEAPON_WORKSHOP_CRAFTING_TABLE_RECIPE_TYPE);
     }
 
     @Override
@@ -170,6 +175,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCategories(new ResearchTableResearchRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DreamAccumulatorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ShadowBlastFurnaceRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new WeaponWorkshopCraftingTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new FluidContainerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 

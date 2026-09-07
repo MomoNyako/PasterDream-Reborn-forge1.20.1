@@ -1,11 +1,11 @@
-package com.pasterdream.pasterdreammod.recipe.genericrecipe;
+package com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.genericmatcher;
 
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-public class MatchSingleFluid
+public class SingleFluidMatcher
 {
     public static FluidStack match(FluidIngredient fluidIngredient, FluidStack matchFluid)
     {
@@ -14,23 +14,23 @@ public class MatchSingleFluid
             List<FluidStack> ListFluidStackFromTag = fluidIngredient.getListFluidStackFromTag();
             for(FluidStack fluidStack : ListFluidStackFromTag)
             {
-                if(fluidIngredient.isSameFluidSameTags(fluidStack, matchFluid))
+                if(FluidIngredient.isSameFluidSameTags(fluidStack, matchFluid))
                 {
                     return fluidStack;
                 }
             }
-            return null;
+            return FluidStack.EMPTY;
         }
             else
             {
                 FluidStack fluidStack = fluidIngredient.getFluidStack();
-                if(fluidIngredient.isSameFluidSameTags(fluidStack, matchFluid))
+                if(FluidIngredient.isSameFluidSameTags(fluidStack, matchFluid))
                 {
                     return fluidStack;
                 }
                     else
                     {
-                        return null;
+                        return FluidStack.EMPTY;
                     }
             }
     }

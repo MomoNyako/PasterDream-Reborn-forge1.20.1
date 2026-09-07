@@ -663,7 +663,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.watermelon_juice","西瓜汁（流体）");
         add("fluid.pasterdream.wind_plant_extract","风植萃取液（流体）");
         add("fluid.pasterdream.yeast","酵母（流体）");
-        add("fluid.pasterdream.ink","墨水罐（流体）");
+        add("fluid.pasterdream.ink","墨水（流体）");
 
         add("jei.pasterdream.流体容器绑定关系", "流体容器绑定关系");
         add("jei.pasterdream.通用流体储罐", "通用流体储罐");
@@ -686,6 +686,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("button.pasterdream.mortarbutton", "研磨");
         add("button.pasterdream.copy_button", "复制");
         add("button.pasterdream.research_button", "研究");
+        add("button.pasterdream.锻造", "锻造");
 
         add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法使的兜里不会揣几块魔法石呢？");
         add("tooltip.pasterdreammod.goldenrod_tea", "§d持续移除饥饿与反胃效果");
@@ -694,13 +695,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.dyedream_perfume.flavor", "§7§o当你在思考为什么香水要用来喝时\n或许应该先考虑你现在正在做梦？");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdreammod.upgrade_kit", "§7用于在锻造台处升级装备 可以保留装备的原有强化属性");
-        add("tooltip.pasterdream.enhance_stone.usage", "§7用于在精铸工坊中强化合成原胚");
+        add("tooltip.pasterdream.enhance_stone.usage", "§7用于在精铸工坊工作台中强化武器/工具/装备");
         add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9持有时 +0.5 游泳速度（不叠加）");
         add("tooltip.pasterdream.thermal_dagger", "§7§o-- 深海迷航");
         add("tooltip.pasterdream.deep_treasure", "§7飞溅的浪花将我们推向远方");
         add("tooltip.pasterdream.shadow_deep_treasure", "§7表面似乎还流淌着阴影");
-        add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9攻击力+0.1~+0.5");
-        add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9幸运+1~+2");
+        add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9攻击力+1~+3");
+        add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9幸运+1~+3");
         add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
         add("tooltip.pasterdream.此方块仅用于提供粒子效果，生存模式无法获取", "§7此方块仅用于提供粒子效果，生存模式无法获取");
         add("tooltip.pasterdream.左键实体：直接删除此实体", "§7左键实体：直接删除此实体");

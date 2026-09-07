@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.recipe.dreamaccumulatorrecipe;
 
-import com.pasterdream.pasterdreammod.recipe.genericrecipe.MatchSingleItem;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.genericmatcher.SingleItemMatcher;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +21,7 @@ public class DreamAccumulatorRecipeMatch
                 continue;
             }
 
-            ItemStack catalyst = MatchSingleItem.match(recipe.getCatalyst(), inventory.catalyst());
+            ItemStack catalyst = SingleItemMatcher.matchWithNotCompareNBT(recipe.getCatalyst(), inventory.catalyst());
             if(isHaveCatalyst && catalyst == null)
             {
                 continue;

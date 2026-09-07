@@ -108,7 +108,6 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAttackEntity);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
-        MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerLoggedIn);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAdvancementEarned);
         MinecraftForge.EVENT_BUS.addListener(QymArmorEvents::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(MachineLightWingItem::onEquipChange);
@@ -140,6 +139,7 @@ public class PasterDreamMod
         ModBluePrintsContentRelation.registerBluePrintsContentRelation();
         ModCropRelation.registerCropRelation();
         ProphecyCardItem.registerAllCardEffects();
+        ModEnhanceStoneAttributeRelation.registerModEnhanceStoneAttributeRelation();
 
         // 药剂瓶：发射器行为 + 砸碎效果绑定
         PotionBottleRegistry.registerDispenserBehavior();

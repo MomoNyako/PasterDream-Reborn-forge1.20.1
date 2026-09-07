@@ -32,7 +32,7 @@ public class ItemStackWithoutCount
         return nbt != null;
     }
 
-    public static boolean isSame(ItemStackWithoutCount itemStackWithoutCount0, ItemStackWithoutCount itemStackWithoutCount1)
+    public static boolean isSameItemSameTag(ItemStackWithoutCount itemStackWithoutCount0, ItemStackWithoutCount itemStackWithoutCount1)
     {
         if(itemStackWithoutCount0.hasNbt() && itemStackWithoutCount1.hasNbt())
         {
@@ -42,5 +42,10 @@ public class ItemStackWithoutCount
             {
                 return itemStackWithoutCount0.getItem() == itemStackWithoutCount1.getItem();
             }
+    }
+
+    public static boolean isSameItem(ItemStackWithoutCount itemStackWithoutCount0, ItemStackWithoutCount itemStackWithoutCount1)
+    {
+        return itemStackWithoutCount0.getItem() == itemStackWithoutCount1.getItem();
     }
 }

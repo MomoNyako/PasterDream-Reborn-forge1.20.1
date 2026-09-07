@@ -52,6 +52,7 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, MortarCraftPacket.class, MortarCraftPacket::encode, MortarCraftPacket::decode, MortarCraftPacket::handle);
         CHANNEL.registerMessage(id++, ResearchTableCopyPacket.class, ResearchTableCopyPacket::encode, ResearchTableCopyPacket::decode, ResearchTableCopyPacket::handle);
         CHANNEL.registerMessage(id++, ResearchTableResearchPacket.class, ResearchTableResearchPacket::encode, ResearchTableResearchPacket::decode, ResearchTableResearchPacket::handle);
+        CHANNEL.registerMessage(id++, WeaponWorkshopCraftingTableCraftPacket.class, WeaponWorkshopCraftingTableCraftPacket::encode, WeaponWorkshopCraftingTableCraftPacket::decode, WeaponWorkshopCraftingTableCraftPacket::handle);
 
         CHANNEL.registerMessage(id++, DebugBlockActionPacket.class, DebugBlockActionPacket::encode, DebugBlockActionPacket::decode, DebugBlockActionPacket::handle);
         CHANNEL.registerMessage(id++, StartBlueprintPlacementPacket.class, StartBlueprintPlacementPacket::encode, StartBlueprintPlacementPacket::decode, StartBlueprintPlacementPacket::handle);

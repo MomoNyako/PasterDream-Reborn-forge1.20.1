@@ -196,7 +196,9 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
             }
                 else
                 {
-                    player.containerMenu.setCarried(new ItemStack(heldItem.getItem(), heldItem.getCount() - 1));
+                    ItemStack remainingHeldItem = new ItemStack(heldItem.getItem(), heldItem.getCount() - 1);
+                    remainingHeldItem.setTag(heldItem.getTag());
+                    player.containerMenu.setCarried(remainingHeldItem);
                     ItemStack newItem = result.getResult();
                     if (!newItem.isEmpty())
                     {

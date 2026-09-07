@@ -51,7 +51,7 @@ public class RecipeMatcher
 
             for(ItemStackWithoutCount itemStackWithoutCount : inputItemTypes)
             {
-                if(ItemStackWithoutCount.isSame(itemStackWithoutCount, new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag())))
+                if(ItemStackWithoutCount.isSameItemSameTag(itemStackWithoutCount, new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag())))
                 {
                     needSkip = true;
                 }
@@ -107,7 +107,7 @@ public class RecipeMatcher
         Set<ItemStackWithoutCount> copyInputItemTypes = new HashSet<>(InputItemTypes);
         Set<FluidStackWithoutAmount> copyInputFluidTypes = new HashSet<>(inputFluidTypes);
 
-        matchedRecipeInputsAndOutputs = new MachineInventory(new ArrayList<>(), new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
+        matchedRecipeInputsAndOutputs = new MachineInventory(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         for (ItemIngredient itemIngredient : recipe.getInputItems())
         {
             if(itemIngredient.isTag())
@@ -121,7 +121,7 @@ public class RecipeMatcher
 
                     for(ItemStackWithoutCount inputItemType : copyInputItemTypes)
                     {
-                        if (ItemStackWithoutCount.isSame(recipeItemType, inputItemType))
+                        if (ItemStackWithoutCount.isSameItemSameTag(recipeItemType, inputItemType))
                         {
                             needRemovedItem = inputItemType;
                             isMatched = true;
@@ -152,7 +152,7 @@ public class RecipeMatcher
 
                     for(ItemStackWithoutCount inputItemType : copyInputItemTypes)
                     {
-                        if (ItemStackWithoutCount.isSame(recipeItemType, inputItemType))
+                        if (ItemStackWithoutCount.isSameItemSameTag(recipeItemType, inputItemType))
                         {
                             needRemovedItem = inputItemType;
                             isMatched = true;
