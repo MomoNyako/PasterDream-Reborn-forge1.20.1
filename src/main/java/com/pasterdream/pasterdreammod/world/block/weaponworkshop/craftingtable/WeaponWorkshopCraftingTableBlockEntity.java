@@ -217,7 +217,6 @@ public class WeaponWorkshopCraftingTableBlockEntity extends BlockEntity implemen
         WeaponWorkshopCraftingTableRecipeInventory matchedResult = WeaponWorkshopCraftingTableRecipeMatcher.matches(inventory, recipes);
         if(matchedResult != null)
         {
-            System.out.println("matchedResult != null");
             double playerLuckValue = player.getAttributeValue(Attributes.LUCK);
             if(player.getEffect(MobEffects.LUCK) != null)
             {
@@ -228,7 +227,6 @@ public class WeaponWorkshopCraftingTableBlockEntity extends BlockEntity implemen
 
             if(processedResult != null)
             {
-                System.out.println("processedResult != null");
                 for(int i = 0; i < processedResult.inputItemStacks().size(); i++)
                 {
                     itemHandler.setStackInSlot(i, processedResult.inputItemStacks().get(i));

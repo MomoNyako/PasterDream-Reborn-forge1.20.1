@@ -21,7 +21,7 @@ public class DreamAccumulatorRecipeMatch
                 continue;
             }
 
-            ItemStack catalyst = SingleItemMatcher.matchWithNotCompareNBT(recipe.getCatalyst(), inventory.catalyst());
+            ItemStack catalyst = SingleItemMatcher.matchWithCompareContainerNBT(recipe.getCatalyst(), inventory.catalyst());
             if(isHaveCatalyst && catalyst == null)
             {
                 continue;

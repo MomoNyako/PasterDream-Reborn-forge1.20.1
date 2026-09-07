@@ -31,13 +31,13 @@ public class ResearchTableCopyRecipeMatch
                 continue;
             }
 
-            matchedSourceBook = SingleItemMatcher.matchWithNotCompareNBT(recipe.getSourceBook(), inventory.sourceBook());
+            matchedSourceBook = SingleItemMatcher.matchWithCompareContainerNBT(recipe.getSourceBook(), inventory.sourceBook());
             if(matchedSourceBook == null)
             {
                 continue;
             }
 
-            matchedMaterial = SingleItemMatcher.matchWithNotCompareNBT(recipe.getMaterial(), inventory.material());
+            matchedMaterial = SingleItemMatcher.matchWithCompareContainerNBT(recipe.getMaterial(), inventory.material());
             if(matchedMaterial == null)
             {
                 continue;

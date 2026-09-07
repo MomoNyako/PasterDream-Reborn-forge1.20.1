@@ -9,29 +9,6 @@ import java.util.List;
 
 public class ItemMatcher
 {
-    public static List<ItemStackWithoutCount> getInventoryItemTypes(List<ItemStack> inventoryItemStacks)
-    {
-        List<ItemStackWithoutCount> itemTypes = new ArrayList<>();
-        for(ItemStack itemStack : inventoryItemStacks)
-        {
-            boolean needSkip = false;
-
-            for(ItemStackWithoutCount itemStackWithoutCount : itemTypes)
-            {
-                if(ItemStackWithoutCount.isSameItem(itemStackWithoutCount, new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag())))
-                {
-                    needSkip = true;
-                }
-            }
-
-            if(!itemStack.isEmpty() && !needSkip)
-            {
-                itemTypes.add(new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag()));
-            }
-        }
-        return itemTypes;
-    }
-
     public static List<ItemStack> matcher(List<ItemIngredient> recipeItemIngredients, List<ItemStackWithoutCount> inventoryItemTypes)
     {
         List<ItemStack> matchedItemStack = new ArrayList<>();

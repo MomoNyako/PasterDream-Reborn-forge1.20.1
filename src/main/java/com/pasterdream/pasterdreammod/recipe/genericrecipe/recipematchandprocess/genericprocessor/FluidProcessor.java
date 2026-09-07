@@ -25,7 +25,7 @@ public class FluidProcessor
 
                 if(isAdd)
                 {
-                    if(FluidIngredient.isSameFluidSameTags(matchedFluidStack, machineFluidStack) || machineFluidStack.isEmpty())
+                    if(FluidIngredient.isSameFluidSameTags(matchedFluidStack, machineFluidStack))
                     {
                         if(machineFluidAmount + matchedFluidAmount <= maxOutputTankCapacity)
                         {
@@ -39,6 +39,21 @@ public class FluidProcessor
                                 matchedFluidStack.shrink(maxOutputTankCapacity - machineFluidAmount);
                             }
                     }
+                    else
+                        if(machineFluidStack.isEmpty())
+                        {
+                            if(matchedFluidAmount <= maxOutputTankCapacity)
+                            {
+                                processedFluidStacks.set(j, matchedFluidStack.copy());
+                                remainingFluidStacks.set(i, FluidStack.EMPTY);
+                                break;
+                            }
+                                else
+                                {
+                                    machineFluidStack.setAmount(maxOutputTankCapacity);
+                                    matchedFluidStack.shrink(maxOutputTankCapacity);
+                                }
+                        }
                 }
                     else
                     {
