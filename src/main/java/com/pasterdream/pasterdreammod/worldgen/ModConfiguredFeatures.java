@@ -100,6 +100,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_PINK_MUSHROOM =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_pink_mushroom"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MUSHROOM_CURTAIN =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_mushroom_curtain"));
     // 方解石尖锥（海洋变体）— 原作 stone_pillar_0/1 NBT 结构放置，浮于海面
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_PILLAR_OCEAN =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -618,6 +621,10 @@ public class ModConfiguredFeatures {
 
         // 小粉顶菌平菇 — 3~6 格高，菌盖直径 3~5，菌盖方块按概率替换为菌光体
         context.register(SMALL_PINK_MUSHROOM, new ConfiguredFeature<>(ModFeatures.SMALL_PINK_MUSHROOM.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 粉顶菌垂帘 — 1 格宽竖直悬挂结构，从洞穴天花板垂下，菌盖方块+菌光体混合
+        context.register(PINK_MUSHROOM_CURTAIN, new ConfiguredFeature<>(ModFeatures.PINK_MUSHROOM_CURTAIN.get(),
                 NoneFeatureConfiguration.INSTANCE));
 
         // 繁茂洞穴地表装饰 — 随机粉顶菌菌光体 / 菌顶方块（菌盖），只生成在染梦草地面上（不浮空）

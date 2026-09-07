@@ -54,6 +54,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SMALL_PINK_MUSHROOM_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_pink_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_PINK_MUSHROOM_CURTAIN =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_pink_mushroom_curtain"));
     public static final ResourceKey<PlacedFeature> LUSH_CAVE_STEM_GRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_stem_grass_patch"));
@@ -390,6 +393,16 @@ public class ModPlacedFeatures {
                 ON_DYEDREAM_GROUND);
     }
 
+    /** 洞穴天花板放置：从随机锚点向上扫描找洞顶（空气→实心），再下移 1 格落在洞顶下方空气格，用于挂在天花板下的地物 */
+    private static List<PlacementModifier> caveCeilingPlacement(int count) {
+        return List.of(
+                CountPlacement.of(count),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-1)));
+    }
+
     /** 限制植物只能生成在灯影地表方块（阴影菌岩/影之石）上 */
     private static final PlacementModifier ON_SHADOW_GROUND = BlockPredicateFilter.forPredicate(
             BlockPredicate.matchesBlocks(
@@ -595,6 +608,10 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.SMALL_PINK_MUSHROOM),
                 List.of(CountPlacement.of(6), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 粉顶菌垂帘 — 从洞穴天花板垂下的竖直结构，洞顶扫描放置
+        context.register(LUSH_CAVE_PINK_MUSHROOM_CURTAIN, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_CURTAIN),
+                caveCeilingPlacement(24)));
         // 繁茂洞穴茎草/高茎草/奇异蕨 — 洞底扫描放置
         context.register(LUSH_CAVE_STEM_GRASS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.STEM_GRASS_PATCH),

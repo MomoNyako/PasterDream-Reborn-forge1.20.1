@@ -213,6 +213,7 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_lush_fern", ModPlacedFeatures.LUSH_CAVE_FERN_PATCH, featureLookup, tLush);
             addPatch(entries, "dyedream_lush_vine", ModPlacedFeatures.LUSH_CAVE_VINE_PATCH, featureLookup, tLush);
             addPatch(entries, "dyedream_lush_shroom_block", ModPlacedFeatures.LUSH_CAVE_SHROOM_BLOCK_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_pink_mushroom_curtain", ModPlacedFeatures.LUSH_CAVE_PINK_MUSHROOM_CURTAIN, featureLookup, tLush);
             addPatch(entries, "dyedream_dripstone_cone", ModPlacedFeatures.CALCITE_CONE_PATCH, featureLookup, tDripstone);
             addFeature(entries, "dyedream_dripstone_cluster", ModPlacedFeatures.CALCITE_CONE_CLUSTER_PATCH, featureLookup, tDripstone, GenerationStep.Decoration.LOCAL_MODIFICATIONS);
 
