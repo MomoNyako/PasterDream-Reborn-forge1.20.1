@@ -38,6 +38,42 @@ public class ModBiomes {
     public static final ResourceKey<Biome> DYEDREAM_OCEAN =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ocean"));
+    public static final ResourceKey<Biome> DYEDREAM_COLD_OCEAN =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cold_ocean"));
+    public static final ResourceKey<Biome> DYEDREAM_BEACH =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_beach"));
+    public static final ResourceKey<Biome> DYEDREAM_RIVER =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_river"));
+    public static final ResourceKey<Biome> DYEDREAM_FROZEN_RIVER =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_frozen_river"));
+    public static final ResourceKey<Biome> DYEDREAM_SNOWY_PEAKS =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"));
+    public static final ResourceKey<Biome> DYEDREAM_SNOWY_SLOPES =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"));
+    public static final ResourceKey<Biome> DYEDREAM_SNOWY_GROVE =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_grove"));
+    public static final ResourceKey<Biome> DYEDREAM_SNOWY_TAIGA =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_taiga"));
+    public static final ResourceKey<Biome> DYEDREAM_FOREST =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_forest"));
+    public static final ResourceKey<Biome> DYEDREAM_CAVES =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_caves"));
+    public static final ResourceKey<Biome> DYEDREAM_LUSH_CAVES =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lush_caves"));
+    public static final ResourceKey<Biome> DYEDREAM_DRIPSTONE_CAVES =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_dripstone_caves"));
 
     // ===== 灯影之下维度群系 =====
     public static final ResourceKey<Biome> SHADOW_NYLIUM_WASTES =
@@ -109,7 +145,19 @@ public class ModBiomes {
         context.register(DYEDREAM_MUSHROOM_MOUNTAINS, dyedreamMushroomMountains(placedFeatures, carvers));
         context.register(DYEDREAM_SNOWY_PLAINS, dyedreamSnowyPlains(placedFeatures, carvers));
         context.register(DYEDREAM_FROZEN_OCEAN, dyedreamFrozenOcean(placedFeatures, carvers));
+        context.register(DYEDREAM_COLD_OCEAN, dyedreamColdOcean(placedFeatures, carvers));
         context.register(DYEDREAM_OCEAN, dyedreamOcean(placedFeatures, carvers));
+        context.register(DYEDREAM_BEACH, dyedreamBeach(placedFeatures, carvers));
+        context.register(DYEDREAM_RIVER, dyedreamRiver(placedFeatures, carvers));
+        context.register(DYEDREAM_FROZEN_RIVER, dyedreamFrozenRiver(placedFeatures, carvers));
+        context.register(DYEDREAM_SNOWY_PEAKS, dyedreamSnowyPeaks(placedFeatures, carvers));
+        context.register(DYEDREAM_SNOWY_SLOPES, dyedreamSnowySlopes(placedFeatures, carvers));
+        context.register(DYEDREAM_SNOWY_GROVE, dyedreamSnowyGrove(placedFeatures, carvers));
+        context.register(DYEDREAM_SNOWY_TAIGA, dyedreamSnowyTaiga(placedFeatures, carvers));
+        context.register(DYEDREAM_FOREST, dyedreamForest(placedFeatures, carvers));
+        context.register(DYEDREAM_CAVES, dyedreamCaves(placedFeatures, carvers));
+        context.register(DYEDREAM_LUSH_CAVES, dyedreamLushCaves(placedFeatures, carvers));
+        context.register(DYEDREAM_DRIPSTONE_CAVES, dyedreamDripstoneCaves(placedFeatures, carvers));
 
         // 灯影之下占位群系（待后续细化）
         context.register(SHADOW_NYLIUM_WASTES, shadowNyliumWastes(placedFeatures, carvers));
@@ -142,77 +190,6 @@ public class ModBiomes {
                 .grassColorOverride(0xFFFFABEE);
     }
 
-    /** 所有群系共享的 6 种矿石 */
-    private static void addCommonOres(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.TITANIUM_ORE)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.AMBER_CANDY_ORE)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.DYEDREAM_DUST_ORE)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.DYEDREAM_QUARTZ_ORE);
-    }
-
-    /** 所有群系共享的 3 种晶芽 */
-    private static void addCommonBuds(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.SMALL_DYEDREAM_BUD_PATCH)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.MEDIUM_DYEDREAM_BUD_PATCH)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.LARGE_DYEDREAM_BUD_PATCH);
-    }
-
-    /** 所有群系共享的 6 种植被装饰 */
-    private static void addCommonVegetation(BiomeGenerationSettings.Builder builder) {
-        addCommonVegetation(builder, true);
-    }
-
-    private static void addCommonVegetation(BiomeGenerationSettings.Builder builder, boolean includeSeaPickle) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CORAL_TREE_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CORAL_CLAW_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CORAL_MUSHROOM_PATCH);
-        if (includeSeaPickle) {
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SEA_PICKLE_PATCH);
-        }
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CALCITE_BOULDER);
-    }
-
-    /** 陆地群系共享：洞穴 + 海草 + 3 种花朵 */
-    private static void addLandSharedFeatures(BiomeGenerationSettings.Builder builder) {
-        builder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
-                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DREAMING_LOTUS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LINHT_FLOWER_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SINGULARITY_FERN_PATCH);
-    }
-
-    /** 温暖群系共享的冰 blob */
-    private static void addWarmIceFeatures(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.DYEDREAM_ICE_BLOBS)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.DYEDREAM_PACKED_ICE_BLOBS);
-    }
-
-    /** 寒冷群系共享的冰矿石 + 冰晶芽 */
-    private static void addColdOresAndBuds(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.DYEDREAM_ICE_STONE_BLOBS)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.VANILLA_ICE_BLOBS)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.VANILLA_PACKED_ICE_BLOBS)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.ICE_BUD_PATCH);
-    }
-
-    /** 统一收尾：添加共享的矿石、晶芽、晶洞、植被 */
-    private static void finishGeneration(BiomeGenerationSettings.Builder builder) {
-        finishGeneration(builder, true);
-    }
-
-    private static void finishGeneration(BiomeGenerationSettings.Builder builder, boolean includeSeaPickle) {
-        addCommonVegetation(builder, includeSeaPickle);
-        addCommonOres(builder);
-        addCommonBuds(builder);
-        addCommonGeode(builder);
-    }
-
-    /** 所有群系共享的染梦晶洞（洞穴地物，LOCAL_MODIFICATIONS） */
-    private static void addCommonGeode(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DYEDREAM_GEODE);
-    }
-
     // ==================== 各群系构建方法 ====================
 
     private static Biome dyedreamPlains(HolderGetter<PlacedFeature> placedFeatures,
@@ -224,19 +201,7 @@ public class ModBiomes {
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        addLandSharedFeatures(gen);
-        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_TREE)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.STEM_GRASS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TALL_STEM_GRASS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_COROLLA_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LIGHT_BALL_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CLOUD_CROP_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_LILY_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_VINE_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CALCITE_STALICRIPE)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_CALCITE_STALICRIPE);
-        addWarmIceFeatures(gen);
-        finishGeneration(gen);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -267,14 +232,7 @@ public class ModBiomes {
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        addLandSharedFeatures(gen);
-        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PINK_MUSHROOM_TREE)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PINK_HUGE_MUSHROOM)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PINK_MUSHROOM_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TALL_PINK_MUSHROOM_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_VINE_PATCH);
-        addWarmIceFeatures(gen);
-        finishGeneration(gen);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -302,19 +260,7 @@ public class ModBiomes {
                 .backgroundMusic(coldMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        addLandSharedFeatures(gen);
-        gen.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SNOWY_WATER_POOL)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_TREE)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_ICE_PILLAR)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_PACKED_ICE_PILLAR)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_LILY_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.EDELWEISS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_VINE_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CLOUD_PILLAR_SMALL)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CLOUD_PILLAR_LARGE);
-        addColdOresAndBuds(gen);
-        gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, FREEZE_TOP_LAYER);
-        finishGeneration(gen, false);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -342,11 +288,6 @@ public class ModBiomes {
                 .backgroundMusic(coldMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        gen.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
-                .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DYEDREAM_ICEBERG_PACKED)
-                .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DYEDREAM_ICEBERG_BLUE);
-        addColdOresAndBuds(gen);
-        finishGeneration(gen);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -373,10 +314,6 @@ public class ModBiomes {
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        gen.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DYEDREAM_KELP_PATCH);
-        addWarmIceFeatures(gen);
-        finishGeneration(gen);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -390,6 +327,307 @@ public class ModBiomes {
                         .addSpawn(MobCategory.WATER_CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 15, 1, 3))
                         .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamColdOcean(HolderGetter<PlacedFeature> placedFeatures,
+                                            HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .foliageColorOverride(0xFFFDC6F2)
+                .grassColorOverride(0xFFFDC6F2)
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.003f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
+                        .addSpawn(MobCategory.WATER_CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 15, 1, 3))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamBeach(HolderGetter<PlacedFeature> placedFeatures,
+                                        HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .foliageColorOverride(0xFFFDC6F2)
+                .grassColorOverride(0xFFFDC6F2)
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.8f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 2))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamRiver(HolderGetter<PlacedFeature> placedFeatures,
+                                        HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .foliageColorOverride(0xFFFDC6F2)
+                .grassColorOverride(0xFFFDC6F2)
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamFrozenRiver(HolderGetter<PlacedFeature> placedFeatures,
+                                              HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects();
+        applyColdFoliage(effects);
+        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.005f))
+                .backgroundMusic(coldMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.0f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamSnowyPeaks(HolderGetter<PlacedFeature> placedFeatures,
+                                             HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects();
+        applyColdFoliage(effects);
+        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.01f))
+                .backgroundMusic(coldMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(-0.7f)
+                .downfall(0.9f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamSnowySlopes(HolderGetter<PlacedFeature> placedFeatures,
+                                              HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects();
+        applyColdFoliage(effects);
+        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.01f))
+                .backgroundMusic(coldMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(-0.3f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamSnowyGrove(HolderGetter<PlacedFeature> placedFeatures,
+                                             HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects();
+        applyColdFoliage(effects);
+        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.01f))
+                .backgroundMusic(coldMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(-0.2f)
+                .downfall(0.8f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamSnowyTaiga(HolderGetter<PlacedFeature> placedFeatures,
+                                             HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects();
+        applyColdFoliage(effects);
+        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.01f))
+                .backgroundMusic(coldMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(-0.5f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamForest(HolderGetter<PlacedFeature> placedFeatures,
+                                         HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .foliageColorOverride(0xFFFDC6F2)
+                .grassColorOverride(0xFFFDC6F2)
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.7f)
+                .downfall(0.8f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 10, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 20, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 10, 1, 1))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamCaves(HolderGetter<PlacedFeature> placedFeatures,
+                                        HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.005f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.8f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamLushCaves(HolderGetter<PlacedFeature> placedFeatures,
+                                            HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamDripstoneCaves(HolderGetter<PlacedFeature> placedFeatures,
+                                                 HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.005f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.8f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(gen.build())
                 .build();
     }

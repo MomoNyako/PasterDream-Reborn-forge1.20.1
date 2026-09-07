@@ -16,6 +16,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
@@ -25,6 +27,42 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_TREE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_COLD_SPRUCE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_DENSE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_dense"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_COLD_SPRUCE_DENSE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce_dense"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_MUSHROOM_TREE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_mushroom_tree"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_TALL_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_tall_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_VINE_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_vine_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_SHROOM_BLOCK_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_shroom_block_patch"));
+    public static final ResourceKey<PlacedFeature> SMALL_PINK_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_pink_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_STEM_GRASS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_stem_grass_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_TALL_STEM_GRASS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_tall_stem_grass_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_FERN_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_fern_patch"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
@@ -65,6 +103,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PINK_HUGE_MUSHROOM =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_huge_mushroom"));
+    public static final ResourceKey<PlacedFeature> PINK_HUGE_MUSHROOM_SPARSE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_huge_mushroom_sparse"));
     public static final ResourceKey<PlacedFeature> PINK_MUSHROOM_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_mushroom_patch"));
@@ -167,6 +208,12 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SMALL_CALCITE_STALICRIPE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_calcite_stalicripe"));
+    public static final ResourceKey<PlacedFeature> CALCITE_CONE_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_cone_patch"));
+    public static final ResourceKey<PlacedFeature> CALCITE_CONE_CLUSTER_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_cone_cluster_patch"));
 
     // ===== 染梦冻洋 — 自定义冰山 placed feature（比原版更高频率） =====
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICEBERG_PACKED =
@@ -326,6 +373,17 @@ public class ModPlacedFeatures {
                     ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
                     ModBlocks.DYEDREAM_DIRT.get()));
 
+    /** 洞穴地面放置：从随机锚点向下扫描找洞底（空气→实心），再上移 1 格落在洞底空气格（镜像原版 LUSH_CAVES_VEGETATION） */
+    private static List<PlacementModifier> caveFloorPlacement(int count) {
+        return List.of(
+                CountPlacement.of(count),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)),
+                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(1)),
+                ON_DYEDREAM_GROUND);
+    }
+
     /** 限制植物只能生成在灯影地表方块（阴影菌岩/影之石）上 */
     private static final PlacementModifier ON_SHADOW_GROUND = BlockPredicateFilter.forPredicate(
             BlockPredicate.matchesBlocks(
@@ -346,6 +404,27 @@ public class ModPlacedFeatures {
         context.register(DYEDREAM_TREE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE),
                 List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
+
+        // 染梦冷杉（雪林/雪针叶林）— 与染梦树同放置规则
+        context.register(DYEDREAM_TREE_COLD_SPRUCE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE_COLD_SPRUCE),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
+
+        // 染梦树密集变体（染梦森林）— 合欢状染梦树更密集
+        context.register(DYEDREAM_TREE_DENSE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE),
+                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
+
+        // 染梦冷杉密集变体（雪林/雪针叶林）— 针叶状染梦树更密集
+        context.register(DYEDREAM_TREE_COLD_SPRUCE_DENSE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE_COLD_SPRUCE),
+                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                         PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
 
@@ -471,6 +550,14 @@ public class ModPlacedFeatures {
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                         ON_DYEDREAM_GROUND)));
 
+        // 粉顶菌巨菇（森林稀疏变体）— 大幅降低频率（平均每 32 区块 1 个）
+        context.register(PINK_HUGE_MUSHROOM_SPARSE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_HUGE_MUSHROOM),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        ON_DYEDREAM_GROUND)));
+
         // 粉顶菌 (小型地表) — WORLD_SURFACE_WG
         context.register(PINK_MUSHROOM_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_PATCH),
@@ -491,6 +578,40 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_DYEDREAM_GROUND)));
+
+        // ===== 染梦繁茂洞穴 — 洞穴内粉顶菇/藤蔓（HeightRange 放置于地下洞壁，非高度图） =====
+        context.register(LUSH_CAVE_MUSHROOM_TREE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.LUSH_CAVE_MUSHROOM),
+                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 小粉顶菌平菇 — 自定义特征生成，3~6 格高
+        context.register(SMALL_PINK_MUSHROOM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SMALL_PINK_MUSHROOM),
+                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 繁茂洞穴茎草/高茎草/奇异蕨 — 洞底扫描放置
+        context.register(LUSH_CAVE_STEM_GRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.STEM_GRASS_PATCH),
+                caveFloorPlacement(40)));
+        context.register(LUSH_CAVE_TALL_STEM_GRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.TALL_STEM_GRASS_PATCH),
+                caveFloorPlacement(30)));
+        context.register(LUSH_CAVE_FERN_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SINGULARITY_FERN_PATCH),
+                caveFloorPlacement(30)));
+        context.register(LUSH_CAVE_MUSHROOM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_PATCH),
+                caveFloorPlacement(40)));
+        context.register(LUSH_CAVE_TALL_MUSHROOM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.TALL_PINK_MUSHROOM_PATCH),
+                caveFloorPlacement(20)));
+        context.register(LUSH_CAVE_VINE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_VINE_PATCH),
+                caveFloorPlacement(40)));
+        // 繁茂洞穴地表菌光体/菌顶方块 — 洞底扫描放置，频率较高
+        context.register(LUSH_CAVE_SHROOM_BLOCK_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.LUSH_CAVE_SHROOM_BLOCK_PATCH),
+                caveFloorPlacement(64)));
 
         // 野生梦染茶花 — 团簇稀疏
         context.register(DYEDREAM_COROLLA_PATCH, new PlacedFeature(
@@ -561,6 +682,16 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.SMALL_CALCITE_STALICRIPE),
                 List.of(CountPlacement.of(20), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 方解石锥（滴水洞穴）— 单锥，Count 高（镜像原版 pointed_dripstone 192~256），HeightRange 放置于洞壁
+        context.register(CALCITE_CONE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_CONE),
+                List.of(CountPlacement.of(UniformInt.of(128, 192)), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)))));
+        // 方解石锥簇（滴水洞穴）— 成片群落（镜像原版 large_dripstone 10~48），LOCAL 阶段
+        context.register(CALCITE_CONE_CLUSTER_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_CONE_CLUSTER),
+                List.of(CountPlacement.of(UniformInt.of(12, 28)), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)))));
 
 
         // 云团柱 — SP, rarity=4, MOTION_BLOCKING

@@ -41,6 +41,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 
 import java.util.List;
 
@@ -83,6 +85,21 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_SPIKE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_spike"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_CONE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_cone"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_CONE_CLUSTER =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_cone_cluster"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LUSH_CAVE_SHROOM_BLOCK_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_shroom_block_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LUSH_CAVE_MUSHROOM =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_mushroom"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_PINK_MUSHROOM =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_pink_mushroom"));
     // 方解石尖锥（海洋变体）— 原作 stone_pillar_0/1 NBT 结构放置，浮于海面
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_PILLAR_OCEAN =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -367,6 +384,17 @@ public class ModConfiguredFeatures {
         );
     }
 
+    /** 目标格为空气且下方为染梦草/染梦土（防止浮空生成） */
+    private static Holder<PlacedFeature> simpleBlockOnDyedreamGround(BlockStateProvider provider) {
+        return PlacementUtils.inlinePlaced(
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(provider),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                        BlockPredicate.matchesBlocks(Blocks.AIR),
+                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                ModBlocks.DYEDREAM_GRASS_BLOCK.get(), ModBlocks.DYEDREAM_DIRT.get()))));
+    }
+
     /** 染梦藤蔓柱 — 向上生长 2-4 格，仅生成在染梦地表方块上 */
     private static Holder<PlacedFeature> dyedreamVineColumn() {
         return PlacementUtils.inlinePlaced(
@@ -514,9 +542,9 @@ public class ModConfiguredFeatures {
         context.register(DYEDREAM_TREE_COLD_SPRUCE, new ConfiguredFeature<>(Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(ModBlocks.DYEDREAM_LOG.get()),
-                        new StraightTrunkPlacer(5, 2, 1),
+                        new StraightTrunkPlacer(9, 2, 2),
                         BlockStateProvider.simple(ModBlocks.DYEDREAM_LEAVES.get()),
-                        new SpruceFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), ConstantInt.of(2)),
+                        new SpruceFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), ConstantInt.of(3)),
                         new TwoLayersFeatureSize(2, 0, 2))
                         .ignoreVines()
                         .build()));
@@ -567,6 +595,30 @@ public class ModConfiguredFeatures {
         // 方解石尖锥 — 原作 stone_pillar_0 / stone_pillar_1 结构, 使用自定义 CalciteSpikeFeature
         context.register(CALCITE_SPIKE, new ConfiguredFeature<>(ModFeatures.CALCITE_SPIKE.get(),
                 NoneFeatureConfiguration.INSTANCE));
+
+        // 方解石锥（钟乳石/石笋）— 使用自定义 CalciteConeFeature 放置锥柱
+        context.register(CALCITE_CONE, new ConfiguredFeature<>(ModFeatures.CALCITE_CONE.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 方解石锥簇 — 使用自定义 CalciteConeClusterFeature 成片生成锥柱群落
+        context.register(CALCITE_CONE_CLUSTER, new ConfiguredFeature<>(ModFeatures.CALCITE_CONE_CLUSTER.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 繁茂洞穴粉顶菌巨菇 — 自定义特征搜索洞穴地面并调用 PINK_HUGE_MUSHROOM 放置
+        context.register(LUSH_CAVE_MUSHROOM, new ConfiguredFeature<>(ModFeatures.LUSH_CAVE_MUSHROOM.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 小粉顶菌平菇 — 3~6 格高，菌盖直径 3~5，菌盖方块按概率替换为菌光体
+        context.register(SMALL_PINK_MUSHROOM, new ConfiguredFeature<>(ModFeatures.SMALL_PINK_MUSHROOM.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 繁茂洞穴地表装饰 — 随机粉顶菌菌光体 / 菌顶方块（菌盖），只生成在染梦草地面上（不浮空）
+        context.register(LUSH_CAVE_SHROOM_BLOCK_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(64, 8, 3,
+                        simpleBlockOnDyedreamGround(new WeightedStateProvider(
+                                SimpleWeightedRandomList.<BlockState>builder()
+                                        .add(ModBlocks.PINK_SHROOMLIGHT.get().defaultBlockState(), 2)
+                                        .add(ModBlocks.PINK_MUSHROOM_BLOCK.get().defaultBlockState(), 4))))));
 
         // 方解石尖锥（海洋变体）— 使用 StonePillarFeature 放置 NBT 结构，浮于海面
         context.register(STONE_PILLAR_OCEAN, new ConfiguredFeature<>(ModFeatures.STONE_PILLAR.get(),

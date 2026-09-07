@@ -152,34 +152,120 @@ public class ModNoiseSettings {
                                 VerticalAnchor.aboveBottom(5)),
                         SurfaceRules.state(Blocks.BEDROCK.defaultBlockState())
                 ),
-                // 染梦平原 / 粉顶菇山地 / 染梦雪原 / 染梦冻洋地表（冻洋与平原同规则）
+                // 陆地群系：干燥陆地→染梦草方块 / 水底→染梦沙，下层→染梦土
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS, ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_FROZEN_OCEAN, ModBiomes.DYEDREAM_OCEAN),
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_FOREST,
+                                ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS,
+                                ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_SNOWY_TAIGA,
+                                ModBiomes.DYEDREAM_SNOWY_PEAKS, ModBiomes.DYEDREAM_SNOWY_SLOPES,
+                                ModBiomes.DYEDREAM_SNOWY_GROVE),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.sequence(
-                                        // 顶层判定
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.ON_FLOOR,
                                                 SurfaceRules.sequence(
-                                                        // 干燥陆地 → 染梦草方块
                                                         SurfaceRules.ifTrue(
                                                                 SurfaceRules.waterBlockCheck(-1, 0),
                                                                 SurfaceRules.state(ModBlocks.DYEDREAM_GRASS_BLOCK.get().defaultBlockState())
                                                         ),
-                                                        // 水底 → 染梦沙
                                                         SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
                                                 )
                                         ),
-                                        // 下层 → 染梦土
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.UNDER_FLOOR,
                                                 SurfaceRules.state(ModBlocks.DYEDREAM_DIRT.get().defaultBlockState())
                                         )
                                 )
                         )
+                ),
+                // 沙滩：整面染梦沙（含干沙）
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_BEACH),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
+                                        )
+                                )
+                        )
+                ),
+                // 河流/冻河：河床染梦沙
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_RIVER, ModBiomes.DYEDREAM_FROZEN_RIVER),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
+                                        )
+                                )
+                        )
+                ),
+                // 海洋：水底染梦沙，下层默认方解石
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_OCEAN, ModBiomes.DYEDREAM_COLD_OCEAN, ModBiomes.DYEDREAM_FROZEN_OCEAN),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
+                                )
+                        )
+                ),
+                // 繁茂洞穴：洞底干燥面 → 染梦草方块，下层 → 染梦土；洞顶/洞壁保持默认方解石
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_LUSH_CAVES),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.waterBlockCheck(-1, 0),
+                                                        SurfaceRules.state(ModBlocks.DYEDREAM_GRASS_BLOCK.get().defaultBlockState())
+                                                )
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(ModBlocks.DYEDREAM_DIRT.get().defaultBlockState())
+                                        )
+                                )
+                        )
+                ),
+                // 滴水洞穴：地下洞壁 → 方解石（水滴石改为方解石主题，锥体由方解石笋地物实现）
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_DRIPSTONE_CAVES),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_CEILING,
+                                                SurfaceRules.state(Blocks.CALCITE.defaultBlockState())
+                                        )
+                                )
+                        )
                 )
-                // 染梦冻洋地表已并入上方平原规则组（不再使用细雪/浮冰地表）
+                // 染梦洞穴：无覆盖规则，洞壁天然为默认方块方解石
         );
     }
 
