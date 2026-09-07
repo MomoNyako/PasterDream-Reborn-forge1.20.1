@@ -8,7 +8,6 @@ import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.GenericFluid
 import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
 import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.init.ModFluids;
-import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;

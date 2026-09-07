@@ -71,7 +71,7 @@ public class SingleItemMatcher
             List<ItemStack> ListItemStackFromTag = itemIngredient.getListItemStackFromTag();
             for(ItemStack itemStack : ListItemStackFromTag)
             {
-                if(ItemStack.isSameItem(itemStack, matchItem) && NBTContainRelationCalculator.calculator(itemStack.getTag(), matchItem.getTag()))
+                if(ItemStack.isSameItem(itemStack, matchItem)/* && NBTContainRelationCalculator.calculator(itemStack.getTag(), matchItem.getTag())*/)
                 {
                     return itemStack;
                 }
@@ -81,7 +81,7 @@ public class SingleItemMatcher
             else
             {
                 ItemStack itemStack = itemIngredient.getItemStack();
-                if(ItemStack.isSameItem(itemStack, matchItem) && NBTContainRelationCalculator.calculator(itemStack.getTag(), matchItem.getTag()))
+                if(ItemStack.isSameItem(itemStack, matchItem)/* && NBTContainRelationCalculator.calculator(itemStack.getTag(), matchItem.getTag())*/)
                 {
                     return itemStack;
                 }
