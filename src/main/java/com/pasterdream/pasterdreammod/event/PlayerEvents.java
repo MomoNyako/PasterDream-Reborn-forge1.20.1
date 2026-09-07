@@ -364,13 +364,4 @@ public class PlayerEvents {
             player.getAdvancements().award(adv, criteria);
         }
     }
-
-    /** 玩家登录时同步 lowSan 配置到客户端（配置项为唯一来源） */
-    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket.syncToPlayer(player,
-                com.pasterdream.pasterdreammod.Config.lowSanOverlay,
-                com.pasterdream.pasterdreammod.Config.lowSanJitter,
-                com.pasterdream.pasterdreammod.Config.lowSanSound);
-    }
 }
