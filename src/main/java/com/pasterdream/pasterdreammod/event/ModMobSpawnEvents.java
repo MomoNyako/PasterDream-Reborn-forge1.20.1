@@ -19,7 +19,9 @@ public class ModMobSpawnEvents {
 
         if (event.getEntity() instanceof Sheep sheep) {
             var biomeKey = event.getLevel().getBiome(sheep.blockPosition()).unwrapKey();
-            if (biomeKey.isPresent() && biomeKey.get().equals(ModBiomes.DYEDREAM_PLAINS)) {
+            if (biomeKey.isPresent()
+                    && (biomeKey.get().equals(ModBiomes.DYEDREAM_PLAINS)
+                    || biomeKey.get().equals(ModBiomes.DYEDREAM_FLOWER_FIELD))) {
                 sheep.setColor(DyeColor.PINK);
             }
             return;

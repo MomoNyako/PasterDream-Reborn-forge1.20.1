@@ -103,6 +103,7 @@ public class ModLevelStems {
         Holder<Biome> dyedreamSnowyTaiga = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_TAIGA);
         Holder<Biome> dyedreamMushroomMountains = biomes.getOrThrow(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS);
         Holder<Biome> dyedreamPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_PLAINS);
+        Holder<Biome> dyedreamFlowerField = biomes.getOrThrow(ModBiomes.DYEDREAM_FLOWER_FIELD);
         Holder<Biome> dyedreamForest = biomes.getOrThrow(ModBiomes.DYEDREAM_FOREST);
         Holder<Biome> dyedreamCaves = biomes.getOrThrow(ModBiomes.DYEDREAM_CAVES);
         Holder<Biome> dyedreamLushCaves = biomes.getOrThrow(ModBiomes.DYEDREAM_LUSH_CAVES);
@@ -111,9 +112,10 @@ public class ModLevelStems {
         Holder<DimensionType> dimType = dimensionTypes.getOrThrow(ModDimensionTypes.DYEDREAM_WORLD);
         Holder<NoiseGeneratorSettings> dimNoise = noiseSettings.getOrThrow(ModNoiseSettings.DYEDREAM_WORLD);
 
-        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），17 群系
+        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），18 群系
         //  海洋类 C[-1.05,-0.19]；海岸带平坦侵蚀为沙滩、陡峭侵蚀归陡坡/山峰陆地群系
         //  河流占山脊谷带 W[-0.05,0.05]；陆地/沙滩排除谷带（W 双点）
+        //  平原按山脊 W 正负分半 → 染梦平原 / 染梦花海（花海为平原 W 变体）
         //  地表群系 depth 双点位 {0,1}；洞穴群系 depth [0.2,0.9]
         Climate.Parameter tCold = Climate.Parameter.span(-1.0F, -0.15F);
         Climate.Parameter tColdOcean0 = Climate.Parameter.span(-1.0F, -0.45F);
@@ -160,7 +162,9 @@ public class ModLevelStems {
         addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cLand, eFlat, wNeg, wPos, dyedreamSnowyTaiga);
         // 温暖陆地（菇山陡坡下探到海岸带）
         addLandSurfacePoint(dyedreamBiomePoints, tWarm, hFull, cSteepLand, eMountain, wNeg, wPos, dyedreamMushroomMountains);
-        addLandSurfacePoint(dyedreamBiomePoints, tWarm, hDry, cLand, eFlat, wNeg, wPos, dyedreamPlains);
+        // 染梦平原 / 染梦花海 — 同为 暖×干×内陆×平坦 气候，按山脊 W 正负分半（仿原版向日葵平原变体）
+        addSurfacePoint(dyedreamBiomePoints, tWarm, hDry, cLand, eFlat, wNeg, dyedreamPlains);
+        addSurfacePoint(dyedreamBiomePoints, tWarm, hDry, cLand, eFlat, wPos, dyedreamFlowerField);
         addLandSurfacePoint(dyedreamBiomePoints, tWarm, hWet, cLand, eFlat, wNeg, wPos, dyedreamForest);
         // 洞穴（depth [0.2,0.9]，按 大陆性 C=0.8 / 湿度 H=0.7 互补切分）
         addCavePoint(dyedreamBiomePoints, tFull, hCaveDry, cCaveNonInland, eFull, wFull, dyedreamCaves);

@@ -85,6 +85,7 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tCommonVeg = dyeTag("dyedream_world_common_veg_biome");
             TagKey<Biome> tFrozenRiverVeg = dyeTag("dyedream_world_frozen_river_veg_biome");
             TagKey<Biome> tPlains = dyeTag("dyedream_world_plains_biome");
+            TagKey<Biome> tFlowerField = dyeTag("dyedream_world_flower_field_biome");
             TagKey<Biome> tStem = dyeTag("dyedream_world_stem_biome");
             TagKey<Biome> tVine = dyeTag("dyedream_world_vine_biome");
             TagKey<Biome> tForest = dyeTag("dyedream_world_forest_biome");
@@ -158,6 +159,12 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_plains_corolla", ModPlacedFeatures.DYEDREAM_COROLLA_PATCH, featureLookup, tPlains);
             addPatch(entries, "dyedream_plains_light_ball", ModPlacedFeatures.LIGHT_BALL_PATCH, featureLookup, tPlains);
             addPatch(entries, "dyedream_plains_cloud_crop", ModPlacedFeatures.CLOUD_CROP_PATCH, featureLookup, tPlains);
+
+            // 花海（密集梦染茶花 + 茎草 + 浮空流明光球；无染梦树）
+            addPatch(entries, "dyedream_flower_field_corolla", ModPlacedFeatures.DYEDREAM_COROLLA_PATCH_FLOWER_FIELD, featureLookup, tFlowerField);
+            addPatch(entries, "dyedream_flower_field_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tFlowerField);
+            addPatch(entries, "dyedream_flower_field_tall_stem_grass", ModPlacedFeatures.TALL_STEM_GRASS_PATCH, featureLookup, tFlowerField);
+            addFeature(entries, "dyedream_flower_field_light_ball", ModPlacedFeatures.FLOATING_LIGHT_BALL, featureLookup, tFlowerField, GenerationStep.Decoration.VEGETAL_DECORATION);
 
             // 平原/森林共享装饰（茎草/铃兰/藤/方解石笋）
             addPatch(entries, "dyedream_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tStem);

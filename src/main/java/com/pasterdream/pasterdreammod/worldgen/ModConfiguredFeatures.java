@@ -163,6 +163,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_COROLLA_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch"));
+    // 梦染茶花（花海密集变体）— 花海专用，成片密集
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_COROLLA_PATCH_DENSE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch_dense"));
+    // 浮空流明光球（花海特殊地物）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_LIGHT_BALL =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "floating_light_ball"));
     // 流明堇
     public static final ResourceKey<ConfiguredFeature<?, ?>> LIGHT_BALL_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -713,6 +721,16 @@ public class ModConfiguredFeatures {
                 new RandomPatchConfiguration(48, 6, 2,
                         simpleBlockInAir(BlockStateProvider.simple(
                         ModBlocks.DYEDREAM_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+
+        // 梦染茶花（花海密集变体）— 更大团簇、更高尝试次数，形成成片花海
+        context.register(DYEDREAM_COROLLA_PATCH_DENSE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(96, 10, 4,
+                        simpleBlockInAir(BlockStateProvider.simple(
+                        ModBlocks.DYEDREAM_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+
+        // 浮空流明光球（花海特殊地物）— 贴近地表悬浮
+        context.register(FLOATING_LIGHT_BALL, new ConfiguredFeature<>(ModFeatures.FLOATING_LIGHT_BALL.get(),
+                NoneFeatureConfiguration.INSTANCE));
 
         // 野生流明堇 — 原作 crop_2a（团簇生成）
         context.register(LIGHT_BALL_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

@@ -155,6 +155,7 @@ public class ModNoiseSettings {
                 // 陆地群系：干燥陆地→染梦草方块 / 水底→染梦沙，下层→染梦土
                 SurfaceRules.ifTrue(
                         SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_FOREST,
+                                ModBiomes.DYEDREAM_FLOWER_FIELD,
                                 ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS,
                                 ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_SNOWY_TAIGA,
                                 ModBiomes.DYEDREAM_SNOWY_PEAKS, ModBiomes.DYEDREAM_SNOWY_SLOPES,

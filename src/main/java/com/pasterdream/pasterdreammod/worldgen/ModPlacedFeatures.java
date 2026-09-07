@@ -115,6 +115,12 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_COROLLA_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_COROLLA_PATCH_FLOWER_FIELD =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch_flower_field"));
+    public static final ResourceKey<PlacedFeature> FLOATING_LIGHT_BALL =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "floating_light_ball"));
     public static final ResourceKey<PlacedFeature> LIGHT_BALL_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "light_ball_patch"));
@@ -619,6 +625,19 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_DYEDREAM_GROUND)));
+
+        // 花海梦染茶花 — 密集，每区块 6 簇（CountPlacement.of(6)），成片花海
+        context.register(DYEDREAM_COROLLA_PATCH_FLOWER_FIELD, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_COROLLA_PATCH_DENSE),
+                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
+
+        // 花海浮空流明光球 — 贴近地表悬浮，每区块 4 次
+        context.register(FLOATING_LIGHT_BALL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.FLOATING_LIGHT_BALL),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // 野生流明堇 — 团簇稀疏
         context.register(LIGHT_BALL_PATCH, new PlacedFeature(

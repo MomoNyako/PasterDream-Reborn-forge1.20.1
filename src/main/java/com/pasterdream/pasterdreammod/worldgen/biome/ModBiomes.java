@@ -65,6 +65,9 @@ public class ModBiomes {
     public static final ResourceKey<Biome> DYEDREAM_FOREST =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_forest"));
+    public static final ResourceKey<Biome> DYEDREAM_FLOWER_FIELD =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_flower_field"));
     public static final ResourceKey<Biome> DYEDREAM_CAVES =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_caves"));
@@ -155,6 +158,7 @@ public class ModBiomes {
         context.register(DYEDREAM_SNOWY_GROVE, dyedreamSnowyGrove(placedFeatures, carvers));
         context.register(DYEDREAM_SNOWY_TAIGA, dyedreamSnowyTaiga(placedFeatures, carvers));
         context.register(DYEDREAM_FOREST, dyedreamForest(placedFeatures, carvers));
+        context.register(DYEDREAM_FLOWER_FIELD, dyedreamFlowerField(placedFeatures, carvers));
         context.register(DYEDREAM_CAVES, dyedreamCaves(placedFeatures, carvers));
         context.register(DYEDREAM_LUSH_CAVES, dyedreamLushCaves(placedFeatures, carvers));
         context.register(DYEDREAM_DRIPSTONE_CAVES, dyedreamDripstoneCaves(placedFeatures, carvers));
@@ -568,6 +572,37 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 10, 4, 4))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 20, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 10, 1, 1))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamFlowerField(HolderGetter<PlacedFeature> placedFeatures,
+                                              HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects()
+                .foliageColorOverride(0xFFFDC6F2)
+                .grassColorOverride(0xFFFDC6F2)
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .backgroundMusic(warmMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(1.0f)
+                .downfall(0.35f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 40, 2, 4))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 10, 1, 1))
                         .build())
