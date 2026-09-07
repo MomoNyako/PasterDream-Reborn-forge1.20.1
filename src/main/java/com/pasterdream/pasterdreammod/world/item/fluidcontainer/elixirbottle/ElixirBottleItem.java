@@ -3,11 +3,17 @@ package com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.FluidDrinkPropertiesRegistry;
+import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.FoodValueTooltips;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.GenericFluidDrinkProperties;
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
+import com.pasterdream.pasterdreammod.init.ModFluids;
+import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -41,7 +47,7 @@ public class ElixirBottleItem extends Item
     @Override
     public Component getName(ItemStack itemStack)
     {
-        FluidStack fluidStack = getFluidStack(itemStack);
+        FluidStack fluidStack = getElixirBottleFluidStack(itemStack);
 
         if (!fluidStack.isEmpty())
         {
@@ -58,25 +64,50 @@ public class ElixirBottleItem extends Item
     {
         super.appendHoverText(itemStack, level, tooltip, flag);
 
-        FluidStack fluidStack = getFluidStack(itemStack);
+        FluidStack fluidStack = getElixirBottleFluidStack(itemStack);
 
         if (fluidStack.isEmpty())
         {
             tooltip.add(Component.translatable("tooltip.pasterdream.空").withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("tooltip.pasterdream.总容量:").append("1000 mB").withStyle(ChatFormatting.GRAY));
         }
-            else
+        else
+            if (FluidDrinkPropertiesRegistry.getProperties(fluidStack) != null)
             {
-                tooltip.add(Component.translatable(fluidStack.getDisplayName().getString()));
-                tooltip.add(Component.literal(fluidStack.getAmount() + " mB"));
+                GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack);
+
+                tooltip.add(Component.translatable("tooltip.pasterdream.每次饮用:").append(drinkProperties.getDrinkAmount() + "mB").withStyle(ChatFormatting.BLUE));
+                FoodValueTooltips.appendSanTooltip(tooltip, drinkProperties.getSanAdd());
+                FoodValueTooltips.appendMeltDreamEnergyTooltip(tooltip, drinkProperties.getMeltDreamEnergyAdd());
+
+                if(fluidStack.getFluid() == ModFluids.POTION.get())
+                {
+                    List<GenericMobEffect> effectList = PotionHelper.getEffectType(fluidStack);
+                    for (GenericMobEffect effect : effectList)
+                    {
+                        MutableComponent result = Component.empty();
+                        result.append(PotionHelper.formatTime(effect.time()));
+                        result.append(Component.translatable(effect.effectType().getDescriptionId()));
+                        if(effect.level() != 0)
+                        {
+                            result.append(Component.translatable("enchantment.level." + (effect.level() + 1)));
+                        }
+
+                        tooltip.add(result.withStyle(effect.effectType().isBeneficial() ? ChatFormatting.BLUE : ChatFormatting.RED));
+                    }
+                }
             }
+                else
+                {
+                    tooltip.add(Component.translatable("tooltip.pasterdream.不可饮用").withStyle(ChatFormatting.RED));
+                }
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand)
     {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        FluidStack fluidStack = getFluidStack(itemStack);
+        FluidStack fluidStack = getElixirBottleFluidStack(itemStack);
 
         if (!fluidStack.isEmpty() && FluidDrinkPropertiesRegistry.getProperties(fluidStack) != null)
         {
@@ -92,7 +123,7 @@ public class ElixirBottleItem extends Item
     @Override
     public int getUseDuration(ItemStack itemStack)
     {
-        FluidStack fluidStack = getFluidStack(itemStack);
+        FluidStack fluidStack = getElixirBottleFluidStack(itemStack);
         GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack);
 
         int time = drinkProperties != null ? drinkProperties.getUseDuration() : 32;
@@ -119,7 +150,7 @@ public class ElixirBottleItem extends Item
     {
         if (!level.isClientSide && entity instanceof Player player)
         {
-            FluidStack fluidStack = getFluidStack(itemStack);
+            FluidStack fluidStack = getElixirBottleFluidStack(itemStack);
             GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack);
             if (drinkProperties != null)
             {
@@ -212,7 +243,7 @@ public class ElixirBottleItem extends Item
         });
     }
 
-    private FluidStack getFluidStack(ItemStack itemStack)
+    public static FluidStack getElixirBottleFluidStack(ItemStack itemStack)
     {
         AtomicReference<FluidStack> atomicReferenceFluidStack = new AtomicReference<>(FluidStack.EMPTY);
         itemStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> atomicReferenceFluidStack.set(handler.getFluidInTank(0)));

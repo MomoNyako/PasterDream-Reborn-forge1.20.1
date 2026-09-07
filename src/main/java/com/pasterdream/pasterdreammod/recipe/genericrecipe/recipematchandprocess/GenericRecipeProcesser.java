@@ -37,16 +37,12 @@ public class GenericRecipeProcesser
 
         List<FluidStack> matchedOutputFluidStacks = recipeRequire.outputFluidStacks();
         List<FluidStack> machineOutputFluidStacks = machineInventory.outputFluidStacks();
-        System.out.println("14");
         List<FluidStack> machineOutputFluidStacksProcessResult = FluidProcessor.processor(matchedOutputFluidStacks, machineOutputFluidStacks, true, machineInventory.FluidSlotMaxStackSize());
-        System.out.println("15");
         if(machineOutputFluidStacksProcessResult == null)
         {
-            System.out.println("machineOutputFluidStacksProcessResult == null");
             return null;
         }
 
-        System.out.println("执行了return new GenericRecipeInventory()");
         return new GenericRecipeInventory(machineInputItemStacksProcessResult, machineInputFluidStacksProcessResult, machineOutputItemStacksProcessResult, machineOutputFluidStacksProcessResult, recipeRequire.recipeTime(), 2147483647);
     }
 }

@@ -15,10 +15,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class GetAllFluidContainerCapability
 {
+    public static List<FluidContainerRelation> allFluidContainerRelation = new ArrayList<>();
+
     public static List<FluidContainerRelation> getAllContainer()
     {
-        List<FluidContainerRelation> allFluidContainerRelation = new ArrayList<>();
-
         for (Item item : BuiltInRegistries.ITEM)
         {
             ItemStack itemStack = new ItemStack(item);
