@@ -331,6 +331,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_FIREFLY_NEST =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_firefly_nest"));
+    // 染梦森林萤火虫巢 — 底部仅限染梦草/染梦土，避免刷在树叶上
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_FIREFLY_NEST =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_firefly_nest"));
     // 风之旅途苍青苔石团块 — 原作 ground_feature_wind_journey_5（替换泥）
     public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -1033,6 +1037,10 @@ public class ModConfiguredFeatures {
         context.register(WIND_JOURNEY_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 2, 1,
                         simpleBlockOnSolidGround(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get())))));
+        // 染梦森林萤火虫巢 — 底部仅限染梦草/染梦土，不会刷在树叶上
+        context.register(DYEDREAM_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(1, 2, 1,
+                        simpleBlockOnDyedreamGround(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get())))));
         // 苍青苔石团块 — 原作 ground_feature_wind_journey_5: 替换泥为 cyan_moss_stone, radius 1~1
         context.register(WIND_JOURNEY_CYAN_MOSS_STONE_BLOB, new ConfiguredFeature<>(Feature.REPLACE_BLOBS,
                 new ReplaceSphereConfiguration(

@@ -36,6 +36,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_COLD_SPRUCE_DENSE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce_dense"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_FIREFLY_NEST =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_firefly_nest"));
     public static final ResourceKey<PlacedFeature> LUSH_CAVE_MUSHROOM_TREE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_mushroom_tree"));
@@ -436,9 +439,15 @@ public class ModPlacedFeatures {
         // 染梦树密集变体（染梦森林）— 合欢状染梦树更密集
         context.register(DYEDREAM_TREE_DENSE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE),
-                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(12), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                         PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
+
+        // 染梦森林萤火虫巢 — 随机散布于林地地面（平均约每 2 区块 1 个），底部仅限染梦草/染梦土
+        context.register(DYEDREAM_FIREFLY_NEST, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_FIREFLY_NEST),
+                List.of(CountPlacement.of(2), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
 
         // 染梦冷杉密集变体（雪林/雪针叶林）— 针叶状染梦树更密集
         context.register(DYEDREAM_TREE_COLD_SPRUCE_DENSE, new PlacedFeature(
