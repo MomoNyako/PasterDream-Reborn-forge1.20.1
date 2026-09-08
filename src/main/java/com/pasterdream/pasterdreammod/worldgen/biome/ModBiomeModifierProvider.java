@@ -82,8 +82,7 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tWarmIce = dyeTag("dyedream_world_warm_ice_biome");
             TagKey<Biome> tCold = dyeTag("dyedream_world_cold_biome");
             TagKey<Biome> tFreeze = dyeTag("dyedream_world_freeze_biome");
-            TagKey<Biome> tCommonVeg = dyeTag("dyedream_world_common_veg_biome");
-            TagKey<Biome> tFrozenRiverVeg = dyeTag("dyedream_world_frozen_river_veg_biome");
+            TagKey<Biome> tSeaPickle = dyeTag("dyedream_world_sea_pickle_biome");
             TagKey<Biome> tPlains = dyeTag("dyedream_world_plains_biome");
             TagKey<Biome> tFlowerField = dyeTag("dyedream_world_flower_field_biome");
             TagKey<Biome> tStem = dyeTag("dyedream_world_stem_biome");
@@ -140,19 +139,13 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_warm_linht", ModPlacedFeatures.LINHT_FLOWER_PATCH, featureLookup, tWarmLand);
             addPatch(entries, "dyedream_warm_fern", ModPlacedFeatures.SINGULARITY_FERN_PATCH, featureLookup, tWarmLand);
 
-            // 通用植被（温暖陆地 + 海洋 + 冻洋）
-            addPatch(entries, "dyedream_common_moss", ModPlacedFeatures.DYEDREAM_MOSS_PATCH, featureLookup, tCommonVeg);
-            addPatch(entries, "dyedream_common_coral_tree", ModPlacedFeatures.CORAL_TREE_PATCH, featureLookup, tCommonVeg);
-            addPatch(entries, "dyedream_common_coral_claw", ModPlacedFeatures.CORAL_CLAW_PATCH, featureLookup, tCommonVeg);
-            addPatch(entries, "dyedream_common_coral_mushroom", ModPlacedFeatures.CORAL_MUSHROOM_PATCH, featureLookup, tCommonVeg);
-            addPatch(entries, "dyedream_common_sea_pickle", ModPlacedFeatures.SEA_PICKLE_PATCH, featureLookup, tCommonVeg);
-            addPatch(entries, "dyedream_common_calcite_boulder", ModPlacedFeatures.CALCITE_BOULDER, featureLookup, tCommonVeg);
-            // 冻河通用植被（无海泡菜）
-            addPatch(entries, "dyedream_frozen_river_moss", ModPlacedFeatures.DYEDREAM_MOSS_PATCH, featureLookup, tFrozenRiverVeg);
-            addPatch(entries, "dyedream_frozen_river_coral_tree", ModPlacedFeatures.CORAL_TREE_PATCH, featureLookup, tFrozenRiverVeg);
-            addPatch(entries, "dyedream_frozen_river_coral_claw", ModPlacedFeatures.CORAL_CLAW_PATCH, featureLookup, tFrozenRiverVeg);
-            addPatch(entries, "dyedream_frozen_river_coral_mushroom", ModPlacedFeatures.CORAL_MUSHROOM_PATCH, featureLookup, tFrozenRiverVeg);
-            addPatch(entries, "dyedream_frozen_river_calcite_boulder", ModPlacedFeatures.CALCITE_BOULDER, featureLookup, tFrozenRiverVeg);
+            // 通用植被（全维度 18 群系：苔藓/珊瑚×3/方解石巨砾；海泡菜仅非寒冷群系）
+            addPatch(entries, "dyedream_common_moss", ModPlacedFeatures.DYEDREAM_MOSS_PATCH, featureLookup, tAll);
+            addPatch(entries, "dyedream_common_coral_tree", ModPlacedFeatures.CORAL_TREE_PATCH, featureLookup, tAll);
+            addPatch(entries, "dyedream_common_coral_claw", ModPlacedFeatures.CORAL_CLAW_PATCH, featureLookup, tAll);
+            addPatch(entries, "dyedream_common_coral_mushroom", ModPlacedFeatures.CORAL_MUSHROOM_PATCH, featureLookup, tAll);
+            addPatch(entries, "dyedream_common_sea_pickle", ModPlacedFeatures.SEA_PICKLE_PATCH, featureLookup, tSeaPickle);
+            addPatch(entries, "dyedream_common_calcite_boulder", ModPlacedFeatures.CALCITE_BOULDER, featureLookup, tAll);
 
             // 平原（树 + 花田）
             addPatch(entries, "dyedream_plains_tree", ModPlacedFeatures.DYEDREAM_TREE, featureLookup, tPlains);
