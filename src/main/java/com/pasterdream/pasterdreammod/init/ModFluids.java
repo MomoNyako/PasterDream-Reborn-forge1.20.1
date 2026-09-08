@@ -34,6 +34,9 @@ public class ModFluids
     public static final RegistryObject<FluidType> YEAST_TYPE = FLUID_TYPES.register("yeast", () -> YeastFluidType.TYPE);
     public static final RegistryObject<FluidType> INK_TYPE = FLUID_TYPES.register("ink", () -> InkFluidType.TYPE);
     public static final RegistryObject<FluidType> POTION_TYPE = FLUID_TYPES.register("potion", () -> PotionFluidType.TYPE);
+    public static final RegistryObject<FluidType> SEA_SALT_SLUMBER_PALM_BEVERAGE_TYPE = FLUID_TYPES.register("sea_salt_slumber_palm_beverage", () -> SeaSaltSlumberPalmBeverageFluidType.TYPE);
+    public static final RegistryObject<FluidType> SLUMBER_PALM_JUICE_TYPE = FLUID_TYPES.register("slumber_palm_juice", () -> SlumberPalmJuiceFluidType.TYPE);
+    public static final RegistryObject<FluidType> SLUMBER_PALM_CLUB_SODA_TYPE = FLUID_TYPES.register("slumber_palm_club_soda", () -> SlumberPalmClubSodaFluidType.TYPE);
 
     public static final RegistryObject<Fluid> FLOWING_MELT_DREAM_LIQUID = FLUIDS.register("flowing_melt_dream_liquid", MeltDreamLiquidFluid.Flowing::new);
     public static final RegistryObject<Fluid> MELT_DREAM_LIQUID = FLUIDS.register("melt_dream_liquid", MeltDreamLiquidFluid.Source::new);
@@ -55,6 +58,10 @@ public class ModFluids
     public static final RegistryObject<Fluid> YEAST = FLUIDS.register("yeast", YeastFluid::new);
     public static final RegistryObject<Fluid> INK = FLUIDS.register("ink", InkFluid::new);
     public static final RegistryObject<Fluid> POTION = FLUIDS.register("potion", PotionFluid::new);
+    public static final RegistryObject<Fluid> SEA_SALT_SLUMBER_PALM_BEVERAGE = FLUIDS.register("sea_salt_slumber_palm_beverage", SeaSaltSlumberPalmBeverageFluid::new);
+    public static final RegistryObject<Fluid> SLUMBER_PALM_JUICE = FLUIDS.register("slumber_palm_juice", SlumberPalmJuiceFluid::new);
+    public static final RegistryObject<Fluid> SLUMBER_PALM_CLUB_SODA = FLUIDS.register("slumber_palm_club_soda", SlumberPalmClubSodaFluid::new);
+
 
     public static void register(IEventBus eventBus)
     {
