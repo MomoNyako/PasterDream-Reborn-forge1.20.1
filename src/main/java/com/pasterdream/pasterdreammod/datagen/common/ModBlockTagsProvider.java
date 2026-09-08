@@ -45,7 +45,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CONGEAL_WIND_ORE.get())
                 .add(ModBlocks.SALT_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_SAND.get())
-                .add(ModBlocks.WHITE_SAND.get());
+                .add(ModBlocks.WHITE_SAND.get())
+                .add(ModBlocks.AZURE_SEA_SAND.get());
 
 
         // 可以用锄头来挖掘

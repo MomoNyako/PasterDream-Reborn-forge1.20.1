@@ -299,6 +299,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var darkCloudModel = models().cubeAll(ModBlocks.DARK_CLOUD.getId().getPath(), blockTexture(ModBlocks.DARK_CLOUD.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.DARK_CLOUD.get(), darkCloudModel);
         simpleBlockWithItem(ModBlocks.WHITE_SAND.get(), cubeAll(ModBlocks.WHITE_SAND.get()));
+        simpleBlockWithItem(ModBlocks.AZURE_SEA_SAND.get(), cubeAll(ModBlocks.AZURE_SEA_SAND.get()));
         var thickCloudModel = models().cubeAll(ModBlocks.THICK_CLOUD.getId().getPath(), blockTexture(ModBlocks.THICK_CLOUD.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.THICK_CLOUD.get(), thickCloudModel);
         var shadowModel = models().cubeAll(ModBlocks.SHADOW.getId().getPath(), blockTexture(ModBlocks.SHADOW.get())).renderType("translucent");
