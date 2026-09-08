@@ -27,5 +27,9 @@ public class ModFluidContainerRelation
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.WATERMELON_JUICE.get(), 250, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
 
         FluidContainerRegistry.register(Items.GLASS_BOTTLE, ModFluids.HONEY_JUICE.get(), 250, Items.HONEY_BOTTLE);
+
+        FluidContainerRegistry.register(Items.BOWL, ModFluids.SLUMBER_PALM_JUICE.get(), 250, ModItems.SLUMBER_PALM.get());
+        FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.SLUMBER_PALM_CLUB_SODA.get(), 250, ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get());
+        FluidContainerRegistry.register(ModItems.MARTINI_GLASS.get(), ModFluids.SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 125, ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get());
     }
 }
