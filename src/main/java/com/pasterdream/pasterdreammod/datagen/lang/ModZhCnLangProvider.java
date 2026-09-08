@@ -63,6 +63,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GLASS_CUP_OF_HONEY_JUICE.get(), "蜂蜜汁");
         add(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), "未烹调的染梦花茶");
         add(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(), "西瓜汁");
+        add(ModItems.MARTINI_GLASS.get(), "马天尼杯");
+        add(ModItems.SLUMBER_PALM.get(), "眠椰");
+        add(ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get(), "眠椰苏打水");
+        add(ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), "海盐眠椰饮");
         add(ModItems.FLOUR.get(), "面粉");
         add(ModItems.DOUGH.get(), "面团");
         add(ModItems.RYE_SEED.get(), "野麦粒");

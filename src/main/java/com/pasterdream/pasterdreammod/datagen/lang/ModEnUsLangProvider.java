@@ -60,6 +60,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GLASS_CUP_OF_HONEY_JUICE.get(), "Glass Cup of Honey Juice");
         add(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), "Glass Cup of Uncooked Dyedream Flower Tea");
         add(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(), "Glass Cup of Watermelon Juice");
+        add(ModItems.MARTINI_GLASS.get(), "Martini Glass");
+        add(ModItems.SLUMBER_PALM.get(), "Slumber Palm");
+        add(ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get(), "Glass Cup of Slumber Palm Club Soda");
+        add(ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), "Martini Glass of Sea Salt Slumber Palm Beverage");
         add(ModItems.FLOUR.get(), "Flour");
         add(ModItems.DOUGH.get(), "Dough");
         add(ModItems.RYE_SEED.get(), "Rye Seed");

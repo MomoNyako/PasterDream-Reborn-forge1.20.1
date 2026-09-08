@@ -2609,6 +2609,35 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         RecipeHelpers.glass_cup_drink(pWriter,Items.HONEYCOMB, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
         RecipeHelpers.glass_cup_drink(pWriter,Items.MELON_SLICE, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
 
+        // 玻璃杯与马天尼杯 1:2 相互转化
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MARTINI_GLASS.get(), 2)
+                .requires(ModItems.GLASS_CUP.get(), 1)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP.get()), has(ModItems.GLASS_CUP.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":martini_glass_from_glass_cup");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 1)
+                .requires(ModItems.MARTINI_GLASS.get(), 2)
+                .unlockedBy(getHasName(ModItems.MARTINI_GLASS.get()), has(ModItems.MARTINI_GLASS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":glass_cup_from_martini_glass");
+
+        // 6个玻璃板 -> 8个马天尼杯
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MARTINI_GLASS.get(), 8)
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern(" a ")
+                .define('a', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
+                .unlockedBy(getHasName(ModItems.MARTINI_GLASS.get()), has(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":martini_glass_from_glass_panes");
+
+        // 马天尼杯 + 眠椰 + 盐 -> 海盐眠椰饮
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 1)
+                .requires(ModItems.MARTINI_GLASS.get(), 1)
+                .requires(ModItems.SLUMBER_PALM.get(), 1)
+                .requires(ModItems.SALT.get(), 1)
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM.get()), has(ModItems.SLUMBER_PALM.get()))
+                .save(pWriter);
+
         // 染梦花茶（未烹调）合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), 1)
                 .requires(ModItems.GLASS_CUP.get(),1)
