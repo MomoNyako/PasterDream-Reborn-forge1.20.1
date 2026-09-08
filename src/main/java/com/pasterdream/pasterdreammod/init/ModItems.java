@@ -1217,6 +1217,17 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_SAPLING = ITEMS.register("dyedream_sapling",
             () -> new BlockItem(ModBlocks.DYEDREAM_SAPLING.get(), new Item.Properties()));
+    // ===== 眠椰树系列 =====
+    public static final RegistryObject<Item> SLUMBER_PALM_LOG = ITEMS.register("slumber_palm_log",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SLUMBER_PALM_WOOD = ITEMS.register("slumber_palm_wood",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SLUMBER_PALM_LEAVES = ITEMS.register("slumber_palm_leaves",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_LEAVES.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SLUMBER_PALM_PLANKS = ITEMS.register("slumber_palm_planks",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_PLANKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SLUMBER_PALM_SAPLING = ITEMS.register("slumber_palm_sapling",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_SAPLING.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_QUARTZ_ORE = ITEMS.register("dyedream_quartz_ore",
             () -> new BlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_DUST_ORE = ITEMS.register("dyedream_dust_ore",

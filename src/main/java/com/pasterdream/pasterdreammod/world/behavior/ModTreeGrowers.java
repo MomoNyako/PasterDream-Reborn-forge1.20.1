@@ -19,6 +19,15 @@ public class ModTreeGrowers {
 
     private static final float COLD_TEMPERATURE_THRESHOLD = 0.3f;
 
+    // 眠椰树：双螺旋树干 + 焦点椭圆树冠（见 SlumberPalmTreeFeature）
+    public static final AbstractTreeGrower SLUMBER_PALM = new AbstractTreeGrower() {
+        @Nullable
+        @Override
+        protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {
+            return ModConfiguredFeatures.SLUMBER_PALM_TREE;
+        }
+    };
+
     public static final AbstractTreeGrower DYEDREAM = new AbstractTreeGrower() {
         @Nullable
         @Override
