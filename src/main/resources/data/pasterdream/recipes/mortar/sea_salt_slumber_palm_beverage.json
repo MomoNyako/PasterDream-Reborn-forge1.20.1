@@ -1,0 +1,24 @@
+{
+  "type": "pasterdream:mortar",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:slumber_palm_juice",
+      "amount": 250
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:salt",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:sea_salt_slumber_palm_beverage",
+      "amount": 250
+    }
+  ]
+}
