@@ -664,6 +664,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract","风植萃取液（流体）");
         add("fluid.pasterdream.yeast","酵母（流体）");
         add("fluid.pasterdream.ink","墨水（流体）");
+        add("fluid.pasterdream.sea_salt_slumber_palm_beverage","海盐眠椰饮（流体）");
+        add("fluid.pasterdream.slumber_palm_juice","眠椰汁（流体）");
+        add("fluid.pasterdream.slumber_palm_club_soda","眠椰苏打水（流体）");
 
         add("jei.pasterdream.流体容器绑定关系", "流体容器绑定关系");
         add("jei.pasterdream.通用流体储罐", "通用流体储罐");
