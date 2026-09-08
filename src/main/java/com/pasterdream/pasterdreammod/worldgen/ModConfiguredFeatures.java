@@ -100,6 +100,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_PINK_MUSHROOM =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_pink_mushroom"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MUSHROOM_CURTAIN =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_mushroom_curtain"));
     // 方解石尖锥（海洋变体）— 原作 stone_pillar_0/1 NBT 结构放置，浮于海面
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_PILLAR_OCEAN =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -163,6 +166,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_COROLLA_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch"));
+    // 梦染茶花（花海密集变体）— 花海专用，成片密集
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_COROLLA_PATCH_DENSE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch_dense"));
+    // 浮空流明光球（花海特殊地物）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_LIGHT_BALL =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "floating_light_ball"));
     // 流明堇
     public static final ResourceKey<ConfiguredFeature<?, ?>> LIGHT_BALL_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -320,6 +331,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_FIREFLY_NEST =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_firefly_nest"));
+    // 染梦森林萤火虫巢 — 底部仅限染梦草/染梦土，避免刷在树叶上
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_FIREFLY_NEST =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_firefly_nest"));
     // 风之旅途苍青苔石团块 — 原作 ground_feature_wind_journey_5（替换泥）
     public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -612,6 +627,10 @@ public class ModConfiguredFeatures {
         context.register(SMALL_PINK_MUSHROOM, new ConfiguredFeature<>(ModFeatures.SMALL_PINK_MUSHROOM.get(),
                 NoneFeatureConfiguration.INSTANCE));
 
+        // 粉顶菌垂帘 — 1 格宽竖直悬挂结构，从洞穴天花板垂下，菌盖方块+菌光体混合
+        context.register(PINK_MUSHROOM_CURTAIN, new ConfiguredFeature<>(ModFeatures.PINK_MUSHROOM_CURTAIN.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
         // 繁茂洞穴地表装饰 — 随机粉顶菌菌光体 / 菌顶方块（菌盖），只生成在染梦草地面上（不浮空）
         context.register(LUSH_CAVE_SHROOM_BLOCK_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(64, 8, 3,
@@ -713,6 +732,16 @@ public class ModConfiguredFeatures {
                 new RandomPatchConfiguration(48, 6, 2,
                         simpleBlockInAir(BlockStateProvider.simple(
                         ModBlocks.DYEDREAM_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+
+        // 梦染茶花（花海密集变体）— 更大团簇、更高尝试次数，形成成片花海
+        context.register(DYEDREAM_COROLLA_PATCH_DENSE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(96, 10, 4,
+                        simpleBlockInAir(BlockStateProvider.simple(
+                        ModBlocks.DYEDREAM_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+
+        // 浮空流明光球（花海特殊地物）— 贴近地表悬浮
+        context.register(FLOATING_LIGHT_BALL, new ConfiguredFeature<>(ModFeatures.FLOATING_LIGHT_BALL.get(),
+                NoneFeatureConfiguration.INSTANCE));
 
         // 野生流明堇 — 原作 crop_2a（团簇生成）
         context.register(LIGHT_BALL_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
@@ -1008,6 +1037,10 @@ public class ModConfiguredFeatures {
         context.register(WIND_JOURNEY_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 2, 1,
                         simpleBlockOnSolidGround(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get())))));
+        // 染梦森林萤火虫巢 — 底部仅限染梦草/染梦土，不会刷在树叶上
+        context.register(DYEDREAM_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(1, 2, 1,
+                        simpleBlockOnDyedreamGround(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get())))));
         // 苍青苔石团块 — 原作 ground_feature_wind_journey_5: 替换泥为 cyan_moss_stone, radius 1~1
         context.register(WIND_JOURNEY_CYAN_MOSS_STONE_BLOB, new ConfiguredFeature<>(Feature.REPLACE_BLOBS,
                 new ReplaceSphereConfiguration(

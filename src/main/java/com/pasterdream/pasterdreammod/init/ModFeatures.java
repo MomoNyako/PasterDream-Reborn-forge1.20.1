@@ -4,8 +4,10 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.worldgen.feature.CalciteConeClusterFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.CalciteConeFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.CalciteSpikeFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.FloatingLightBallFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.LushCaveMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkHugeMushroomFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.PinkMushroomCurtainFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowChainPillarFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowHandFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowRuinWallFeature;
@@ -45,9 +47,17 @@ public class ModFeatures {
             FEATURES.register("lush_cave_mushroom",
                     () -> new LushCaveMushroomFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> FLOATING_LIGHT_BALL =
+            FEATURES.register("floating_light_ball",
+                    () -> new FloatingLightBallFeature(NoneFeatureConfiguration.CODEC));
+
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_PINK_MUSHROOM =
             FEATURES.register("small_pink_mushroom",
                     () -> new SmallPinkMushroomFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> PINK_MUSHROOM_CURTAIN =
+            FEATURES.register("pink_mushroom_curtain",
+                    () -> new PinkMushroomCurtainFeature(NoneFeatureConfiguration.CODEC));
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SHADOW_CHAIN_PILLAR =
             FEATURES.register("shadow_chain_pillar",

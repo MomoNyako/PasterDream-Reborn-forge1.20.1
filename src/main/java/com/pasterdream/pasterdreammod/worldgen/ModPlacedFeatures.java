@@ -36,6 +36,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_COLD_SPRUCE_DENSE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce_dense"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_FIREFLY_NEST =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_firefly_nest"));
     public static final ResourceKey<PlacedFeature> LUSH_CAVE_MUSHROOM_TREE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_mushroom_tree"));
@@ -54,6 +57,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SMALL_PINK_MUSHROOM_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_pink_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> LUSH_CAVE_PINK_MUSHROOM_CURTAIN =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_pink_mushroom_curtain"));
     public static final ResourceKey<PlacedFeature> LUSH_CAVE_STEM_GRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lush_cave_stem_grass_patch"));
@@ -115,6 +121,12 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_COROLLA_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_COROLLA_PATCH_FLOWER_FIELD =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch_flower_field"));
+    public static final ResourceKey<PlacedFeature> FLOATING_LIGHT_BALL =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "floating_light_ball"));
     public static final ResourceKey<PlacedFeature> LIGHT_BALL_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "light_ball_patch"));
@@ -384,6 +396,16 @@ public class ModPlacedFeatures {
                 ON_DYEDREAM_GROUND);
     }
 
+    /** 洞穴天花板放置：从随机锚点向上扫描找洞顶（空气→实心），再下移 1 格落在洞顶下方空气格，用于挂在天花板下的地物 */
+    private static List<PlacementModifier> caveCeilingPlacement(int count) {
+        return List.of(
+                CountPlacement.of(count),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-1)));
+    }
+
     /** 限制植物只能生成在灯影地表方块（阴影菌岩/影之石）上 */
     private static final PlacementModifier ON_SHADOW_GROUND = BlockPredicateFilter.forPredicate(
             BlockPredicate.matchesBlocks(
@@ -417,9 +439,15 @@ public class ModPlacedFeatures {
         // 染梦树密集变体（染梦森林）— 合欢状染梦树更密集
         context.register(DYEDREAM_TREE_DENSE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE),
-                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(12), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                         PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
+
+        // 染梦森林萤火虫巢 — 随机散布于林地地面（平均约每 2 区块 1 个），底部仅限染梦草/染梦土
+        context.register(DYEDREAM_FIREFLY_NEST, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_FIREFLY_NEST),
+                List.of(CountPlacement.of(2), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
 
         // 染梦冷杉密集变体（雪林/雪针叶林）— 针叶状染梦树更密集
         context.register(DYEDREAM_TREE_COLD_SPRUCE_DENSE, new PlacedFeature(
@@ -589,6 +617,10 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.SMALL_PINK_MUSHROOM),
                 List.of(CountPlacement.of(6), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 粉顶菌垂帘 — 从洞穴天花板垂下的竖直结构，洞顶扫描放置
+        context.register(LUSH_CAVE_PINK_MUSHROOM_CURTAIN, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_CURTAIN),
+                caveCeilingPlacement(24)));
         // 繁茂洞穴茎草/高茎草/奇异蕨 — 洞底扫描放置
         context.register(LUSH_CAVE_STEM_GRASS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.STEM_GRASS_PATCH),
@@ -619,6 +651,19 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_DYEDREAM_GROUND)));
+
+        // 花海梦染茶花 — 密集，每区块 6 簇（CountPlacement.of(6)），成片花海
+        context.register(DYEDREAM_COROLLA_PATCH_FLOWER_FIELD, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_COROLLA_PATCH_DENSE),
+                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
+
+        // 花海浮空流明光球 — 贴近地表悬浮，每区块 4 次
+        context.register(FLOATING_LIGHT_BALL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.FLOATING_LIGHT_BALL),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // 野生流明堇 — 团簇稀疏
         context.register(LIGHT_BALL_PATCH, new PlacedFeature(

@@ -85,6 +85,7 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tCommonVeg = dyeTag("dyedream_world_common_veg_biome");
             TagKey<Biome> tFrozenRiverVeg = dyeTag("dyedream_world_frozen_river_veg_biome");
             TagKey<Biome> tPlains = dyeTag("dyedream_world_plains_biome");
+            TagKey<Biome> tFlowerField = dyeTag("dyedream_world_flower_field_biome");
             TagKey<Biome> tStem = dyeTag("dyedream_world_stem_biome");
             TagKey<Biome> tVine = dyeTag("dyedream_world_vine_biome");
             TagKey<Biome> tForest = dyeTag("dyedream_world_forest_biome");
@@ -159,6 +160,11 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_plains_light_ball", ModPlacedFeatures.LIGHT_BALL_PATCH, featureLookup, tPlains);
             addPatch(entries, "dyedream_plains_cloud_crop", ModPlacedFeatures.CLOUD_CROP_PATCH, featureLookup, tPlains);
 
+            // 花海（密集梦染茶花 + 茎草 + 浮空流明光球；无染梦树、无高茎草）
+            addPatch(entries, "dyedream_flower_field_corolla", ModPlacedFeatures.DYEDREAM_COROLLA_PATCH_FLOWER_FIELD, featureLookup, tFlowerField);
+            addPatch(entries, "dyedream_flower_field_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tFlowerField);
+            addFeature(entries, "dyedream_flower_field_light_ball", ModPlacedFeatures.FLOATING_LIGHT_BALL, featureLookup, tFlowerField, GenerationStep.Decoration.VEGETAL_DECORATION);
+
             // 平原/森林共享装饰（茎草/铃兰/藤/方解石笋）
             addPatch(entries, "dyedream_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tStem);
             addPatch(entries, "dyedream_tall_stem_grass", ModPlacedFeatures.TALL_STEM_GRASS_PATCH, featureLookup, tStem);
@@ -167,9 +173,10 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_calcite_stalicripe", ModPlacedFeatures.CALCITE_STALICRIPE, featureLookup, tStem);
             addPatch(entries, "dyedream_small_calcite_stalicripe", ModPlacedFeatures.SMALL_CALCITE_STALICRIPE, featureLookup, tStem);
 
-            // 森林（稠密树 + 稀疏粉顶菇）
+            // 森林（稠密树 + 稀疏粉顶菇 + 萤火虫巢）
             addPatch(entries, "dyedream_forest_dense_tree", ModPlacedFeatures.DYEDREAM_TREE_DENSE, featureLookup, tForest);
             addPatch(entries, "dyedream_forest_mushroom", ModPlacedFeatures.PINK_HUGE_MUSHROOM_SPARSE, featureLookup, tForest);
+            addFeature(entries, "dyedream_forest_firefly_nest", ModPlacedFeatures.DYEDREAM_FIREFLY_NEST, featureLookup, tForest, GenerationStep.Decoration.VEGETAL_DECORATION);
 
             // 菇山（粉顶菇系列）
             addPatch(entries, "dyedream_mushroom_tree", ModPlacedFeatures.PINK_MUSHROOM_TREE, featureLookup, tMushroom);
@@ -206,6 +213,7 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_lush_fern", ModPlacedFeatures.LUSH_CAVE_FERN_PATCH, featureLookup, tLush);
             addPatch(entries, "dyedream_lush_vine", ModPlacedFeatures.LUSH_CAVE_VINE_PATCH, featureLookup, tLush);
             addPatch(entries, "dyedream_lush_shroom_block", ModPlacedFeatures.LUSH_CAVE_SHROOM_BLOCK_PATCH, featureLookup, tLush);
+            addPatch(entries, "dyedream_lush_pink_mushroom_curtain", ModPlacedFeatures.LUSH_CAVE_PINK_MUSHROOM_CURTAIN, featureLookup, tLush);
             addPatch(entries, "dyedream_dripstone_cone", ModPlacedFeatures.CALCITE_CONE_PATCH, featureLookup, tDripstone);
             addFeature(entries, "dyedream_dripstone_cluster", ModPlacedFeatures.CALCITE_CONE_CLUSTER_PATCH, featureLookup, tDripstone, GenerationStep.Decoration.LOCAL_MODIFICATIONS);
 

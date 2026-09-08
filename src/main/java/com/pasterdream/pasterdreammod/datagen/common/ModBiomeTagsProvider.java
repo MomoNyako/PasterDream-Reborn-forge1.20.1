@@ -109,10 +109,11 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cold_ocean"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ocean"));
 
-        // ===== 染梦维度地物分组标签（17 群系） =====
+        // ===== 染梦维度地物分组标签（18 群系） =====
         tag(dyeTag("dyedream_world_biome"))
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_mushroom_mountains"))
-                .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_snowy_plains"))
+                .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_flower_field"))
+                .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
                 .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_snowy_taiga"))
                 .addOptional(dye("dyedream_frozen_ocean")).addOptional(dye("dyedream_cold_ocean"))
@@ -139,7 +140,8 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
 
         tag(dyeTag("dyedream_world_warm_ice_biome"))
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_mushroom_mountains"))
-                .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_ocean"));
+                .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_flower_field"))
+                .addOptional(dye("dyedream_ocean"));
 
         tag(dyeTag("dyedream_world_cold_biome"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
@@ -162,6 +164,9 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
 
         tag(dyeTag("dyedream_world_plains_biome"))
                 .addOptional(dye("dyedream_plains"));
+
+        tag(dyeTag("dyedream_world_flower_field_biome"))
+                .addOptional(dye("dyedream_flower_field"));
 
         tag(dyeTag("dyedream_world_stem_biome"))
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_forest"));

@@ -862,6 +862,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.notHaveWingsBirdHaveSpreadWingsDreamToo", "§a无翼鸟也有展翅的梦");
 
         add("biome.pasterdream.dyedream_plains","染梦平原");
+        add("biome.pasterdream.dyedream_flower_field","染梦花海");
         add("biome.pasterdream.dyedream_mushroom_mountains","粉顶菇山地");
         add("biome.pasterdream.dyedream_snowy_plains","染梦雪原");
         add("biome.pasterdream.dyedream_frozen_ocean","染梦冻洋");
