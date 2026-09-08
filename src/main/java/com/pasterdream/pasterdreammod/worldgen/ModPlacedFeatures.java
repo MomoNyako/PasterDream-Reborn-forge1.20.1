@@ -27,6 +27,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_TREE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree"));
+    // 眠椰树
+    public static final ResourceKey<PlacedFeature> SLUMBER_PALM_TREE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_tree"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_COLD_SPRUCE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce"));
@@ -428,6 +432,13 @@ public class ModPlacedFeatures {
                 List.of(CountPlacement.of(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                         PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
+
+        // 眠椰树 — 同染梦树放置规则（暂未挂载到群系，可用 /place feature 测试）
+        context.register(SLUMBER_PALM_TREE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SLUMBER_PALM_TREE),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        PlacementUtils.filteredByBlockSurvival(ModBlocks.SLUMBER_PALM_SAPLING.get()))));
 
         // 染梦冷杉（雪林/雪针叶林）— 与染梦树同放置规则
         context.register(DYEDREAM_TREE_COLD_SPRUCE, new PlacedFeature(

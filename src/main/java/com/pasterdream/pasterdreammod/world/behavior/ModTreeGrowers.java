@@ -19,12 +19,12 @@ public class ModTreeGrowers {
 
     private static final float COLD_TEMPERATURE_THRESHOLD = 0.3f;
 
-    // 眠椰树苗：暂无生长逻辑，getConfiguredFeature 返回 null，树苗只可种植不会生长。
+    // 眠椰树：双螺旋树干 + 焦点椭圆树冠（见 SlumberPalmTreeFeature）
     public static final AbstractTreeGrower SLUMBER_PALM = new AbstractTreeGrower() {
         @Nullable
         @Override
         protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {
-            return null;
+            return ModConfiguredFeatures.SLUMBER_PALM_TREE;
         }
     };
 

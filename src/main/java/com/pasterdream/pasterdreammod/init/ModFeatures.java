@@ -12,6 +12,8 @@ import com.pasterdream.pasterdreammod.worldgen.feature.ShadowChainPillarFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowHandFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowRuinWallFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowTombFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfiguration;
+import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.SmallPinkMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.StonePillarFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -78,6 +80,10 @@ public class ModFeatures {
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SHADOW_TOMB =
             FEATURES.register("shadow_tomb",
                     () -> new ShadowTombFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<SlumberPalmTreeConfiguration>> SLUMBER_PALM_TREE =
+            FEATURES.register("slumber_palm_tree",
+                    () -> new SlumberPalmTreeFeature(SlumberPalmTreeConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

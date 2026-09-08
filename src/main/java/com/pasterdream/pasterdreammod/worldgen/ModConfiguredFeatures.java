@@ -26,6 +26,7 @@ import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
+import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
@@ -57,6 +58,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_TREE_COLD_SPRUCE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce"));
+    // 眠椰树 — 双螺旋树干 + 焦点椭圆树冠（自定义 SlumberPalmTreeFeature）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SLUMBER_PALM_TREE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_tree"));
     // 粉顶菌巨树 (丛林树形态, 2×2)
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MUSHROOM_TREE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -552,6 +557,19 @@ public class ModConfiguredFeatures {
                         new TwoLayersFeatureSize(1, 0, 2))
                         .ignoreVines()
                         .build()));
+
+        // 眠椰树 — GT 椰子树风格（参数可经 JSON 调整）
+        context.register(SLUMBER_PALM_TREE, new ConfiguredFeature<>(ModFeatures.SLUMBER_PALM_TREE.get(),
+                new SlumberPalmTreeConfiguration(
+                        UniformInt.of(8, 12),  // trunk_height：主干 8~12 格（GT 同款）
+                        2,                     // branch_count：叉开时为 2 根枝
+                        0.4,                   // fork_chance：40% 概率叉开，否则单干
+                        UniformInt.of(3, 4),   // branch_length：分叉时每条枝 3~4 格
+                        0.5,                   // branch_spread：分叉时每格向外倾斜 0.5 格
+                        UniformInt.of(3, 4),   // arm_length：每条分支上树冠星臂 3~4 格
+                        8,                     // arm_count：每条树冠 8 条星臂（GT 同款）
+                        2,                     // max_droop：臂末最多下垂 2 格
+                        false)));              // center_fill：不填充中心（GT 同款）
 
         // 染梦树 — 寒冷群系云杉形态变体 (使用染梦原木/树叶, 云杉树干+针叶塑形器)
         context.register(DYEDREAM_TREE_COLD_SPRUCE, new ConfiguredFeature<>(Feature.TREE,
