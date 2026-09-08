@@ -294,6 +294,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_LEAVES.get(), "Dyedream Leaves");
         add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), "Dyedream Worldtree Leaves");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "Dyedream Sapling");
+        add(ModBlocks.SLUMBER_PALM_LOG.get(), "Slumber Palm Log");
+        add(ModBlocks.SLUMBER_PALM_WOOD.get(), "Slumber Palm Wood");
+        add(ModBlocks.SLUMBER_PALM_LEAVES.get(), "Slumber Palm Leaves");
+        add(ModBlocks.SLUMBER_PALM_PLANKS.get(), "Slumber Palm Planks");
+        add(ModBlocks.SLUMBER_PALM_SAPLING.get(), "Slumber Palm Sapling");
+        add(ModBlocks.POTTED_SLUMBER_PALM_SAPLING.get(), "Potted Slumber Palm Sapling");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
         add(ModBlocks.AMBER_CANDY_ORE.get(), "Amber Candy Ore");

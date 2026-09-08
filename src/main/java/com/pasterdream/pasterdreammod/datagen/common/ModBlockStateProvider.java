@@ -46,6 +46,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get()));
 
+        // ===== 眠椰树系列 =====
+        logBlock((RotatedPillarBlock) ModBlocks.SLUMBER_PALM_LOG.get());
+        blockItem(ModBlocks.SLUMBER_PALM_LOG);
+        var slumberPalmLogSide = blockTexture(ModBlocks.SLUMBER_PALM_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.SLUMBER_PALM_WOOD.get(), slumberPalmLogSide, slumberPalmLogSide);
+        blockItem(ModBlocks.SLUMBER_PALM_WOOD);
+        simpleBlockWithItem(ModBlocks.SLUMBER_PALM_LEAVES.get(), cubeAll(ModBlocks.SLUMBER_PALM_LEAVES.get()));
+        simpleBlockWithItem(ModBlocks.SLUMBER_PALM_PLANKS.get(), cubeAll(ModBlocks.SLUMBER_PALM_PLANKS.get()));
+        simpleBlock(ModBlocks.SLUMBER_PALM_SAPLING.get(),
+                models().cross(ModBlocks.SLUMBER_PALM_SAPLING.getId().getPath(),
+                        blockTexture(ModBlocks.SLUMBER_PALM_SAPLING.get())).renderType("cutout"));
+
         simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_ORE.get()));
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_DUST_ORE.get(), cubeAll(ModBlocks.DYEDREAM_DUST_ORE.get()));

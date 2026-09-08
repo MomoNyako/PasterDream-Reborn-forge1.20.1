@@ -43,6 +43,12 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.DYEDREAM_LEAVES.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
         add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
         dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
+        // ===== 眠椰树系列 =====
+        dropSelf(ModBlocks.SLUMBER_PALM_LOG.get());
+        dropSelf(ModBlocks.SLUMBER_PALM_WOOD.get());
+        add(ModBlocks.SLUMBER_PALM_LEAVES.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.SLUMBER_PALM_SAPLING.get(), ModItems.SLUMBER_PALM.get()));
+        dropSelf(ModBlocks.SLUMBER_PALM_PLANKS.get());
+        dropSelf(ModBlocks.SLUMBER_PALM_SAPLING.get());
 
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(),
                 block -> createSilkTouchDispatchTable(block,
