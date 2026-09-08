@@ -420,6 +420,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_FARMLAND.get());
                         output.accept(ModItems.DYEDREAM_DIRT.get());
                         output.accept(ModItems.DYEDREAM_SAND.get());
+                        output.accept(ModItems.AZURE_SEA_SAND.get());
                         output.accept(ModItems.DYEDREAM_LOG.get());
                         output.accept(ModItems.DYEDREAM_WOOD.get());
                         output.accept(ModItems.DYEDREAM_LEAVES.get());

@@ -373,6 +373,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CLOUD.get(), "Cloud");
         add(ModBlocks.DARK_CLOUD.get(), "Dark Cloud");
         add(ModBlocks.WHITE_SAND.get(), "White Sand");
+        add(ModBlocks.AZURE_SEA_SAND.get(), "Azure Sea Sand");
         add(ModBlocks.THICK_CLOUD.get(), "Thick Cloud");
         add(ModBlocks.SHADOW.get(), "Shadow");
         add(ModBlocks.THICK_SHADOW.get(), "Thick Shadow");
