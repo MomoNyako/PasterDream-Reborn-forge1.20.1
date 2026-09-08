@@ -74,7 +74,7 @@ public class PasterDreamDrinkItem extends Item
         }
     }
 
-    private static String formatTickDuration(int ticks)
+    public static String formatTickDuration(int ticks)
     {
         int seconds = ticks / 20;
         int minutes = seconds / 60;

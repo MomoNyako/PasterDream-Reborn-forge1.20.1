@@ -2,8 +2,6 @@ package com.pasterdream.pasterdreammod.world.block.shadowblastfurnace;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.*;
@@ -179,7 +177,7 @@ public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuPr
         }
     }
 
-    public void matchRecipe()
+    private void matchRecipe()
     {
         if (level == null || level.isClientSide)
         {
@@ -199,43 +197,28 @@ public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuPr
         List<FluidStack> inputFluids = new ArrayList<>(1);
         inputFluids.add(fluidTanks[0].getFluid().copy());
 
-        //配方匹配
-        MatchedRecipeResult<ShadowBlastFurnaceRecipe> matched = RecipeMatcher.match(inputItems, inputFluids, recipes);
-        if (matched == null)
+        GenericRecipeInventory matchedResult = GenericRecipeMatcher.match(inputItems, inputFluids, recipes);
+        if(matchedResult != null)
         {
-            return;
+            GenericRecipeInventory processedResult = GenericRecipeProcesser.processing(matchedResult, new GenericRecipeInventory(inputItems, inputFluids, outputItems, List.of(), matchedResult.recipeTime(), 0));
+            if(processedResult != null)
+            {
+                for(int i = 0; i < processedResult.inputItemStacks().size(); i++)
+                {
+                    itemHandler.setStackInSlot(i, processedResult.inputItemStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.inputFluidStacks().size(); i++)
+                {
+                    fluidTanks[i].setFluid(processedResult.inputFluidStacks().get(i));
+                }
+
+                currentRecipeOutput = processedResult.outputItemStacks();
+                maxProgress = matchedResult.recipeTime();
+                //同步
+                setChangedAndSync();
+            }
         }
-
-        ShadowBlastFurnaceRecipe recipe = matched.recipe();
-        MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
-
-        List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
-        List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
-        List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
-
-        MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, new ArrayList<>());
-        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), new ArrayList<>(), 9000);
-        MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
-
-        if (result == null)
-        {
-            return;
-        }
-
-        //获取结果
-        List<ItemStack> currentRecipeInput = result.inputItemStacks();
-        currentRecipeOutput = result.outputItemStacks();
-
-        itemHandler.setStackInSlot(0, currentRecipeInput.get(0));
-        itemHandler.setStackInSlot(1, currentRecipeInput.get(1));
-
-        List<FluidStack> newInputFluids = result.inputFluidStacks();
-
-        fluidTanks[0].setFluid(newInputFluids.get(0));
-
-        maxProgress = recipe.getProcessingTime();
-        //同步
-        setChangedAndSync();
     }
 
     private void generateProduct()

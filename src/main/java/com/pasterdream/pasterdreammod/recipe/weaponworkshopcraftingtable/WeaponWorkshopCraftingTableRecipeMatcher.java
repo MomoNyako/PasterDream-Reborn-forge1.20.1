@@ -21,7 +21,7 @@ public class WeaponWorkshopCraftingTableRecipeMatcher
         boolean isMatched = false;
 
         List<ItemStack> machineInputItemStack = inventory.inputItemStacks();
-        List<ItemStackWithoutCount> inputInventoryItemTypes = ItemMatcher.getInventoryItemTypes(machineInputItemStack);
+        List<ItemStackWithoutCount> inputInventoryItemTypes = ItemStackWithoutCount.fromListItemStacks(machineInputItemStack);
 
         for(WeaponWorkshopCraftingTableRecipe recipe : recipes)
         {

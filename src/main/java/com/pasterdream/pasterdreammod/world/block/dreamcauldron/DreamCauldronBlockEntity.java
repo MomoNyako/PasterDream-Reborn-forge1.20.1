@@ -2,8 +2,6 @@ package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
@@ -45,7 +43,6 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider, GeoBlockEntity, AnimatableSync
 {
@@ -284,60 +281,47 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         inputItems.add(itemHandler.getStackInSlot(1).copy());
         inputItems.add(itemHandler.getStackInSlot(2).copy());
 
-        List<ItemStack> outputItems = new ArrayList<>(1);
-        outputItems.add(itemHandler.getStackInSlot(3).copy());
-
         List<FluidStack> inputFluids = new ArrayList<>(2);
         inputFluids.add(fluidTanks[0].getFluid().copy());
         inputFluids.add(fluidTanks[1].getFluid().copy());
 
+        List<ItemStack> outputItems = new ArrayList<>(1);
+        outputItems.add(itemHandler.getStackInSlot(3).copy());
+
         List<FluidStack> outputFluids = new ArrayList<>(1);
         outputFluids.add(fluidTanks[2].getFluid().copy());
 
-        //配方匹配
-        MatchedRecipeResult<DreamCauldronRecipe> matched = RecipeMatcher.match(inputItems, inputFluids, recipes);
-        if (matched == null)
+        GenericRecipeInventory matchedResult = GenericRecipeMatcher.match(inputItems, inputFluids, recipes);
+        if(matchedResult != null)
         {
-            return;
+            GenericRecipeInventory processedResult = GenericRecipeProcesser.processing(matchedResult, new GenericRecipeInventory(inputItems, inputFluids, outputItems, outputFluids, 0, 1000));
+            if(processedResult != null)
+            {
+                for(int i = 0; i < processedResult.inputItemStacks().size(); i++)
+                {
+                    itemHandler.setStackInSlot(i, processedResult.inputItemStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.inputFluidStacks().size(); i++)
+                {
+                    fluidTanks[i].setFluid(processedResult.inputFluidStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.outputItemStacks().size(); i++)
+                {
+                    itemHandler.setStackInSlot(i + 3, processedResult.outputItemStacks().get(i));
+                }
+
+                for(int i = 0; i < processedResult.outputFluidStacks().size(); i++)
+                {
+                    fluidTanks[i + 2].setFluid(processedResult.outputFluidStacks().get(i));
+                }
+
+                //同步
+                setChangedAndSync();
+                setAnimationState(1);
+            }
         }
-
-        MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
-
-        List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
-        List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
-        List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
-        List<FluidStack> outputFluidsRecipe = matchedRecipeInputsAndOutputs.outputFluidStacks();
-
-        MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, outputFluidsRecipe);
-        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), outputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), 1000);
-        MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
-
-        if (result == null)
-        {
-            return;
-        }
-
-        //获取结果
-        List<ItemStack> newInputItems = result.inputItemStacks();
-        List<ItemStack> newOutputItems = result.outputItemStacks();
-
-        itemHandler.setStackInSlot(0, newInputItems.get(0));
-        itemHandler.setStackInSlot(1, newInputItems.get(1));
-        itemHandler.setStackInSlot(2, newInputItems.get(2));
-
-        itemHandler.setStackInSlot(3, newOutputItems.get(0));
-
-        List<FluidStack> newInputFluids = result.inputFluidStacks();
-        List<FluidStack> newOutputFluids = result.outputFluidStacks();
-
-        fluidTanks[0].setFluid(newInputFluids.get(0));
-        fluidTanks[1].setFluid(newInputFluids.get(1));
-
-        fluidTanks[2].setFluid(newOutputFluids.get(0));
-
-        //同步
-        setChangedAndSync();
-        setAnimationState(1);
     }
 
     private void setChangedAndSync()

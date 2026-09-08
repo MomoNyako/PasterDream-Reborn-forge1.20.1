@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.genericmatcher;
 
+import com.pasterdream.pasterdreammod.helper.nbthelper.NBTContainRelationCalculator;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import net.minecraft.world.item.ItemStack;
 
@@ -35,7 +36,7 @@ public class SingleItemMatcher
             }
     }
 
-    public static ItemStack matchWithCompareNBT(ItemIngredient itemIngredient, ItemStack matchItem)
+    public static ItemStack matchWithCompareFullNBT(ItemIngredient itemIngredient, ItemStack matchItem)
     {
         if(itemIngredient.isTag())
         {
@@ -63,5 +64,31 @@ public class SingleItemMatcher
             }
     }
 
-
+    public static ItemStack matchWithCompareContainerNBT(ItemIngredient itemIngredient, ItemStack matchItem)
+    {
+        if(itemIngredient.isTag())
+        {
+            List<ItemStack> ListItemStackFromTag = itemIngredient.getListItemStackFromTag();
+            for(ItemStack itemStack : ListItemStackFromTag)
+            {
+                if(ItemStack.isSameItem(itemStack, matchItem)/* && NBTContainRelationCalculator.calculator(itemStack.getTag(), matchItem.getTag())*/)
+                {
+                    return itemStack;
+                }
+            }
+            return ItemStack.EMPTY;
+        }
+            else
+            {
+                ItemStack itemStack = itemIngredient.getItemStack();
+                if(ItemStack.isSameItem(itemStack, matchItem)/* && NBTContainRelationCalculator.calculator(itemStack.getTag(), matchItem.getTag())*/)
+                {
+                    return itemStack;
+                }
+                    else
+                    {
+                        return ItemStack.EMPTY;
+                    }
+            }
+    }
 }

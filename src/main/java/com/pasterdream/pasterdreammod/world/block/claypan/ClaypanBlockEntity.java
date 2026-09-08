@@ -4,6 +4,9 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.GenericRecipeInventory;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.GenericRecipeMatcher;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.GenericRecipeProcesser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -28,7 +31,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider
 {
@@ -56,11 +60,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
         @Override
         protected void onContentsChanged(int slot)
         {
-            setChanged();
-            if (level != null && !level.isClientSide)
-            {
-                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
-            }
+            setChangedAndSync();
         }
     };
 
@@ -71,11 +71,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
             @Override
             protected void onContentsChanged()
             {
-                setChanged();
-                if (level != null && !level.isClientSide)
-                {
-                    level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
-                }
+                setChangedAndSync();
             }
         }
     };
@@ -110,66 +106,66 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
 
         if (maxProgress == 0)
         {
-            if (itemHandler.getStackInSlot(0).isEmpty())
-            {
-                Optional<ClaypanRecipe> recipe = findMatchingRecipe();
-                if (recipe.isPresent())
-                {
-                    ClaypanRecipe claypanRecipe = recipe.get();
-                    recipeRequiredFluid = claypanRecipe.getInputFluidIngredients().get(0).getFluidStack();
-                    if (fluidTanks[0].getFluidAmount() >= recipeRequiredFluid.getAmount())
-                    {
-                        currentRecipeOutput = claypanRecipe.getOutputItemIngredients().get(0).getItemStack();
-                        maxProgress = claypanRecipe.getProcessingTime();
-                        progress = 0;
-                        setChanged();
-                    }
-                }
-            }
+            matchRecipe();
         }
 
         if (maxProgress > 0)
         {
-            if (recipeRequiredFluid == null || fluidTanks[0].getFluidAmount() < recipeRequiredFluid.getAmount() || fluidTanks[0].getFluid().getFluid() != recipeRequiredFluid.getFluid())
-            {
-                resetProgress();
-                return;
-            }
             progress++;
-
             setChanged();
+
             if (progress >= maxProgress)
             {
-                fluidTanks[0].drain(recipeRequiredFluid.getAmount(), IFluidHandler.FluidAction.EXECUTE);
-                itemHandler.setStackInSlot(0, currentRecipeOutput.copy());
-                resetProgress();
+                generateProduct();
             }
         }
     }
 
-    private Optional<ClaypanRecipe> findMatchingRecipe()
+    private void matchRecipe()
     {
-        if (level == null)
+        if (level == null || level.isClientSide)
         {
-            return Optional.empty();
+            return;
         }
 
-        FluidStack fluid = fluidTanks[0].getFluid();
-        if (fluid.isEmpty())
-        {
-            return Optional.empty();
-        }
+        List<ClaypanRecipe> recipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.CLAYPAN.get());
 
-        return level.getRecipeManager().getAllRecipesFor(ModRecipes.CLAYPAN.get()).stream().filter(recipe -> recipe.getInputFluidIngredients().get(0).getFluid() == fluid.getFluid()).filter(recipe -> fluidTanks[0].getFluidAmount() >= recipe.getInputFluidIngredients().get(0).getAmount()).findFirst();
+        List<ItemStack> outputItems = new ArrayList<>(1);
+        outputItems.add(itemHandler.getStackInSlot(0).copy());
+
+        List<FluidStack> inputFluids = new ArrayList<>(1);
+        inputFluids.add(fluidTanks[0].getFluid().copy());
+
+        GenericRecipeInventory matchedResult = GenericRecipeMatcher.match(List.of(), inputFluids, recipes);
+        if(matchedResult != null)
+        {
+            GenericRecipeInventory processedResult = GenericRecipeProcesser.processing(matchedResult, new GenericRecipeInventory(List.of(), inputFluids, outputItems, List.of(), matchedResult.recipeTime(), 0));
+            if(processedResult != null)
+            {
+                fluidTanks[0].setFluid(processedResult.inputFluidStacks().get(0));
+                currentRecipeOutput = processedResult.outputItemStacks().get(0);
+                maxProgress = matchedResult.recipeTime();
+
+                //同步
+                setChangedAndSync();
+            }
+        }
     }
 
-    private void resetProgress()
+    private void generateProduct()
     {
+        itemHandler.setStackInSlot(0, currentRecipeOutput);
         progress = 0;
         maxProgress = 0;
-        currentRecipeOutput = ItemStack.EMPTY;
-        recipeRequiredFluid = null;
+    }
+
+    private void setChangedAndSync()
+    {
         setChanged();
+        if (level != null && !level.isClientSide)
+        {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        }
     }
 
     @Override

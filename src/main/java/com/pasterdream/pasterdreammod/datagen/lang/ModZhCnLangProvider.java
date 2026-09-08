@@ -724,6 +724,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.空", "空");
         add("tooltip.pasterdream.总容量:", "总容量:");
+        add("tooltip.pasterdream.每次饮用:", "每次饮用:");
+        add("tooltip.pasterdream.不可饮用", "不可饮用");
 
         add("message.pasterdream.融梦水晶箱重置工具只能重置打开的融梦水晶箱", "融梦水晶箱重置工具只能重置打开的融梦水晶箱");
         add("message.pasterdream.融梦水晶箱战利品品质应为1，2或3，但是此时为", "融梦水晶箱战利品品质应为1，2或3，但是此时为%d");

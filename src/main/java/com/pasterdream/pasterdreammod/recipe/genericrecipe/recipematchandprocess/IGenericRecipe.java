@@ -5,10 +5,11 @@ import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredien
 
 import java.util.List;
 
-public interface IProcessingRecipe
+public interface IGenericRecipe
 {
     List<ItemIngredient> getInputItems();
     List<FluidIngredient> getInputFluids();
     List<ItemIngredient> getOutputItems();
     List<FluidIngredient> getOutputFluids();
+    int getRecipeTime();
 }
