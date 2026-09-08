@@ -875,12 +875,24 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.notHaveWingsBirdHaveSpreadWingsDreamToo", "§a无翼鸟也有展翅的梦");
 
+        add("biome.pasterdream.dyedream_frozen_ocean","染梦冻洋");
+        add("biome.pasterdream.dyedream_cold_ocean","染梦冷海");
+        add("biome.pasterdream.dyedream_ocean","染梦海洋");
+        add("biome.pasterdream.dyedream_beach","染梦沙滩");
+        add("biome.pasterdream.dyedream_river","染梦河流");
+        add("biome.pasterdream.dyedream_frozen_river","染梦冻河");
+        add("biome.pasterdream.dyedream_snowy_peaks","染梦雪山");
+        add("biome.pasterdream.dyedream_snowy_slopes","染梦雪坡");
+        add("biome.pasterdream.dyedream_snowy_grove","染梦雪林");
+        add("biome.pasterdream.dyedream_snowy_plains","染梦雪原");
+        add("biome.pasterdream.dyedream_snowy_taiga","染梦雪针叶林");
+        add("biome.pasterdream.dyedream_mushroom_mountains","染梦菇山");
         add("biome.pasterdream.dyedream_plains","染梦平原");
         add("biome.pasterdream.dyedream_flower_field","染梦花海");
-        add("biome.pasterdream.dyedream_mushroom_mountains","粉顶菇山地");
-        add("biome.pasterdream.dyedream_snowy_plains","染梦雪原");
-        add("biome.pasterdream.dyedream_frozen_ocean","染梦冻洋");
-        add("biome.pasterdream.dyedream_ocean","染梦海洋");
+        add("biome.pasterdream.dyedream_forest","染梦森林");
+        add("biome.pasterdream.dyedream_caves","染梦洞穴");
+        add("biome.pasterdream.dyedream_lush_caves","染梦繁茂洞穴");
+        add("biome.pasterdream.dyedream_dripstone_caves","染梦滴水洞穴");
         add("biome.pasterdream.shadow_nylium_wastes","菌索荒原");
         add("biome.pasterdream.shadow_forest","阴影森林");
         add("biome.pasterdream.shadow_ruins","阴影古迹");

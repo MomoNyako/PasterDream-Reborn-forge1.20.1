@@ -870,12 +870,24 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.notHaveWingsBirdHaveSpreadWingsDreamToo", "§aNot Have Wings Bird Have Spread Wings Dream Too");
 
+        add("biome.pasterdream.dyedream_frozen_ocean","Dyedream Frozen Ocean");
+        add("biome.pasterdream.dyedream_cold_ocean","Dyedream Cold Ocean");
+        add("biome.pasterdream.dyedream_ocean","Dyedream Ocean");
+        add("biome.pasterdream.dyedream_beach","Dyedream Beach");
+        add("biome.pasterdream.dyedream_river","Dyedream River");
+        add("biome.pasterdream.dyedream_frozen_river","Dyedream Frozen River");
+        add("biome.pasterdream.dyedream_snowy_peaks","Dyedream Snowy Peaks");
+        add("biome.pasterdream.dyedream_snowy_slopes","Dyedream Snowy Slopes");
+        add("biome.pasterdream.dyedream_snowy_grove","Dyedream Snowy Grove");
+        add("biome.pasterdream.dyedream_snowy_plains","Dyedream Snowy Plains");
+        add("biome.pasterdream.dyedream_snowy_taiga","Dyedream Snowy Taiga");
+        add("biome.pasterdream.dyedream_mushroom_mountains","Dyedream Mushroom Mountains");
         add("biome.pasterdream.dyedream_plains","Dyedream Plains");
         add("biome.pasterdream.dyedream_flower_field","Dyedream Flower Field");
-        add("biome.pasterdream.dyedream_mushroom_mountains","Dyedream Mushroom Mountains");
-        add("biome.pasterdream.dyedream_snowy_plains","Dyedream Snowy Plains");
-        add("biome.pasterdream.dyedream_frozen_ocean","Dyedream Frozen Ocean");
-        add("biome.pasterdream.dyedream_ocean","Dyedream Ocean");
+        add("biome.pasterdream.dyedream_forest","Dyedream Forest");
+        add("biome.pasterdream.dyedream_caves","Dyedream Caves");
+        add("biome.pasterdream.dyedream_lush_caves","Dyedream Lush Caves");
+        add("biome.pasterdream.dyedream_dripstone_caves","Dyedream Dripstone Caves");
         add("biome.pasterdream.shadow_nylium_wastes","Shadow Nylium Wastes");
         add("biome.pasterdream.shadow_forest","Shadow Forest");
         add("biome.pasterdream.shadow_ruins","Shadow Ruins");
