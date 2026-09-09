@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.mojang.serialization.Codec;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.worldgen.feature.LightBallTreeDecorator;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkShroomlightTreeDecorator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -17,6 +18,10 @@ public class ModTreeDecoratorTypes {
     public static final RegistryObject<TreeDecoratorType<PinkShroomlightTreeDecorator>> PINK_SHROOMLIGHT =
             TREE_DECORATOR_TYPES.register("pink_shroomlight",
                     () -> new TreeDecoratorType<>(Codec.unit(PinkShroomlightTreeDecorator.INSTANCE)));
+
+    public static final RegistryObject<TreeDecoratorType<LightBallTreeDecorator>> LIGHT_BALL =
+            TREE_DECORATOR_TYPES.register("light_ball",
+                    () -> new TreeDecoratorType<>(Codec.unit(LightBallTreeDecorator.INSTANCE)));
 
     public static void register(IEventBus eventBus) {
         TREE_DECORATOR_TYPES.register(eventBus);
