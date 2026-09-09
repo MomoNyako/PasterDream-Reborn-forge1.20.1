@@ -59,6 +59,9 @@ public class ModBiomes {
     public static final ResourceKey<Biome> DYEDREAM_SNOWY_GROVE =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_grove"));
+    public static final ResourceKey<Biome> DYEDREAM_CHERRY_GROVE =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"));
     public static final ResourceKey<Biome> DYEDREAM_SNOWY_TAIGA =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_taiga"));
@@ -156,6 +159,7 @@ public class ModBiomes {
         context.register(DYEDREAM_SNOWY_PEAKS, dyedreamSnowyPeaks(placedFeatures, carvers));
         context.register(DYEDREAM_SNOWY_SLOPES, dyedreamSnowySlopes(placedFeatures, carvers));
         context.register(DYEDREAM_SNOWY_GROVE, dyedreamSnowyGrove(placedFeatures, carvers));
+        context.register(DYEDREAM_CHERRY_GROVE, dyedreamCherryGrove(placedFeatures, carvers));
         context.register(DYEDREAM_SNOWY_TAIGA, dyedreamSnowyTaiga(placedFeatures, carvers));
         context.register(DYEDREAM_FOREST, dyedreamForest(placedFeatures, carvers));
         context.register(DYEDREAM_FLOWER_FIELD, dyedreamFlowerField(placedFeatures, carvers));
@@ -497,6 +501,34 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects();
         applyColdFoliage(effects);
         effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.01f))
+                .backgroundMusic(coldMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(-0.2f)
+                .downfall(0.8f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome dyedreamCherryGrove(HolderGetter<PlacedFeature> placedFeatures,
+                                              HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = commonEffects();
+        applyColdFoliage(effects);
+        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.01f))
                 .backgroundMusic(coldMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);

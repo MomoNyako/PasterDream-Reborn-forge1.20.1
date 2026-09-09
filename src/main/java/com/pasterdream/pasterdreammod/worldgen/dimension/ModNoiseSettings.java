@@ -159,7 +159,7 @@ public class ModNoiseSettings {
                                 ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS,
                                 ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_SNOWY_TAIGA,
                                 ModBiomes.DYEDREAM_SNOWY_PEAKS, ModBiomes.DYEDREAM_SNOWY_SLOPES,
-                                ModBiomes.DYEDREAM_SNOWY_GROVE),
+                                ModBiomes.DYEDREAM_SNOWY_GROVE, ModBiomes.DYEDREAM_CHERRY_GROVE),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.sequence(

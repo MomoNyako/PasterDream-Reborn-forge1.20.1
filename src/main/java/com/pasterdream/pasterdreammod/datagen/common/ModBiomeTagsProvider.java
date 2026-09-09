@@ -109,13 +109,14 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cold_ocean"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ocean"));
 
-        // ===== 染梦维度地物分组标签（18 群系） =====
+        // ===== 染梦维度地物分组标签（19 群系） =====
         tag(dyeTag("dyedream_world_biome"))
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_mushroom_mountains"))
                 .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_flower_field"))
                 .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
-                .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_snowy_taiga"))
+                .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_cherry_grove"))
+                .addOptional(dye("dyedream_snowy_taiga"))
                 .addOptional(dye("dyedream_frozen_ocean")).addOptional(dye("dyedream_cold_ocean"))
                 .addOptional(dye("dyedream_ocean")).addOptional(dye("dyedream_beach"))
                 .addOptional(dye("dyedream_river")).addOptional(dye("dyedream_frozen_river"))
@@ -145,13 +146,15 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
 
         tag(dyeTag("dyedream_world_cold_biome"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
-                .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_snowy_plains"))
+                .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_cherry_grove"))
+                .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_snowy_taiga")).addOptional(dye("dyedream_frozen_river"))
                 .addOptional(dye("dyedream_frozen_ocean"));
 
         tag(dyeTag("dyedream_world_freeze_biome"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
-                .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_snowy_plains"))
+                .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_cherry_grove"))
+                .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_snowy_taiga")).addOptional(dye("dyedream_frozen_river"));
 
         // 海泡菜（全维度通用植被，但寒冷群系不含：雪山/雪坡/雪林/雪原/雪针/冻河/冻洋/冷海）
@@ -185,12 +188,18 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
         tag(dyeTag("dyedream_world_snowy_ice_pillar_biome"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
                 .addOptional(dye("dyedream_snowy_plains")).addOptional(dye("dyedream_snowy_grove"))
+                .addOptional(dye("dyedream_cherry_grove"))
                 .addOptional(dye("dyedream_frozen_river"));
 
         tag(dyeTag("dyedream_world_edelweiss_biome"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
                 .addOptional(dye("dyedream_snowy_plains")).addOptional(dye("dyedream_snowy_grove"))
+                .addOptional(dye("dyedream_cherry_grove"))
                 .addOptional(dye("dyedream_snowy_taiga"));
+
+        // 染梦樱花林 — 原版樱花树 + 粉红花瓣（雪林 W 正半变体）
+        tag(dyeTag("dyedream_world_cherry_grove_biome"))
+                .addOptional(dye("dyedream_cherry_grove"));
 
         tag(dyeTag("dyedream_world_cloud_pillar_biome"))
                 .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
@@ -237,6 +246,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_grove"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_taiga"));
 
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_dyedream_pavilion_snowy_spawn_biome")))
@@ -244,6 +254,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_grove"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_taiga"));
 
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_ecosystem_bubble_spawn_biome")))
@@ -259,6 +270,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_plains"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_taiga"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_grove"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"));
 
