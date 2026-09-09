@@ -37,9 +37,6 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_DENSE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_dense"));
-    public static final ResourceKey<PlacedFeature> DYEDREAM_TREE_COLD_SPRUCE_DENSE =
-            ResourceKey.create(Registries.PLACED_FEATURE,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_tree_cold_spruce_dense"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_FIREFLY_NEST =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_firefly_nest"));
@@ -449,7 +446,7 @@ public class ModPlacedFeatures {
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                         PlacementUtils.filteredByBlockSurvival(ModBlocks.SLUMBER_PALM_SAPLING.get()))));
 
-        // 染梦冷杉（雪林/雪针叶林）— 与染梦树同放置规则
+        // 染梦冷杉（雪原针叶树）— 与染梦树同放置规则
         context.register(DYEDREAM_TREE_COLD_SPRUCE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE_COLD_SPRUCE),
                 List.of(CountPlacement.of(2), InSquarePlacement.spread(),
@@ -468,13 +465,6 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_FIREFLY_NEST),
                 List.of(CountPlacement.of(2), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
-
-        // 染梦冷杉密集变体（雪林/雪针叶林）— 针叶状染梦树更密集
-        context.register(DYEDREAM_TREE_COLD_SPRUCE_DENSE, new PlacedFeature(
-                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE_COLD_SPRUCE),
-                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
-                        PlacementUtils.filteredByBlockSurvival(ModBlocks.DYEDREAM_SAPLING.get()))));
 
         // 染梦冰柱 — MOTION_BLOCKING 高度图
         context.register(DYEDREAM_ICE_PILLAR, new PlacedFeature(

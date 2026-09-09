@@ -880,7 +880,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("biome.pasterdream.dyedream_snowy_slopes","Dyedream Snowy Slopes");
         add("biome.pasterdream.dyedream_cherry_grove","Dyedream Cherry Grove");
         add("biome.pasterdream.dyedream_snowy_plains","Dyedream Snowy Plains");
-        add("biome.pasterdream.dyedream_snowy_taiga","Dyedream Snowy Taiga");
         add("biome.pasterdream.dyedream_mushroom_mountains","Dyedream Mushroom Mountains");
         add("biome.pasterdream.dyedream_plains","Dyedream Plains");
         add("biome.pasterdream.dyedream_flower_field","Dyedream Flower Field");

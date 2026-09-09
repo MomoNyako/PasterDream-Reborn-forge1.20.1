@@ -885,7 +885,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("biome.pasterdream.dyedream_snowy_slopes","染梦雪坡");
         add("biome.pasterdream.dyedream_cherry_grove","染梦樱雪森林");
         add("biome.pasterdream.dyedream_snowy_plains","染梦雪原");
-        add("biome.pasterdream.dyedream_snowy_taiga","染梦雪针叶林");
         add("biome.pasterdream.dyedream_mushroom_mountains","染梦菇山");
         add("biome.pasterdream.dyedream_plains","染梦平原");
         add("biome.pasterdream.dyedream_flower_field","染梦花海");

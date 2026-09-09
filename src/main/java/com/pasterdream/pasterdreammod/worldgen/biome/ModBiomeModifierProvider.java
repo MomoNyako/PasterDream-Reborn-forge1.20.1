@@ -93,7 +93,6 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tEdelweiss = dyeTag("dyedream_world_edelweiss_biome");
             TagKey<Biome> tCloudPillar = dyeTag("dyedream_world_cloud_pillar_biome");
             TagKey<Biome> tSnowyTree = dyeTag("dyedream_world_snowy_tree_biome");
-            TagKey<Biome> tColdForest = dyeTag("dyedream_world_cold_forest_biome");
             TagKey<Biome> tCherryGrove = dyeTag("dyedream_world_cherry_grove_biome");
             TagKey<Biome> tSnowyPool = dyeTag("dyedream_world_snowy_pool_biome");
             TagKey<Biome> tKelp = dyeTag("dyedream_world_kelp_biome");
@@ -189,9 +188,8 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_cloud_pillar_small", ModPlacedFeatures.CLOUD_PILLAR_SMALL, featureLookup, tCloudPillar);
             addPatch(entries, "dyedream_cloud_pillar_large", ModPlacedFeatures.CLOUD_PILLAR_LARGE, featureLookup, tCloudPillar);
 
-            // 雪原稀疏树 / 雪针稠密针叶树 / 雪原水池
+            // 雪原：稀疏染梦树 / 雪原水池
             addPatch(entries, "dyedream_snowy_tree", ModPlacedFeatures.DYEDREAM_TREE, featureLookup, tSnowyTree);
-            addPatch(entries, "dyedream_cold_forest_spruce", ModPlacedFeatures.DYEDREAM_TREE_COLD_SPRUCE_DENSE, featureLookup, tColdForest);
             addFeature(entries, "dyedream_snowy_water_pool", ModPlacedFeatures.SNOWY_WATER_POOL, featureLookup, tSnowyPool, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
             // 染梦樱花林 — 原版樱花树 + 原版粉红花瓣（独享 冷×湿×陡坡 气候区）
