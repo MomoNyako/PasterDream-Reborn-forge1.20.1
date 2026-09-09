@@ -189,12 +189,12 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_cloud_pillar_small", ModPlacedFeatures.CLOUD_PILLAR_SMALL, featureLookup, tCloudPillar);
             addPatch(entries, "dyedream_cloud_pillar_large", ModPlacedFeatures.CLOUD_PILLAR_LARGE, featureLookup, tCloudPillar);
 
-            // 雪原稀疏树 / 雪林·雪针稠密针叶树 / 雪原水池
+            // 雪原稀疏树 / 雪针稠密针叶树 / 雪原水池
             addPatch(entries, "dyedream_snowy_tree", ModPlacedFeatures.DYEDREAM_TREE, featureLookup, tSnowyTree);
             addPatch(entries, "dyedream_cold_forest_spruce", ModPlacedFeatures.DYEDREAM_TREE_COLD_SPRUCE_DENSE, featureLookup, tColdForest);
             addFeature(entries, "dyedream_snowy_water_pool", ModPlacedFeatures.SNOWY_WATER_POOL, featureLookup, tSnowyPool, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
-            // 染梦樱花林 — 原版樱花树 + 原版粉红花瓣（雪林 W 正半变体）
+            // 染梦樱花林 — 原版樱花树 + 原版粉红花瓣（独享 冷×湿×陡坡 气候区）
             addFeature(entries, "dyedream_cherry_grove_trees", VANILLA_TREES_CHERRY, featureLookup, tCherryGrove, GenerationStep.Decoration.VEGETAL_DECORATION);
             addFeature(entries, "dyedream_cherry_grove_pink_petals", VANILLA_FLOWER_CHERRY, featureLookup, tCherryGrove, GenerationStep.Decoration.VEGETAL_DECORATION);
 

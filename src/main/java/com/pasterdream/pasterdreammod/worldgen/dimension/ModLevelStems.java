@@ -98,7 +98,6 @@ public class ModLevelStems {
         Holder<Biome> dyedreamFrozenRiver = biomes.getOrThrow(ModBiomes.DYEDREAM_FROZEN_RIVER);
         Holder<Biome> dyedreamSnowyPeaks = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PEAKS);
         Holder<Biome> dyedreamSnowySlopes = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_SLOPES);
-        Holder<Biome> dyedreamSnowyGrove = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_GROVE);
         Holder<Biome> dyedreamCherryGrove = biomes.getOrThrow(ModBiomes.DYEDREAM_CHERRY_GROVE);
         Holder<Biome> dyedreamSnowyPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PLAINS);
         Holder<Biome> dyedreamSnowyTaiga = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_TAIGA);
@@ -113,11 +112,11 @@ public class ModLevelStems {
         Holder<DimensionType> dimType = dimensionTypes.getOrThrow(ModDimensionTypes.DYEDREAM_WORLD);
         Holder<NoiseGeneratorSettings> dimNoise = noiseSettings.getOrThrow(ModNoiseSettings.DYEDREAM_WORLD);
 
-        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），19 群系
+        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），18 群系
         //  海洋类 C[-1.05,-0.19]；海岸带平坦侵蚀为沙滩、陡峭侵蚀归陡坡/山峰陆地群系
         //  河流占山脊谷带 W[-0.05,0.05]；陆地/沙滩排除谷带（W 双点）
         //  平原按山脊 W 正负分半 → 染梦平原 / 染梦花海（花海为平原 W 变体）
-        //  雪林按山脊 W 正负分半 → 染梦雪林 / 染梦樱花林（樱花林为雪林 W 变体）
+        //  染梦樱雪森林独享 冷×湿×陡坡 气候区（原染梦雪林已删除，由樱雪森林吃掉其区域）
         //  地表群系 depth 双点位 {0,1}；洞穴群系 depth [0.2,0.9]
         Climate.Parameter tCold = Climate.Parameter.span(-1.0F, -0.15F);
         Climate.Parameter tColdOcean0 = Climate.Parameter.span(-1.0F, -0.45F);
@@ -159,9 +158,8 @@ public class ModLevelStems {
         // 寒冷陆地（陡坡/山峰群系大陆性下探到海岸带，覆盖陡峭海岸悬崖）
         addLandSurfacePoint(dyedreamBiomePoints, tCold, hFull, cSteepLand, ePeak, wNeg, wPos, dyedreamSnowyPeaks);
         addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cSteepLand, eSlope, wNeg, wPos, dyedreamSnowySlopes);
-        //  染梦雪林 / 染梦樱花林 — 同为 冷×湿×陡坡 气候，按山脊 W 正负分半（雪林 W 负半、樱花林 W 正半，仿原版向日葵平原变体）
-        addSurfacePoint(dyedreamBiomePoints, tCold, hWet, cSteepLand, eSlope, wNeg, dyedreamSnowyGrove);
-        addSurfacePoint(dyedreamBiomePoints, tCold, hWet, cSteepLand, eSlope, wPos, dyedreamCherryGrove);
+        //  染梦樱雪森林 — 独享 冷×湿×陡坡 气候（原染梦雪林删除，由樱雪森林吃掉其气候区，W 双点覆盖全部山脊）
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cSteepLand, eSlope, wNeg, wPos, dyedreamCherryGrove);
         addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cLand, eFlat, wNeg, wPos, dyedreamSnowyPlains);
         addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cLand, eFlat, wNeg, wPos, dyedreamSnowyTaiga);
         // 温暖陆地（菇山陡坡下探到海岸带）
