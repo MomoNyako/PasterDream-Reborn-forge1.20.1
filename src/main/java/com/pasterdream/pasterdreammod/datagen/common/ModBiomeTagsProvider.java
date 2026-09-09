@@ -154,11 +154,11 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(dye("dyedream_snowy_grove")).addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_snowy_taiga")).addOptional(dye("dyedream_frozen_river"));
 
-        // 海泡菜（全维度通用植被，但寒冷群系不含：雪山/雪坡/雪林/雪原/雪针/冻河/冻洋）
+        // 海泡菜（全维度通用植被，但寒冷群系不含：雪山/雪坡/雪林/雪原/雪针/冻河/冻洋/冷海）
         tag(dyeTag("dyedream_world_sea_pickle_biome"))
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_mushroom_mountains"))
                 .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_flower_field"))
-                .addOptional(dye("dyedream_cold_ocean")).addOptional(dye("dyedream_ocean"))
+                .addOptional(dye("dyedream_ocean"))
                 .addOptional(dye("dyedream_beach")).addOptional(dye("dyedream_river"))
                 .addOptional(dye("dyedream_caves")).addOptional(dye("dyedream_lush_caves"))
                 .addOptional(dye("dyedream_dripstone_caves"));

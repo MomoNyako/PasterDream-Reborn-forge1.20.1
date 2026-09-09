@@ -43,6 +43,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 
 import java.util.List;
@@ -215,6 +217,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LINHT_FLOWER_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "linht_flower_patch"));
+    // 花海混合花卉 — 原作繁花森林式：按坐标噪声选择流明堇/玲云花/苓灯花/染梦铃兰
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_FIELD_FLOWERS =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "flower_field_flowers"));
 
 
     // ===== 方解石笋 =====
@@ -795,6 +801,22 @@ public class ModConfiguredFeatures {
         context.register(LINHT_FLOWER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(48, 5, 2,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.LINHT_FLOWER.get())))));
+
+        // 花海混合花卉 — 仿原版繁花森林：按坐标噪声在五种花卉间选择，形成成片错落花海
+        // 梦染茶花/流明堇/玲云花为成熟作物（AGE=1），苓灯花/染梦铃兰为普通花
+        context.register(FLOWER_FIELD_FLOWERS, new ConfiguredFeature<>(Feature.FLOWER,
+                new RandomPatchConfiguration(96, 6, 2,
+                        PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(
+                                        new NoiseProvider(2345L,
+                                                new NormalNoise.NoiseParameters(0, 1.0),
+                                                0.020833334F,
+                                                List.of(
+                                                        ModBlocks.DYEDREAM_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1),
+                                                        ModBlocks.LIGHT_BALL_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1),
+                                                        ModBlocks.CLOUD_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1),
+                                                        ModBlocks.LINHT_FLOWER.get().defaultBlockState(),
+                                                        ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get().defaultBlockState())))))));
 
         // ========= 灯影之下 =========
         // 阴影真菌树 — 骨粉催熟+自然生成，诡异菌形态
