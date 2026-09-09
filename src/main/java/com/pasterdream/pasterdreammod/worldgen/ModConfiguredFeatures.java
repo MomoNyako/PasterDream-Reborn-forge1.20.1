@@ -34,6 +34,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import com.pasterdream.pasterdreammod.worldgen.feature.LightBallTreeDecorator;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkShroomlightTreeDecorator;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -561,6 +562,7 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.simple(ModBlocks.DYEDREAM_LEAVES.get()),
                         new DreamFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0.16666667F, 0.33333334F),
                         new TwoLayersFeatureSize(1, 0, 2))
+                        .decorators(List.of(LightBallTreeDecorator.INSTANCE))
                         .ignoreVines()
                         .build()));
 
