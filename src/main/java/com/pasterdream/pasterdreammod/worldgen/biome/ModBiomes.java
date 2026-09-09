@@ -53,9 +53,6 @@ public class ModBiomes {
     public static final ResourceKey<Biome> DYEDREAM_SNOWY_PEAKS =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"));
-    public static final ResourceKey<Biome> DYEDREAM_SNOWY_SLOPES =
-            ResourceKey.create(Registries.BIOME,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"));
     public static final ResourceKey<Biome> DYEDREAM_CHERRY_GROVE =
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"));
@@ -151,7 +148,6 @@ public class ModBiomes {
         context.register(DYEDREAM_RIVER, dyedreamRiver(placedFeatures, carvers));
         context.register(DYEDREAM_FROZEN_RIVER, dyedreamFrozenRiver(placedFeatures, carvers));
         context.register(DYEDREAM_SNOWY_PEAKS, dyedreamSnowyPeaks(placedFeatures, carvers));
-        context.register(DYEDREAM_SNOWY_SLOPES, dyedreamSnowySlopes(placedFeatures, carvers));
         context.register(DYEDREAM_CHERRY_GROVE, dyedreamCherryGrove(placedFeatures, carvers));
         context.register(DYEDREAM_FOREST, dyedreamForest(placedFeatures, carvers));
         context.register(DYEDREAM_FLOWER_FIELD, dyedreamFlowerField(placedFeatures, carvers));
@@ -446,34 +442,6 @@ public class ModBiomes {
                 .hasPrecipitation(true)
                 .temperature(-0.7f)
                 .downfall(0.9f)
-                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
-                .specialEffects(effects.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder()
-                        .addSpawn(MobCategory.CREATURE,
-                                new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
-                        .addSpawn(MobCategory.CREATURE,
-                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
-                        .addSpawn(MobCategory.CREATURE,
-                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
-                        .build())
-                .generationSettings(gen.build())
-                .build();
-    }
-
-    private static Biome dyedreamSnowySlopes(HolderGetter<PlacedFeature> placedFeatures,
-                                              HolderGetter<ConfiguredWorldCarver<?>> carvers) {
-        BiomeSpecialEffects.Builder effects = commonEffects();
-        applyColdFoliage(effects);
-        effects.ambientParticle(new AmbientParticleSettings(ParticleTypes.SNOWFLAKE, 0.01f))
-                .backgroundMusic(coldMusic());
-
-        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        gen.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
-
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(true)
-                .temperature(-0.3f)
-                .downfall(0.4f)
                 .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                 .specialEffects(effects.build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder()

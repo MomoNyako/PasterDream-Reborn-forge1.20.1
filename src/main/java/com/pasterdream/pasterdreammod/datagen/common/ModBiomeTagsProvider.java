@@ -114,7 +114,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_mushroom_mountains"))
                 .addOptional(dye("dyedream_forest")).addOptional(dye("dyedream_flower_field"))
                 .addOptional(dye("dyedream_snowy_plains"))
-                .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
+                .addOptional(dye("dyedream_snowy_peaks"))
                 .addOptional(dye("dyedream_cherry_grove"))
                 .addOptional(dye("dyedream_frozen_ocean")).addOptional(dye("dyedream_cold_ocean"))
                 .addOptional(dye("dyedream_ocean")).addOptional(dye("dyedream_beach"))
@@ -144,14 +144,14 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(dye("dyedream_ocean"));
 
         tag(dyeTag("dyedream_world_cold_biome"))
-                .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
+                .addOptional(dye("dyedream_snowy_peaks"))
                 .addOptional(dye("dyedream_cherry_grove"))
                 .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_frozen_river"))
                 .addOptional(dye("dyedream_frozen_ocean"));
 
         tag(dyeTag("dyedream_world_freeze_biome"))
-                .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
+                .addOptional(dye("dyedream_snowy_peaks"))
                 .addOptional(dye("dyedream_cherry_grove"))
                 .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_frozen_river"));
@@ -185,13 +185,11 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(dye("dyedream_mushroom_mountains"));
 
         tag(dyeTag("dyedream_world_snowy_ice_pillar_biome"))
-                .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
                 .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_cherry_grove"))
                 .addOptional(dye("dyedream_frozen_river"));
 
         tag(dyeTag("dyedream_world_edelweiss_biome"))
-                .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
                 .addOptional(dye("dyedream_snowy_plains"))
                 .addOptional(dye("dyedream_cherry_grove"));
 
@@ -200,7 +198,6 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(dye("dyedream_cherry_grove"));
 
         tag(dyeTag("dyedream_world_cloud_pillar_biome"))
-                .addOptional(dye("dyedream_snowy_peaks")).addOptional(dye("dyedream_snowy_slopes"))
                 .addOptional(dye("dyedream_snowy_plains"));
 
         tag(dyeTag("dyedream_world_snowy_tree_biome"))
@@ -239,13 +236,11 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_garden_decryption_nippy_edelweiss_spawn_biome")))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_plains"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"));
 
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_dyedream_pavilion_snowy_spawn_biome")))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_plains"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"));
 
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_ecosystem_bubble_spawn_biome")))
@@ -260,8 +255,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
         tag(BiomeTags.SPAWNS_SNOW_FOXES)
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_plains"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_cherry_grove"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_slopes"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_peaks"));
 
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob_spawn_biome")))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_nylium_wastes"))
