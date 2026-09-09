@@ -193,7 +193,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.005f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.005f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -224,7 +224,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFCB3ED)
                 .grassColorOverride(0xFFFFABEE)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.005f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.005f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -306,7 +306,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.003f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.003f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -332,7 +332,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.003f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.003f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -358,7 +358,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.01f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -384,7 +384,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.01f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -489,7 +489,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.01f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
@@ -520,7 +520,7 @@ public class ModBiomes {
         BiomeSpecialEffects.Builder effects = commonEffects()
                 .foliageColorOverride(0xFFFDC6F2)
                 .grassColorOverride(0xFFFDC6F2)
-                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.01f))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CHERRY_LEAVES, 0.01f))
                 .backgroundMusic(warmMusic());
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
