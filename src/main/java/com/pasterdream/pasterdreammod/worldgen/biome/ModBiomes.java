@@ -296,6 +296,10 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 30, 1, 2))
                         .addSpawn(MobCategory.WATER_CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 20, 1, 3))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.COD, 15, 1, 5))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.SALMON, 15, 1, 5))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -322,6 +326,14 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
                         .addSpawn(MobCategory.WATER_CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 15, 1, 3))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.COD, 15, 1, 5))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.SALMON, 15, 1, 5))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.PUFFERFISH, 1, 1, 3))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 8))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -348,6 +360,12 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
                         .addSpawn(MobCategory.WATER_CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 15, 1, 3))
+                        .addSpawn(MobCategory.WATER_CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 1, 4))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.COD, 15, 1, 5))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.SALMON, 15, 1, 5))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -398,6 +416,8 @@ public class ModBiomes {
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -423,6 +443,8 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.WATER_AMBIENT,
+                                new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5))
                         .build())
                 .generationSettings(gen.build())
                 .build();
