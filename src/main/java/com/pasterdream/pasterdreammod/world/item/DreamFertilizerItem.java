@@ -30,27 +30,44 @@ public class DreamFertilizerItem extends Item {
         ItemStack stack = context.getItemInHand();
         BlockState clickedState = level.getBlockState(pos);
 
-        // Vanilla bone meal effect
-        ItemStack fakeBoneMeal = new ItemStack(Items.BONE_MEAL);
-        if (BoneMealItem.growCrop(fakeBoneMeal, level, pos) || BoneMealItem.growWaterPlant(fakeBoneMeal, level, pos, null)) {
-            if (!level.isClientSide()) {
-                level.levelEvent(2005, pos, 0);
-            }
+        // Always show the use (swing) animation as feedback for the right-click attempt.
+        // Consumption and effects below are strictly limited to blocks that can actually grow.
+        if (player != null) {
+            player.swing(context.getHand());
         }
 
-        // Special conversions: stem_grass → tall_stem_grass
-        if (clickedState.is(ModBlocks.STEM_GRASS.get())) {
+        boolean fertilized = false;
+
+        // Special growth: stem_grass → tall_stem_grass
+        if (clickedState.is(ModBlocks.STEM_GRASS.get()) && level.isEmptyBlock(pos.above())) {
             if (!level.isClientSide()) {
                 level.removeBlock(pos, false);
                 level.setBlock(pos, ModBlocks.TALL_STEM_GRASS.get().defaultBlockState(), 3);
                 level.setBlock(pos.above(), ModBlocks.TALL_STEM_GRASS.get().defaultBlockState()
                         .setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER), 3);
             }
+            fertilized = true;
         }
 
-        // Swing hand
-        if (player != null) {
-            player.swing(context.getHand());
+        // Vanilla bone meal effect (the 5 mod crops are ripened by their own use(), see PasterDreamCropBlock)
+        if (!fertilized) {
+            ItemStack fakeBoneMeal = new ItemStack(Items.BONE_MEAL);
+            if (BoneMealItem.growCrop(fakeBoneMeal, level, pos)) {
+                if (!level.isClientSide()) {
+                    level.levelEvent(2005, pos, 0);
+                }
+                fertilized = true;
+            } else if (BoneMealItem.growWaterPlant(fakeBoneMeal, level, pos.relative(context.getClickedFace()), context.getClickedFace())) {
+                if (!level.isClientSide()) {
+                    level.levelEvent(2005, pos.relative(context.getClickedFace()), 0);
+                }
+                fertilized = true;
+            }
+        }
+
+        // Nothing grew: behave like bone meal on an unusable block, don't consume anything
+        if (!fertilized) {
+            return InteractionResult.PASS;
         }
 
         // Shrink item
