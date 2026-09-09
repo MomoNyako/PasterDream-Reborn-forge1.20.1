@@ -1,0 +1,22 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.windbell_cage",
+  "icon": "pasterdream:congeal_wind_iron_lantern",
+  "category": "pasterdream:wind_journey/structures",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/windbell_cage.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.windbell_cage.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.windbell_cage.page1"
+    }
+  ]
+}
