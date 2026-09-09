@@ -1949,10 +1949,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.san", "san值");
         add("pasterdream.seniors_dream.entry.san.page0", "或许你也已经注意到了，在你屏幕的右下角有一个大脑一样的图标，即为san值。");
         add("pasterdream.seniors_dream.entry.san.page1", "san值界面展示。");
-        add("pasterdream.seniors_dream.entry.san.page2", "san值效果影响：$(br)san>=90%% 获得振奋$(br)san<=60%% 获得不振$(br)san<=40%% 获得恍惚$(br)san<=20%% 获得疯狂I$(br)san<=10%% 获得疯狂II$(br)san<=1%%  获得疯狂III$(br)每个buff的详细效果请自行查阅对应的章节");
-        add("pasterdream.seniors_dream.entry.san.page3", "环境带来的san值变化：$(br)san的变化受到群系类型和光照强度的影响，计算公式为：$(br)总变化率 = (理智光环 / 1200) + 群系影响 + (光照等级 - 7) * 0.0001");
-        add("pasterdream.seniors_dream.entry.san.page4", "群系的影响主要表现为：$(br)在深暗之域和灯影之下的群系会降低玩家san值；$(br)在染梦世界的群系会提升玩家的san值；$(br)在其他群系不会产生强干扰。$(br)理智光环为n则代表玩家在除开其它影响（群系影响和光照等级）的条件下一分钟内会增加n点理智。");
-        add("pasterdream.seniors_dream.entry.san.page5", "其他掉san的情况：$(br)处于阴影生物的疯狂光环下；$(br)手持带有疯狂光环的物品；$(br)某些物品的技能也会消耗san值。$(br)主动恢复san值的方法：$(br)使用特定物品或食物；$(br)装备带有理智光环的饰品；$(br)拥有料理和休憩buff；$(br)让自己处于亮度较高的环境。");
+        add("pasterdream.seniors_dream.entry.san.page2", "随着san值产生变化，你的状态也会发生变化，当你精神抖擞时，你就会感到振奋。当你慢慢开始失去理智时，你的状态也会从“不振”一路滑向疯狂的深渊。");
+        add("pasterdream.seniors_dream.entry.san.page3", "环境带来的san值变化：$(br)san值的变化受到你所处环境的影响，通常来说，你所处的生态群系和附近的光照会影响你的精神状态。");
+        add("pasterdream.seniors_dream.entry.san.page4", "群系的影响主要表现为：$(br)在深暗之域和灯影之下之中，你的理智会丧失，逐步滑向疯狂的泥潭。$(br)在染梦世界之中，你会感到放松，理智也会缓慢恢复。$(br)除此之外，在其他群系不会对你的理智有什么明显影响。$(br)有的装备会带有“理智光环”的作用，它们会在环境影响之外进一步影响你的理智。");
+        add("pasterdream.seniors_dream.entry.san.page5", "其他情况：$(br)阴影生物附近会有疯狂光环，导致你的理智丧失；有的装备也会吞噬你的理智；环境太过黑暗也会让你陷入疯狂。$(br)有些食物可以治愈你的精神，恢复你的san值；明亮的环境对你的精神也有好处；或者，你可以尝试直面黑暗，击杀阴影生物，说不定也能缓解你的疯狂。");
         add("pasterdream.seniors_dream.entry.san.page6", "与san值相关的部分物品展示。");
 
         // 瞬身术
@@ -2352,6 +2352,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.break_wind_knight_altar", "破风骑士祭坛");
         add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page0", "在风泊群岛的上方，还有一座面积不小的岛屿，也就是破风骑士祭坛。断壁残垣似乎在讲述过去的恶战，如今的一片寂静不禁让人感叹沧海桑田。角斗场正中央，有一册永恒书卷，看来琴雨梦已经研究清楚了如何唤醒骑士。$(br)想要召唤破风骑士，需要在祭坛的正中央插入这个岛屿埋藏的水晶，然后用蕴含狂风力量的铁锭组装它的躯干与头部，最后，需要一点闪电的力量激活它……$(br)破风骑士会驱逐一切入侵者，如果想要挑战它，请做好充足的准备。");
         add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page1", "——搞半天搞要自己拼啊。");
+        add("pasterdream.seniors_dream.entry.windbell_cage", "风铃笼");
+        add("pasterdream.seniors_dream.entry.windbell_cage.page0", "这是一个悬浮在迷梦云层的巨大结构，上方是巨大的鸟笼，下面悬挂着巨大的……花？$(br)笼子里有一些基础的物资，还有些融梦水晶箱，记得不要错过哦。不过悬挂花里没什么东西，也不必大费周章再下去了。$(br)既然都叫风铃笼了，整个结构里没有一点和声音/音乐有关的东西，似乎不太合理吧。于是，你抬头看向笼顶，那里似乎有一束光源，说不定藏着什么东西。");
+        add("pasterdream.seniors_dream.entry.windbell_cage.page1", "——据说筑梦者刷到了wen的建筑教学，所以有了这个，在此也感谢wen的帮助。");
 
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");
