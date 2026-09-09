@@ -799,13 +799,13 @@ public class ModBiomes {
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.SMALL_STONE_SPIRIT.get(), 6, 1, 2))
                         // addMobCharge 生成预算：每次生成尝试需 charge × Σ(已聚集charge/距离) ≤ energyBudget，直接限制这 6 种怪在玩家周围的同时存在数量
-                        //（charge 越大越稀疏，energyBudget 越小越稀疏；当前 charge=2/energyBudget=1 ≈ 半径8格内约 1~2 只）
-                        .addMobCharge(ModEntities.BONE_WING.get(), 2.0, 1.5)
-                        .addMobCharge(ModEntities.ASH_BONE_WING.get(), 2.0, 1.5)
-                        .addMobCharge(ModEntities.FIREFLY.get(), 2.0, 1.5)
+                        //（charge 越大越稀疏，energyBudget 越小越稀疏；骨翼/余烬骨翼能量预算提高至 3.0，允许同区域同时存在的数量约为原来的两倍(原1.5)）
+                        .addMobCharge(ModEntities.BONE_WING.get(), 2.0, 3.0)
+                        .addMobCharge(ModEntities.ASH_BONE_WING.get(), 2.0, 3.0)
+                        .addMobCharge(ModEntities.FIREFLY.get(), 2.0, 2.0)
                         .addMobCharge(ModEntities.THUNDERCLOUD.get(), 2.0, 2.0)
                         .addMobCharge(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), 2.0, 2.0)
-                        .addMobCharge(ModEntities.SMALL_STONE_SPIRIT.get(), 2.0, 1.5)
+                        .addMobCharge(ModEntities.SMALL_STONE_SPIRIT.get(), 2.0, 3)
                         .build())
                 .generationSettings(gen.build())
                 .build();

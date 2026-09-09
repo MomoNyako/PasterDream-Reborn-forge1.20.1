@@ -8,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -53,5 +54,9 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
         tag(ModEntityTypeTags.WIND_KNIGHT_MINION)
                 .add(ModEntities.THUNDERCLOUD.get())
                 .add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get());
+
+        tag(EntityTypeTags.SKELETONS)
+                .add(ModEntities.BONE_WING.get())
+                .add(ModEntities.ASH_BONE_WING.get());
     }
 }

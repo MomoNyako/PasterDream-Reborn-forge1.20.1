@@ -205,13 +205,15 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
 
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/bone_wing"),
-                LootTable.lootTable()
+                boneWingLoot()
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/ash_bone_wing"),
+                boneWingLoot()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(Items.BONE)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
-                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1)))
-                                .add(LootItem.lootTableItem(Items.GUNPOWDER)
+                                .add(LootItem.lootTableItem(Items.BLAZE_POWDER)
                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
@@ -265,6 +267,18 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 
+    }
+
+    private LootTable.Builder boneWingLoot() {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.BONE)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1)))
+                        .add(LootItem.lootTableItem(Items.GUNPOWDER)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))));
     }
 
     private LootTable.Builder ghostLoot() {
