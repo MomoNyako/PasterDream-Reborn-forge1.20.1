@@ -93,7 +93,7 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tEdelweiss = dyeTag("dyedream_world_edelweiss_biome");
             TagKey<Biome> tCloudPillar = dyeTag("dyedream_world_cloud_pillar_biome");
             TagKey<Biome> tSnowyTree = dyeTag("dyedream_world_snowy_tree_biome");
-            TagKey<Biome> tColdForest = dyeTag("dyedream_world_cold_forest_biome");
+            TagKey<Biome> tCherryGrove = dyeTag("dyedream_world_cherry_grove_biome");
             TagKey<Biome> tSnowyPool = dyeTag("dyedream_world_snowy_pool_biome");
             TagKey<Biome> tKelp = dyeTag("dyedream_world_kelp_biome");
             TagKey<Biome> tIceberg = dyeTag("dyedream_world_iceberg_biome");
@@ -102,6 +102,9 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tLand = dyeTag("dyedream_world_land_biome");
             TagKey<Biome> tOcean = dyeTag("dyedream_world_ocean_biome");
             ResourceKey<PlacedFeature> freezeTop = ModPlacedFeatures.FREEZE_TOP_LAYER;
+            // 原版樱花群系地物（染梦樱花林直接复用）
+            ResourceKey<PlacedFeature> VANILLA_TREES_CHERRY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath("minecraft", "trees_cherry"));
+            ResourceKey<PlacedFeature> VANILLA_FLOWER_CHERRY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath("minecraft", "flower_cherry"));
 
             // 全维度通用：矿石 / 晶芽 / 晶洞
             addFeature(entries, "dyedream_titanium_ore", ModPlacedFeatures.TITANIUM_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
@@ -185,10 +188,13 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_cloud_pillar_small", ModPlacedFeatures.CLOUD_PILLAR_SMALL, featureLookup, tCloudPillar);
             addPatch(entries, "dyedream_cloud_pillar_large", ModPlacedFeatures.CLOUD_PILLAR_LARGE, featureLookup, tCloudPillar);
 
-            // 雪原稀疏树 / 雪林·雪针稠密针叶树 / 雪原水池
+            // 雪原：稀疏染梦树 / 雪原水池
             addPatch(entries, "dyedream_snowy_tree", ModPlacedFeatures.DYEDREAM_TREE, featureLookup, tSnowyTree);
-            addPatch(entries, "dyedream_cold_forest_spruce", ModPlacedFeatures.DYEDREAM_TREE_COLD_SPRUCE_DENSE, featureLookup, tColdForest);
             addFeature(entries, "dyedream_snowy_water_pool", ModPlacedFeatures.SNOWY_WATER_POOL, featureLookup, tSnowyPool, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+            // 染梦樱花林 — 原版樱花树 + 原版粉红花瓣（独享 冷×湿×陡坡 气候区）
+            addFeature(entries, "dyedream_cherry_grove_trees", VANILLA_TREES_CHERRY, featureLookup, tCherryGrove, GenerationStep.Decoration.VEGETAL_DECORATION);
+            addFeature(entries, "dyedream_cherry_grove_pink_petals", VANILLA_FLOWER_CHERRY, featureLookup, tCherryGrove, GenerationStep.Decoration.VEGETAL_DECORATION);
 
             // 冷海/海洋海带
             addPatch(entries, "dyedream_kelp", ModPlacedFeatures.DYEDREAM_KELP_PATCH, featureLookup, tKelp);

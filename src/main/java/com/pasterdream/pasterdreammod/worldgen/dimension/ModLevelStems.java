@@ -97,10 +97,8 @@ public class ModLevelStems {
         Holder<Biome> dyedreamRiver = biomes.getOrThrow(ModBiomes.DYEDREAM_RIVER);
         Holder<Biome> dyedreamFrozenRiver = biomes.getOrThrow(ModBiomes.DYEDREAM_FROZEN_RIVER);
         Holder<Biome> dyedreamSnowyPeaks = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PEAKS);
-        Holder<Biome> dyedreamSnowySlopes = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_SLOPES);
-        Holder<Biome> dyedreamSnowyGrove = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_GROVE);
+        Holder<Biome> dyedreamCherryGrove = biomes.getOrThrow(ModBiomes.DYEDREAM_CHERRY_GROVE);
         Holder<Biome> dyedreamSnowyPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PLAINS);
-        Holder<Biome> dyedreamSnowyTaiga = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_TAIGA);
         Holder<Biome> dyedreamMushroomMountains = biomes.getOrThrow(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS);
         Holder<Biome> dyedreamPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_PLAINS);
         Holder<Biome> dyedreamFlowerField = biomes.getOrThrow(ModBiomes.DYEDREAM_FLOWER_FIELD);
@@ -112,10 +110,12 @@ public class ModLevelStems {
         Holder<DimensionType> dimType = dimensionTypes.getOrThrow(ModDimensionTypes.DYEDREAM_WORLD);
         Holder<NoiseGeneratorSettings> dimNoise = noiseSettings.getOrThrow(ModNoiseSettings.DYEDREAM_WORLD);
 
-        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），18 群系
+        // 多噪声群系源 — 采用原版分档边界（温度/湿度/大陆性/侵蚀/山脊谷带），17 群系
         //  海洋类 C[-1.05,-0.19]；海岸带平坦侵蚀为沙滩、陡峭侵蚀归陡坡/山峰陆地群系
         //  河流占山脊谷带 W[-0.05,0.05]；陆地/沙滩排除谷带（W 双点）
         //  平原按山脊 W 正负分半 → 染梦平原 / 染梦花海（花海为平原 W 变体）
+        //  染梦樱雪森林独享 冷×湿×陡坡 气候区（原染梦雪林已删除，由樱雪森林吃掉其区域）
+        //  染梦雪原覆盖全部平坦冷区（原染梦雪针叶林已删除，其 冷×湿×平坦 气候由雪原吃掉）
         //  地表群系 depth 双点位 {0,1}；洞穴群系 depth [0.2,0.9]
         Climate.Parameter tCold = Climate.Parameter.span(-1.0F, -0.15F);
         Climate.Parameter tColdOcean0 = Climate.Parameter.span(-1.0F, -0.45F);
@@ -134,6 +134,12 @@ public class ModLevelStems {
         Climate.Parameter ePeak = Climate.Parameter.span(-1.0F, -0.78F);
         Climate.Parameter eSlope = Climate.Parameter.span(-0.78F, -0.2225F);
         Climate.Parameter eFlat = Climate.Parameter.span(-0.2225F, 1.0F);
+        Climate.Parameter eUpperMountain = Climate.Parameter.span(-1.0F, -0.375F);
+        Climate.Parameter cNearInland = Climate.Parameter.span(-0.11F, 0.03F);
+        Climate.Parameter cMidFarInland = Climate.Parameter.span(0.03F, 1.0F);
+        // 原版 OverworldBiomeBuilder 的 Peak+High 怪异度切片（raw ridges）：|w| ∈ [0.4, 0.9333]，真正的峰顶
+        Climate.Parameter wPeakPos = Climate.Parameter.span(0.4F, 0.9333F);
+        Climate.Parameter wPeakNeg = Climate.Parameter.span(-0.9333F, -0.4F);
         Climate.Parameter eMountain = Climate.Parameter.span(-1.0F, -0.2225F);
         Climate.Parameter wFull = Climate.Parameter.span(-1.0F, 1.0F);
         Climate.Parameter wValley = Climate.Parameter.span(-0.05F, 0.05F);
@@ -154,12 +160,17 @@ public class ModLevelStems {
         // 河流（占山脊谷带，冷/暖按温度拆分；仅平坦侵蚀 E[-0.2225,1]——陡坡/山峰谷地高于海平面会成干河，交还陆地群系）
         addSurfacePoint(dyedreamBiomePoints, tWarm, hFull, cRiver, eFlat, wValley, dyedreamRiver);
         addSurfacePoint(dyedreamBiomePoints, tCold, hFull, cRiver, eFlat, wValley, dyedreamFrozenRiver);
-        // 寒冷陆地（陡坡/山峰群系大陆性下探到海岸带，覆盖陡峭海岸悬崖）
-        addLandSurfacePoint(dyedreamBiomePoints, tCold, hFull, cSteepLand, ePeak, wNeg, wPos, dyedreamSnowyPeaks);
-        addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cSteepLand, eSlope, wNeg, wPos, dyedreamSnowySlopes);
-        addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cSteepLand, eSlope, wNeg, wPos, dyedreamSnowyGrove);
-        addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cLand, eFlat, wNeg, wPos, dyedreamSnowyPlains);
-        addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cLand, eFlat, wNeg, wPos, dyedreamSnowyTaiga);
+        // 寒冷陆地（对照原版 OverworldBiomeBuilder：峰 = E0+E1 × 中/深内陆 × 高怪异度切片，真正的山顶）
+        //  染梦雪山（冰尖峰）— 峰顶 E0+E1[-1,-0.375] × 中/深内陆 C[0.03,1] × |w|∈[0.4,0.9333]（原版 Peak+High 切片，只占山顶小范围）
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hFull, cMidFarInland, eUpperMountain, wPeakNeg, wPeakPos, dyedreamSnowyPeaks);
+        //  染梦樱雪森林 — 湿山坡 E1~E2[-0.78,-0.2225]（W 双点；峰顶湿侧高 W 处由雪山按注册顺序先占）
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hWet, cSteepLand, eSlope, wNeg, wPos, dyedreamCherryGrove);
+        //  染梦雪原 — 平坦冷区（原染梦雪针叶林删除，其 冷×湿×平坦 气候由雪原吃掉，湿度扩为全区间）
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hFull, cLand, eFlat, wNeg, wPos, dyedreamSnowyPlains);
+        //  染梦雪原（干山坡）— 原雪坡 E1~E2 干侧 [-0.78,-0.2225] 并入雪原（雪坡合并进雪原，山坡归雪原）
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hDry, cLand, eSlope, wNeg, wPos, dyedreamSnowyPlains);
+        //  染梦雪原（近内陆山麓 E0）— 近内陆 C[-0.11,0.03] 的 E0 低山/山麓归雪原，雪山只在中/深内陆高山
+        addLandSurfacePoint(dyedreamBiomePoints, tCold, hFull, cNearInland, ePeak, wNeg, wPos, dyedreamSnowyPlains);
         // 温暖陆地（菇山陡坡下探到海岸带）
         addLandSurfacePoint(dyedreamBiomePoints, tWarm, hFull, cSteepLand, eMountain, wNeg, wPos, dyedreamMushroomMountains);
         // 染梦平原 / 染梦花海 — 同为 暖×干×内陆×平坦 气候，按山脊 W 正负分半（仿原版向日葵平原变体）

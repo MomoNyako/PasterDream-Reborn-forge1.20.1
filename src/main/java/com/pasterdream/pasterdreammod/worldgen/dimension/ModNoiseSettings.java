@@ -157,9 +157,8 @@ public class ModNoiseSettings {
                         SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_FOREST,
                                 ModBiomes.DYEDREAM_FLOWER_FIELD,
                                 ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS,
-                                ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_SNOWY_TAIGA,
-                                ModBiomes.DYEDREAM_SNOWY_PEAKS, ModBiomes.DYEDREAM_SNOWY_SLOPES,
-                                ModBiomes.DYEDREAM_SNOWY_GROVE),
+                                ModBiomes.DYEDREAM_SNOWY_PLAINS,
+                                ModBiomes.DYEDREAM_CHERRY_GROVE),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.sequence(
@@ -176,6 +175,41 @@ public class ModNoiseSettings {
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.UNDER_FLOOR,
                                                 SurfaceRules.state(ModBlocks.DYEDREAM_DIRT.get().defaultBlockState())
+                                        )
+                                )
+                        )
+                ),
+                // 染梦雪山（冰尖峰）：仿原版 frozen/jagged 组合 — 陡崖染梦浮冰、噪声带染梦浮冰/染梦冰、露出顶面原版雪块；峰体表皮染梦浮冰（无草皮）
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_SNOWY_PEAKS),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.sequence(
+                                                        SurfaceRules.ifTrue(
+                                                                SurfaceRules.steep(),
+                                                                SurfaceRules.state(ModBlocks.DYEDREAM_PACKED_ICE.get().defaultBlockState())
+                                                        ),
+                                                        SurfaceRules.ifTrue(
+                                                                SurfaceRules.noiseCondition(Noises.PACKED_ICE, 0.0, 0.2),
+                                                                SurfaceRules.state(ModBlocks.DYEDREAM_PACKED_ICE.get().defaultBlockState())
+                                                        ),
+                                                        SurfaceRules.ifTrue(
+                                                                SurfaceRules.noiseCondition(Noises.ICE, 0.0, 0.025),
+                                                                SurfaceRules.state(ModBlocks.DYEDREAM_ICE.get().defaultBlockState())
+                                                        ),
+                                                        SurfaceRules.ifTrue(
+                                                                SurfaceRules.waterBlockCheck(0, 0),
+                                                                SurfaceRules.state(Blocks.SNOW_BLOCK.defaultBlockState())
+                                                        ),
+                                                        SurfaceRules.state(ModBlocks.DYEDREAM_PACKED_ICE.get().defaultBlockState())
+                                                )
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(ModBlocks.DYEDREAM_PACKED_ICE.get().defaultBlockState())
                                         )
                                 )
                         )
