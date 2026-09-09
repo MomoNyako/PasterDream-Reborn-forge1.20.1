@@ -101,8 +101,7 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tDripstone = dyeTag("dyedream_world_dripstone_biome");
             TagKey<Biome> tLand = dyeTag("dyedream_world_land_biome");
             TagKey<Biome> tOcean = dyeTag("dyedream_world_ocean_biome");
-            ResourceKey<PlacedFeature> freezeTop = ResourceKey.create(Registries.PLACED_FEATURE,
-                    ResourceLocation.fromNamespaceAndPath("minecraft", "freeze_top_layer"));
+            ResourceKey<PlacedFeature> freezeTop = ModPlacedFeatures.FREEZE_TOP_LAYER;
 
             // 全维度通用：矿石 / 晶芽 / 晶洞
             addFeature(entries, "dyedream_titanium_ore", ModPlacedFeatures.TITANIUM_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
@@ -157,6 +156,8 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_flower_field_corolla", ModPlacedFeatures.DYEDREAM_COROLLA_PATCH_FLOWER_FIELD, featureLookup, tFlowerField);
             addPatch(entries, "dyedream_flower_field_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tFlowerField);
             addFeature(entries, "dyedream_flower_field_light_ball", ModPlacedFeatures.FLOATING_LIGHT_BALL, featureLookup, tFlowerField, GenerationStep.Decoration.VEGETAL_DECORATION);
+            // 花海混合花卉（流明堇/玲云花/苓灯花/染梦铃兰 — 仿原版繁花森林，按坐标噪声错落分布）
+            addPatch(entries, "dyedream_flower_field_mixed_flowers", ModPlacedFeatures.FLOWER_FIELD_FLOWERS, featureLookup, tFlowerField);
 
             // 平原/森林共享装饰（茎草/铃兰/藤/方解石笋）
             addPatch(entries, "dyedream_stem_grass", ModPlacedFeatures.STEM_GRASS_PATCH, featureLookup, tStem);

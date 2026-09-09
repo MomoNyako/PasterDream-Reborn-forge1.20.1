@@ -83,6 +83,11 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SNOWY_WATER_POOL =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "snowy_water_pool"));
+    // 结冰（染梦冻河/染梦雪原等）— 包装原版 freeze_top_layer 地物，去掉 minecraft:biome 放置过滤
+    //（原版放置过滤在区块底部采样群系，染梦世界底部常为洞穴群系，导致过滤失败永远不结冰）
+    public static final ResourceKey<PlacedFeature> FREEZE_TOP_LAYER =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "freeze_top_layer"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_STONE_BLOBS =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_stone_blobs"));
@@ -178,6 +183,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LINHT_FLOWER_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "linht_flower_patch"));
+    // 花海混合花卉 — 仿原版繁花森林（成片错落，按坐标噪声选花种）
+    public static final ResourceKey<PlacedFeature> FLOWER_FIELD_FLOWERS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "flower_field_flowers"));
     // ===== 洞穴晶芽 =====
     public static final ResourceKey<PlacedFeature> DYEDREAM_MOSS_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_moss_patch"));
     public static final ResourceKey<PlacedFeature> SMALL_DYEDREAM_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_dyedream_bud_patch"));
@@ -484,6 +493,16 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
+        // 结冰 — 包装原版 freeze_top_layer 地物，放置列表为空（无 minecraft:biome 过滤）。
+        // 原版 minecraft:freeze_top_layer 自带 BiomeFilter 放置修饰，会在区块底部(y=-64)采样群系；
+        // 染梦世界底部常为洞穴群系（dyedream_caves 等，未挂接 freeze_top_layer），
+        // 过滤直接失败 → SnowAndFreezeFeature 从不执行 → 冻河/雪原水面无法结冰。
+        ResourceKey<ConfiguredFeature<?, ?>> VANILLA_FREEZE_TOP_LAYER_CF =
+                ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                        ResourceLocation.fromNamespaceAndPath("minecraft", "freeze_top_layer"));
+        context.register(FREEZE_TOP_LAYER, new PlacedFeature(
+                cf.getOrThrow(VANILLA_FREEZE_TOP_LAYER_CF), List.of()));
+
         // ===== 染梦海洋 — 海带 =====
         ResourceKey<ConfiguredFeature<?, ?>> VANILLA_KELP_CF =
                 ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("minecraft", "kelp"));
@@ -666,7 +685,7 @@ public class ModPlacedFeatures {
         // 花海梦染茶花 — 密集，每区块 6 簇（CountPlacement.of(6)），成片花海
         context.register(DYEDREAM_COROLLA_PATCH_FLOWER_FIELD, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_COROLLA_PATCH_DENSE),
-                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(3), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_DYEDREAM_GROUND)));
 
@@ -720,6 +739,13 @@ public class ModPlacedFeatures {
         context.register(LINHT_FLOWER_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.LINHT_FLOWER_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
+
+        // 花海混合花卉 — 仿原版繁花森林：每区块 6 簇，按坐标噪声在四种花卉间错落分布
+        context.register(FLOWER_FIELD_FLOWERS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.FLOWER_FIELD_FLOWERS),
+                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_DYEDREAM_GROUND)));
 
