@@ -859,6 +859,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其二"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("空岛的圣诞树"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("风铃笼"));
 
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.MistyDreamingLotus());
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.PiercingEdelweiss());
