@@ -78,6 +78,7 @@ public class ModBiomeModifierProvider implements DataProvider
             TagKey<Biome> tAll = dyeTag("dyedream_world_biome");
             TagKey<Biome> tWater = dyeTag("dyedream_world_water_biome");
             TagKey<Biome> tSeagrass = dyeTag("dyedream_world_seagrass_biome");
+            TagKey<Biome> tRiver = dyeTag("dyedream_world_river_biome");
             TagKey<Biome> tWarmLand = dyeTag("dyedream_world_warm_land_biome");
             TagKey<Biome> tWarmIce = dyeTag("dyedream_world_warm_ice_biome");
             TagKey<Biome> tCold = dyeTag("dyedream_world_cold_biome");
@@ -122,6 +123,9 @@ public class ModBiomeModifierProvider implements DataProvider
 
             // 海草（陆地水边 + 海洋 + 沿岸/河流）
             addFeature(entries, "dyedream_seagrass", ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH, featureLookup, tSeagrass, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+            // 河流粘土（染梦河流/染梦冻河）— 仿原版河流 disk_clay，UNDERGROUND_ORES step
+            addFeature(entries, "dyedream_river_clay", ModPlacedFeatures.DYEDREAM_RIVER_CLAY, featureLookup, tRiver, GenerationStep.Decoration.UNDERGROUND_ORES);
 
             // 温暖冰团（平原/菇山/森林/海洋）
             addFeature(entries, "dyedream_warm_ice_blob", ModPlacedFeatures.DYEDREAM_ICE_BLOBS, featureLookup, tWarmIce, GenerationStep.Decoration.UNDERGROUND_ORES);

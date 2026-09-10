@@ -31,6 +31,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFolia
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -149,6 +150,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_PICKLE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sea_pickle_patch"));
     // 染梦海草 — 原作 ground_feature_dyedream_5
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_SEAGRASS_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_seagrass_patch"));
+    // 河流粘土 — 镜像原版 minecraft:disk_clay（替换染梦泥土/染梦沙/白沙）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_RIVER_CLAY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_river_clay"));
     // ===== 洞穴晶芽 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_DYEDREAM_BUD_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_dyedream_bud_patch"));
@@ -1004,6 +1007,17 @@ public class ModConfiguredFeatures {
                         simpleBlockInWater(BlockStateProvider.simple(
                                 ModBlocks.DYEDREAM_SEAGRASS.get().defaultBlockState()
                                         .setValue(BlockStateProperties.WATERLOGGED, true))))));
+
+        // 河流粘土 — 镜像原版 minecraft:disk_clay（radius 2~3, half_height 1），替换染梦泥土/染梦沙/白沙
+        context.register(DYEDREAM_RIVER_CLAY, new ConfiguredFeature<>(Feature.DISK,
+                new DiskConfiguration(
+                        RuleBasedBlockStateProvider.simple(Blocks.CLAY),
+                        BlockPredicate.matchesBlocks(List.of(
+                                ModBlocks.DYEDREAM_DIRT.get(),
+                                ModBlocks.DYEDREAM_SAND.get(),
+                                ModBlocks.WHITE_SAND.get())),
+                        UniformInt.of(2, 3),
+                        1)));
 
         // ===== 洞穴晶芽 =====
         context.register(SMALL_DYEDREAM_BUD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

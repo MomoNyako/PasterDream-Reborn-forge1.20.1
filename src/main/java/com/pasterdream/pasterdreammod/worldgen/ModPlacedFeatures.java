@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 
@@ -161,6 +162,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_SEAGRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_seagrass_patch"));
+    // 河流粘土 — 镜像原版 minecraft:disk_clay
+    public static final ResourceKey<PlacedFeature> DYEDREAM_RIVER_CLAY =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_river_clay"));
     // 染梦藤蔓 — 原作 vine_0
     public static final ResourceKey<PlacedFeature> DYEDREAM_VINE_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
@@ -799,6 +804,14 @@ public class ModPlacedFeatures {
                 List.of(CountPlacement.of(64), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(20), VerticalAnchor.absolute(59)))));
+
+        // 河流粘土 — 镜像原版 minecraft:disk_clay 放置：in_square + 顶部实心（OCEAN_FLOOR_WG）+ 需水
+        //（不加 BiomeFilter：只经生物群系修改器注入两河流群系，且染梦世界底部常为洞穴群系，biome 过滤会失败）
+        context.register(DYEDREAM_RIVER_CLAY, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_RIVER_CLAY),
+                List.of(InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)))));
 
 
         // 阴影真菌树

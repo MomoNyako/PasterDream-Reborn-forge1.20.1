@@ -231,9 +231,9 @@ public class ModNoiseSettings {
                                 )
                         )
                 ),
-                // 河流/冻河：河床染梦沙
+                // 河流：河床染梦沙
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_RIVER, ModBiomes.DYEDREAM_FROZEN_RIVER),
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_RIVER),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.sequence(
@@ -248,14 +248,42 @@ public class ModNoiseSettings {
                                 )
                         )
                 ),
+                // 冻河：河床白沙
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_FROZEN_RIVER),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.state(ModBlocks.WHITE_SAND.get().defaultBlockState())
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(ModBlocks.WHITE_SAND.get().defaultBlockState())
+                                        )
+                                )
+                        )
+                ),
                 // 海洋：水底染梦沙，下层默认方解石
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_OCEAN, ModBiomes.DYEDREAM_COLD_OCEAN, ModBiomes.DYEDREAM_FROZEN_OCEAN),
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_OCEAN),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.ifTrue(
                                         SurfaceRules.ON_FLOOR,
                                         SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
+                                )
+                        )
+                ),
+                // 冷海/冻洋：水底白沙，下层默认方解石
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_COLD_OCEAN, ModBiomes.DYEDREAM_FROZEN_OCEAN),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(ModBlocks.WHITE_SAND.get().defaultBlockState())
                                 )
                         )
                 ),
