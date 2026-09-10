@@ -1020,7 +1020,7 @@ public class ModConfiguredFeatures {
                         simpleBudInAir(BlockStateProvider.simple(ModBlocks.ICE_BUD.get()), ICE_BUD_GROUND))));
 
         // ===== 染梦晶洞 =====
-        // 结构与原版紫水晶洞一致：外层黑石、中层方解石、内层染梦水晶块（含染梦母岩）
+        // 结构与原版紫水晶洞一致：外层闪长岩、中层方解石、内层染梦水晶块（含染梦母岩）
         context.register(DYEDREAM_GEODE, new ConfiguredFeature<>(Feature.GEODE,
                 new GeodeConfiguration(
                         new GeodeBlockSettings(
@@ -1028,7 +1028,7 @@ public class ModConfiguredFeatures {
                                 BlockStateProvider.simple(ModBlocks.DYEDREAM_BUD_BLOCK.get()),
                                 BlockStateProvider.simple(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()),
                                 BlockStateProvider.simple(Blocks.CALCITE),
-                                BlockStateProvider.simple(Blocks.BLACKSTONE),
+                                BlockStateProvider.simple(Blocks.DIORITE),
                                 List.of(
                                         ModBlocks.SMALL_DYEDREAM_BUD.get().defaultBlockState(),
                                         ModBlocks.MEDIUM_DYEDREAM_BUD.get().defaultBlockState(),
