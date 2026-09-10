@@ -106,17 +106,17 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.BUBBLE_GUM.get(), "Bubble Gum");
         add(ModItems.GALAXY_JELLY.get(), "Galaxy Jelly");
         add("tooltip.pasterdreammod.galaxy_jelly", "§9After consumption, throw the player into the air and gains a 7-second slow falling.");
-        add("tooltip.pasterdreammod.galaxy_jelly.flavor", "§7§O --Holding the galaxy in my hands.");
+        add("tooltip.pasterdreammod.galaxy_jelly.flavor", "§7§O--Holding the galaxy in my hands.");
         add(ModItems.MILKY_WAY_JELLY.get(), "Milky Way Jelly");
         add("tooltip.pasterdreammod.milky_way_jelly", "§9After consumption, teleports the player to the dimension's build height and grants 30 seconds of slow falling.");
-        add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O --The Milky Way knows no bounds, an ocean of stars without end.");
+        add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O--The Milky Way knows no bounds, an ocean of stars without end.");
         add(ModItems.FORTUNE_JELLY.get(), "Fortune Jelly");
         add("tooltip.pasterdreammod.fortune_jelly", "§9After eating, gain Luck I (1:00)");
         add(ModItems.WIND_RUNNER_JELLY.get(), "Wind Runner Jelly");
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9After eating, gain Wind Runner (3:00), allowing elytra flight without an elytra");
         add(ModItems.SHADOW_JELLY.get(), "Shadow Jelly");
         add("tooltip.pasterdreammod.shadow_jelly", "§9After eating, your shadow difficulty will rise or fall by 1 tier");
-        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§O --Only fools and madmen would eat this dreadful jelly");
+        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§O--Only fools and madmen would eat this dreadful jelly");
         add("message.pasterdream.shadow_jelly.up", "§5Your shadow difficulty increased! Current tier: %s (%s)");
         add("message.pasterdream.shadow_jelly.down", "§7Your shadow difficulty decreased! Current tier: %s (%s)");
         add("message.pasterdream.shadow_jelly.unchanged", "§7Your shadow difficulty did not change (current tier: %s)");
@@ -690,7 +690,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.duke_coin_curio", "Duke Coin Curio");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 Luck");
         add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §c+7 Blink Cooldown");
-        add("tooltip.pasterdream.duke_coin_curio.flavor", "§7§o-- 7 Days to Die");
+        add("tooltip.pasterdream.duke_coin_curio.flavor", "§7§o--7 Days to Die");
 
         add("button.pasterdream.mortarbutton", "grinding");
         add("button.pasterdream.copy_button", "Copy");
@@ -706,7 +706,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.upgrade_kit", "§7Used at the smithing table to upgrade equipment Can preserve the original enhancement properties of the equipment");
         add("tooltip.pasterdream.enhance_stone.usage", "§7Used to enhance Weapons/Tools/Armor at the Weapon Workshop Crafting Table");
         add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9+0.5 Swim Speed while held (does not stack)");
-        add("tooltip.pasterdream.thermal_dagger", "§7§o-- Subnautica");
+        add("tooltip.pasterdream.thermal_dagger", "§7§o--Subnautica");
         add("tooltip.pasterdream.deep_treasure", "§7Splashing waves push us into the distance");
         add("tooltip.pasterdream.shadow_deep_treasure", "§7Shadows still seem to flow across its surface");
         add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +1~+3");
@@ -770,10 +770,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
-        add("tooltip.pasterdream.angel_wing.flavor", "§7§o-- Based on Angel Player, developed on my dorm PC");
+        add("tooltip.pasterdream.angel_wing.flavor", "§7§o--Based on Angel Player, developed on my dorm PC");
         add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
         add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9Grants slow and wither immunity");
-        add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- See you at the Nexus");
+        add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o--See you at the Nexus");
         add("tooltip.pasterdreammod.titanium_armor.1", "§7Set Bonus: §eTitanium Protection");
         add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9Gain 2 Absorption hearts every 30s");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7Set Bonus: §2Sculk Echo");
@@ -1000,14 +1000,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.sand_of_time.cooldown", "This Sand of Time is resting after a hard day of work and needs %s seconds to recover");
         add("tooltip.pasterdream.sand_of_time.1", "§7Right click to change through the world's day and night");
         add("tooltip.pasterdream.sand_of_time.2", "§7This item will go into cooldown for %s §7seconds after use");
-        add("tooltip.pasterdream.sand_of_time.3", "§7§o-- The hourglass will remember the time we forgot");
+        add("tooltip.pasterdream.sand_of_time.3", "§7§o--The hourglass will remember the time we forgot");
         add("tooltip.pasterdream.sand_of_time.4", "%s seconds remaining");
         add("tooltip.pasterdream.sand_of_time.5", "§aReady to use");
         add(ModItems.STORAGE_BAG.get(), "Storage Bag");
         add(ModItems.LARGE_STORAGE_BAG.get(), "Large Storage Bag");
         add(ModItems.DREAM_HARP_OF_WANDERER.get(), "DreamHarp of Wanderer");
         add(ModItems.SLIVER_BELL.get(),"Sliver Bell");
-        add("tooltip.pasterdream.sliver_bell", "§7§O --Sheyann Meow!");
+        add("tooltip.pasterdream.sliver_bell", "§7§O--Sheyann Meow!");
         add("message.pasterdream.dream_harp_of_wanderer.no_energy", "Not enough Melt Dream Energy");
         add("tooltip.pasterdream.dream_harp_of_wanderer.line1", "§7Plays to provide effects to players within 10 blocks (1:00):");
         add("tooltip.pasterdream.dream_harp_of_wanderer.line2", "§7▪ §9Max HP+4, restore 4 HP, Speed+10%");
@@ -1074,10 +1074,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.qym_butterfly_star_hairpin.effect", "§7▪ §9All mobs will not actively attack you");
         add("tooltip.pasterdream.qym_butterfly_star_hairpin.lore", "§7§oIf you aim for the stars in the night sky, even if you get lost, you are still among them.");
         add(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get(), "Hiyori Butterfly Hairpin");
-        add("tooltip.pasterdream.hiyori_butterfly_hairpin.lore", "§7§o-- Hamidashi, therefore Creative");
+        add("tooltip.pasterdream.hiyori_butterfly_hairpin.lore", "§7§o--Hamidashi, therefore Creative");
         add(ModItems.ALLKINDS_RING.get(), "Allkinds Ring");
         add("tooltip.pasterdream.allkinds_ring.flavor", "§7§oGather the power of all things, forge this ring");
-        add("tooltip.pasterdream.allkinds_ring.lore", "§7§o-- Szuperlina Deonne");
+        add("tooltip.pasterdream.allkinds_ring.lore", "§7§o--Szuperlina Deonne");
         add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9-5% Skill Cooldown");
         add("tooltip.pasterdream.allkinds_ring.skill_dmg", "§7▪ §9+5% Skill Damage");
         add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9-5% Blink Cooldown");
@@ -1101,7 +1101,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.effect.share", "§7▪ §9Evasion time doubles and is shared with nearby allies");
         add("tooltip.pasterdream.boboji_curio.effect.flavor", "§7▪ §eAdds sound effects and particle trails to Blink");
         add("tooltip.pasterdream.boboji_curio.lore", "§7§oDedicated to the one who once accompanied me");
-        add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- A yellow-green budgerigar named Boboji");
+        add("tooltip.pasterdream.boboji_curio.dedication", "§7§o--A yellow-green budgerigar named Boboji");
         add(ModItems.SHADOW_BREATH.get(), "Shadow Breath");
         add("tooltip.pasterdream.shadow_breath.0", "§7▪ §9When SAN ≥ 50%:");
         add("tooltip.pasterdream.shadow_breath.1", "§9  Every +10% SAN");
@@ -1131,14 +1131,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.brooch_of_white_orchid.effect2", "§7▪ §9White Sword Rain +50% damage to all creatures");
         add("tooltip.pasterdream.brooch_of_white_orchid.effect3", "§7▪ §9White Sword Rain ignores invulnerability frames");
         add("message.pasterdream.brooch_of_white_orchid.rejected", "This ornament rejects you");
-        add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§o§7 -- I fade into formlessness, now enjoy the glory you deserve");
+        add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§o§7--I fade into formlessness, now enjoy the glory you deserve");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9Generates a Foxfire field in a 12×12 area");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9Non-player creatures take 20% more damage and get Slowness V effect");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9Grants the player Regeneration");
         add("tooltip.pasterdream.kaichu_omamori.effect.duration", "§7▪ §9Duration: %s seconds");
         add("tooltip.pasterdream.kaichu_omamori.effect.energy_cost", "§f▪ §4Melt Dream Energy -5");
         add("tooltip.pasterdream.kaichu_omamori.effect.cooldown", "§7▪ §9Cooldown: %s seconds");
-        add("tooltip.pasterdream.kaichu_omamori.flavor", "§o§7 -- Alirea custom item");
+        add("tooltip.pasterdream.kaichu_omamori.flavor", "§o§7--Alirea custom item");
         add("key.pasterdream.kaichu_omamori", "Activate Kaichu Omamori");
         add("key.pasterdream.cloak_activate", "Activate Cloak");
         add("tooltip.pasterdream.kaichu_omamori.equip", "§7When equip:");
@@ -1152,7 +1152,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.worldtree_seedpod.condition", "§7▪ §9In Dyedream World, open sky, Y>160, daytime, standing on Worldtree Leaves");
         add("tooltip.pasterdream.worldtree_seedpod.hunger", "§7▪ §4Constantly increases exhaustion");
         add("tooltip.pasterdream.worldtree_seedpod.energy", "§7▪ §9Melt Dream Energy +360/h");
-        add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o-- Leaves fall to root, pods burst to crown");
+        add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o--Leaves fall to root, pods burst to crown");
         //Necklaces
         add(ModItems.EMBRYO_NECKLACE.get(), "Embryo Necklace");
         add(ModItems.RABBIT_FOOT_NECKLACE.get(), "Rabbit Foot Necklace");
@@ -1241,7 +1241,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("command.pasterdream.lowsan.sound.get", "%s: %s");
         add("item.pasterdream.star_wish_rod", "Star's Wish Rod");
         add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9Grants an extra Super deep-sea treasure when fishing");
-        add("tooltip.pasterdream.star_wish_rod", "§7§O --Fish as numerous as stars");
+        add("tooltip.pasterdream.star_wish_rod", "§7§O--Fish as numerous as stars");
         add("command.pasterdream.lowsan.enabled", "enabled");
         add("command.pasterdream.lowsan.disabled", "disabled");
         add("gamerule.category.pasterdream", "PasterDream");
@@ -1455,7 +1455,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9 Give a battle intention effect when killing enemies. Each kill increases it by 1 level, up to a maximum of 3 levels.");
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9Increase attack damage and increase healing speed while the effect lasts.");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
-        add("tooltip.pasterdream.war_flag.description", "§7§O --The shadows flowing on this flag seem to be telling stories of a distant past...");
+        add("tooltip.pasterdream.war_flag.description", "§7§O--The shadows flowing on this flag seem to be telling stories of a distant past...");
         add("effect.pasterdream.war_flag", "Battle Intention");
         add("effect.pasterdream.bind", "Bind");
         add("effect.pasterdream.shadow_silence", "Shadow Silence");
@@ -1930,7 +1930,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9When using a card, the levels of some potion effects you currently have are doubled, but their duration is halved.");
         add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9When using a card, the entity corresponding to the cursor will be marked. The marked entity will become a target for attacks from other entities for 120 seconds.");
-        add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O --At least you don’t have to worry about being stabbed into glass shards by a girl in white after using this card.");
+        add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O--At least you don’t have to worry about being stabbed into glass shards by a girl in white after using this card.");
         add("message.pasterdream.prophecy_card.conflict.marked", "Let's dance!");
         add("message.pasterdream.prophecy_card.conflict.no_target", "No target selected.");
         add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9When using the card, deal %.1f damage to all enemies within a 7*7 range centered on yourself. This damage is not reduced by defense. (This effect does not apply to players)");
@@ -1939,11 +1939,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.guard.description.2", "§9If a player takes any damage that exceeds %.1f%% of their maximum health, the excess part will be reduced by %.1f%%. This damage reduction is applied before the armor's damage reduction.");
         add("tooltip.pasterdream.prophecy_card.holy_grail.description", "§9When using the card, you gain the Holy Grail effect for 120 seconds. During this time, you get 15 maximum HP, are immune to some negative statuses, and naturally regenerate health—the lower your HP, the faster the regeneration, reaching the maximum speed when below 33%.");
         add("tooltip.pasterdream.prophecy_card.chaos.description.1", "§9When using the card, all enemies within a 7*7 area centered on yourself will become confused and unable to act for 10 seconds. (This effect does not apply to players)");
-        add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O --THE TRUE AND NEO CHAOS");
+        add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O--THE TRUE AND NEO CHAOS");
         add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9When using the card, it ignites all undead mobs and Illagers within a 19*19 area centered on yourself for 15 seconds, dealing 25 points damage.");
         add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9If this entity is a zombie villager, it won't take damage and will turn into a villager.");
         add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9As for those extremely annoying creatures, just ERASE them. As for what counts as extremely annoying, trust the prophecy card's judgment.");
-        add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O --FACE YOUR SIN.");
+        add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O--FACE YOUR SIN.");
         add("tooltip.pasterdream.prophecy_card.wielding_sword.description", "§9When using the card, you gain the Flare up effect for 120 seconds. During this effect, attack damage +3, attack speed +0.2, skill damage multiplier +30%, and skill cooldown -20%.");
 
         add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9How did you get this card? ");
@@ -1960,10 +1960,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.highly_toxic", "Highly Toxic");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9After Smashing, release a highly toxic cloud, inflicting Highly Toxic, Slowness, and Weakness buff on all creatures in a 6x6 area.");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9After Smashing, release a dark cloud at the landing spot, and after a short time, randomly strikes lightning 4 times within a 5x5 area.");
-        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O --Bottled Lightning");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O--Bottled Lightning");
         add("tooltip.pasterdream.potion_bottle.rejuvenation.description","§9After Smashing, it releases a 5x5 area of healing mist for 20 seconds, restoring 5% of max health to players or peaceful creatures within the mist.");
         add("tooltip.pasterdream.potion_bottle.frozen.description.1","§9After smashing, it releases a 7*7 freezing mist at the landing spot, and any entities inside will be unable to move and lose their combat ability.");
-        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O --Snowgrave");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O--Snowgrave");
         add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9After smashing, release an 8*8 frenzy mist at the landing spot.");
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9Players in it +20% attack damage, +10% movement speed, +50% attack speed, -30% skill cooldown, -30% blink cooldown, and +30% skill damage.");
         add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9After smashing, create a blazing fire in a 6x6 area, dealing magic damage over time to all enemies within the range and igniting them.");
@@ -2581,9 +2581,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9When damaged, has a %s%% chance to gain %ss of invulnerability");
         add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9Immune to kinetic damage from elytra flight collisions");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9Immune to fall damage");
-        add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o-- The boneless angel, Cecilia");
+        add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o--The boneless angel, Cecilia");
         add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9Amplifies the wind's effect on yourself");
-        add("tooltip.pasterdream.paper_plane.description", "§7§o-- The childhood we left behind");
+        add("tooltip.pasterdream.paper_plane.description", "§7§o--The childhood we left behind");
         add("message.pasterdream.wind_vane.direction.0", "Current wind: §aNorth Wind");
         add("message.pasterdream.wind_vane.direction.1", "Current wind: §aNortheast Wind");
         add("message.pasterdream.wind_vane.direction.2", "Current wind: §aEast Wind");
