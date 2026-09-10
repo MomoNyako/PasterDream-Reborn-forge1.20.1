@@ -1729,7 +1729,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "卡莱的调料瓶");
         add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9食用速度+40%");
-        add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9装备时获得卡莱料理X增益，攻击命中消耗层数，砍至消失后需进食恢复，进食积累层数（每3饥饿度+1，上限Ⅹ级）");
+        add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9装备时获得卡莱料理X增益，攻击命中消耗层数，层数耗尽后需要进食补充，进食积累层数（每3饥饿度+1，上限X级）");
         add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9每消耗1层会获得随机效果");
         add("effect.pasterdream.calais_spice_bottle", "卡莱料理");
 
