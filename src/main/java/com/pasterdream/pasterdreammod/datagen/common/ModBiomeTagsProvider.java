@@ -134,6 +134,10 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(dye("dyedream_beach")).addOptional(dye("dyedream_river"))
                 .addOptional(dye("dyedream_frozen_river"));
 
+        tag(dyeTag("dyedream_world_river_biome"))
+                .addOptional(dye("dyedream_river"))
+                .addOptional(dye("dyedream_frozen_river"));
+
         tag(dyeTag("dyedream_world_warm_land_biome"))
                 .addOptional(dye("dyedream_plains")).addOptional(dye("dyedream_mushroom_mountains"))
                 .addOptional(dye("dyedream_forest"));
