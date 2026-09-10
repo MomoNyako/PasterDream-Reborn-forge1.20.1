@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:inferno_sword",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:murakumo_kusanagi",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:beihairuo_tide_sword",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:chenjingmen_desert_sword",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:broken_hero_sword",
+      "count": 1
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:terra_blade",
+      "count": 1
+    }
+  ]
+}

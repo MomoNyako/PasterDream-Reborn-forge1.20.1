@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:silver_bell",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:dyedream_alloy_ingot",
+      "count": 1
+    },
+    {
+      "item": "minecraft:string",
+      "count": 5
+    },
+    {
+      "item": "pasterdream:dyedream_planks",
+      "count": 5
+    },
+    {
+      "item": "pasterdream:white_crystal",
+      "count": 1
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:strawberry_heart",
+      "count": 1
+    }
+  ]
+}

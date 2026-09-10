@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:diamond",
+      "count": 8
+    },
+    {
+      "item": "minecraft:blue_ice",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:black_metal_ingot",
+      "count": 2
+    },
+    {
+      "item": "pasterdream:black_stick",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:pure_horror",
+      "count": 1
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:ice_shadow_hammer",
+      "count": 1
+    }
+  ]
+}
