@@ -83,8 +83,8 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymSwayingSkirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCloudBootsItem;
-import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.AngelWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.item.dreamtrainticket.DreamTrainTicketItem;
@@ -1944,8 +1944,7 @@ public class ModItems {
 
     // 机械光翼
     public static final RegistryObject<Item> MACHINE_LIGHT_WING = ITEMS.register("machine_light_wing",
-            () -> new MachineLightWingItem(ModArmorMaterials.MACHINE_LIGHT_WING, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+            MachineLightWingItem::new);
 
     // 天使之翼
     public static final RegistryObject<Item> ANGEL_WING = ITEMS.register("angel_wing",

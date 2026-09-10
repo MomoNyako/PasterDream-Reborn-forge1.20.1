@@ -219,13 +219,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         upgradeKitRecipes(pWriter);
         moltenGoldToolRecipes(pWriter);
         hellfireToolRecipes(pWriter);
-        shadowErosionToolRecipes(pWriter);
-        iceShadowHammerRecipe(pWriter);
         meltDreamToolRecipes(pWriter);
         tideSwordRecipes(pWriter);
         grassSwordRecipe(pWriter);
-        terraBladeRecipe(pWriter);
-        starWishRodRecipe(pWriter);
         copperToolRecipes(pWriter);
         congealWindIronToolRecipes(pWriter);
         fluffyWindAlloyToolRecipes(pWriter);
@@ -523,81 +519,6 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.COMBAT, ModItems.INFERNO_SWORD.get())
                 .unlocks("has_nether_star", has(Items.NETHER_STAR))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":inferno_sword_smithing");
-    }
-
-    // ===== 影蚀工具配方（保留钛金工具 NBT）=====
-
-    private void shadowErosionToolRecipes(Consumer<FinishedRecipe> pWriter) {
-        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_EROSION_DAGGER.get())
-                .pattern("aba").pattern("aba").pattern(" c ")
-                .define('a', ModItems.NIGHTMARE_FUEL.get())
-                .define('b', ModItems.BLACK_METAL_INGOT.get())
-                .define('c', ModItems.TITANIUM_SWORD.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_SWORD.get()), has(ModItems.TITANIUM_SWORD.get())),
-                pWriter, "shadow_erosion_dagger");
-        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_EROSION_PICKAXE.get())
-                .pattern("aaa").pattern("bcb").pattern("bdb")
-                .define('a', ModItems.BLACK_METAL_INGOT.get())
-                .define('b', ModItems.NIGHTMARE_FUEL.get())
-                .define('c', ModItems.TITANIUM_PICKAXE.get())
-                .define('d', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_PICKAXE.get()), has(ModItems.TITANIUM_PICKAXE.get())),
-                pWriter, "shadow_erosion_pickaxe");
-        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_EROSION_AXE.get())
-                .pattern("abb").pattern("acb").pattern("daa")
-                .define('a', ModItems.NIGHTMARE_FUEL.get())
-                .define('b', ModItems.BLACK_METAL_INGOT.get())
-                .define('c', ModItems.TITANIUM_AXE.get())
-                .define('d', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_AXE.get()), has(ModItems.TITANIUM_AXE.get())),
-                pWriter, "shadow_erosion_axe");
-        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_EROSION_SHOVEL.get())
-                .pattern(" a ").pattern("bcb").pattern(" d ")
-                .define('a', ModItems.BLACK_METAL_INGOT.get())
-                .define('b', ModItems.NIGHTMARE_FUEL.get())
-                .define('c', ModItems.TITANIUM_SHOVEL.get())
-                .define('d', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_SHOVEL.get()), has(ModItems.TITANIUM_SHOVEL.get())),
-                pWriter, "shadow_erosion_shovel");
-        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_EROSION_HOE.get())
-                .pattern("aab").pattern(" cb").pattern(" d ")
-                .define('a', ModItems.BLACK_METAL_INGOT.get())
-                .define('b', ModItems.NIGHTMARE_FUEL.get())
-                .define('c', ModItems.TITANIUM_HOE.get())
-                .define('d', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_HOE.get()), has(ModItems.TITANIUM_HOE.get())),
-                pWriter, "shadow_erosion_hoe");
-
-        // 白厄剑 = 融梦水晶碎片 + 钛金剑 + 白厄水晶（锻造台，保留钛金剑 NBT）
-        SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
-                        Ingredient.of(ModItems.TITANIUM_SWORD.get()),
-                        Ingredient.of(ModItems.WHITE_CRYSTAL.get()),
-                        RecipeCategory.COMBAT, ModItems.WHITE_SWORD.get())
-                .unlocks("has_white_crystal", has(ModItems.WHITE_CRYSTAL.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":white_sword_smithing");
-
-        // 影刃 = 凝影剑柄 + 影蚀匕首 + 黑金属块（锻造台，保留影蚀匕首 NBT）
-        SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ModItems.SHADOW_HILT.get()),
-                        Ingredient.of(ModItems.SHADOW_EROSION_DAGGER.get()),
-                        Ingredient.of(ModItems.BLACK_METAL_BLOCK.get()),
-                        RecipeCategory.COMBAT, ModItems.SHADOW_SWORD.get())
-                .unlocks("has_shadow_hilt", has(ModItems.SHADOW_HILT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_sword_smithing");
-    }
-
-    // ===== 冰影战锤配方（保留染梦合金锤 NBT）=====
-
-    private void iceShadowHammerRecipe(Consumer<FinishedRecipe> pWriter) {
-        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ICE_SHADOW_HAMMER.get())
-                .pattern("aba").pattern("aca").pattern(" d ")
-                .define('a', ModItems.BLACK_METAL_INGOT.get())
-                .define('b', Items.BLUE_ICE)
-                .define('c', ModItems.DYEDREAM_HAMMER.get())
-                .define('d', ModItems.PURE_HORROR.get())
-                .unlockedBy(getHasName(ModItems.DYEDREAM_HAMMER.get()), has(ModItems.DYEDREAM_HAMMER.get())),
-                pWriter, "ice_shadow_hammer");
     }
 
     // ===== 融梦水晶工具配方 =====
@@ -1390,43 +1311,6 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 RecipeCategory.COMBAT, ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .unlocks("has_tide_sword", has(ModItems.TIDE_SWORD.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":beihairuo_tide_sword_smithing");
-    }
-
-    // ===== 大地之刃配方 =====
-
-    private void terraBladeRecipe(Consumer<FinishedRecipe> pWriter) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TERRA_BLADE.get())
-                .pattern("abc")
-                .pattern("def")
-                .pattern("ghi")
-                .define('a', ModItems.SHARP_MELT_DREAM_SWORD.get())
-                .define('b', ModItems.INFERNO_SWORD.get())
-                .define('c', ModItems.MURAKUMO_KUSANAGI.get())
-                .define('d', ModItems.CHENJINGMEN_DESERT_SWORD.get())
-                .define('e', ModItems.MELT_DREAM_LIQUID_BUCKET.get())
-                .define('f', ModItems.BROKEN_HERO_SWORD.get())
-                .define('g', ModItems.BEIHAI_RUO_TIDE_SWORD.get())
-                .define('h', ModItems.THERMAL_DAGGER.get())
-                .define('i', Items.NETHERITE_SWORD)
-                .unlockedBy(getHasName(ModItems.BROKEN_HERO_SWORD.get()), has(ModItems.BROKEN_HERO_SWORD.get()))
-                .save(pWriter);
-    }
-
-    // ===== 占星者的祈愿配方 =====
-
-    private void starWishRodRecipe(Consumer<FinishedRecipe> pWriter) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.STAR_WISH_ROD.get())
-                .pattern("aba")
-                .pattern("cde")
-                .pattern("afa")
-                .define('a', ModItems.TITANIUM_INGOT.get())
-                .define('b', ModItems.SNOW_VOW_HEAD.get())
-                .define('c', Items.POWDER_SNOW_BUCKET)
-                .define('d', Items.FISHING_ROD)
-                .define('e', Items.DIAMOND)
-                .define('f', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter);
     }
 
     // ===== 染梦玻璃系列配方 =====
@@ -3341,18 +3225,6 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                         "melt_dream_energy_ring_from_embryo"));
-
-        // 草莓甜心 = 染梦木板 + 染梦合金锭 + 线 + 银色铃铛
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STRAWBERRY_HEART.get(), 1)
-                .pattern("aba")
-                .pattern("cdc")
-                .pattern("aba")
-                .define('a', ModItems.DYEDREAM_PLANKS.get())
-                .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
-                .define('c', Items.STRING)
-                .define('d', ModItems.SLIVER_BELL.get())
-                .unlockedBy(getHasName(ModItems.SLIVER_BELL.get()), has(ModItems.SLIVER_BELL.get()))
-                .save(pWriter);
 
         // ===== 金狐狸交易配方 =====
         saveGoldenFoxTrade(pWriter, Ingredient.of(Items.GOLDEN_APPLE), new ItemStack(Items.ENCHANTED_GOLDEN_APPLE),

@@ -41,14 +41,11 @@ public enum ModArmorMaterials implements ArmorMaterial {
     // 琴雨梦
     QYM("qym", 0, new int[]{2, 10, 10, 10}, 99,
             SoundEvents.EMPTY, 10.0F, 1.0F,
-            () -> Ingredient.of(ModItems.MEMORY_GEM.get())),
+            () -> Ingredient.of(ModItems.MEMORY_GEM.get()));
 
     // 天使之翼已改为背饰，不再使用盔甲材质
 
-    // 机械光翼
-    MACHINE_LIGHT_WING("machine_light_wing", 34, new int[]{2, 7, 5, 2}, 9,
-            SoundEvents.ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F,
-            Ingredient::of);
+    // 机械光翼已改为背饰，不再使用盔甲材质
 
     private static final int[] BASE_DURABILITY = {11, 16, 15, 13};
 
