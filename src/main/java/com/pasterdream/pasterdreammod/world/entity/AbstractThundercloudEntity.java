@@ -132,14 +132,11 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (!level().isClientSide()) {
-        // 被生物攻击后将其设为仇恨目标（完全免疫的伤害类型不产生仇恨；不锁定破风骑士，避免骑士横扫误伤自己召唤的雷云）
-        if (!source.is(DamageTypes.LIGHTNING_BOLT) && !(isFireImmune() && source.is(DamageTypes.IN_FIRE))
-                && source.getEntity() instanceof LivingEntity living && living.isAlive()
-                && !(living instanceof WindKnightEntity)) {
-            this.setTarget(living);
-        }
-            if (random.nextDouble() <= 0.5) {
-                attackWithLightning();
+            // 被生物攻击后将其设为仇恨目标（完全免疫的伤害类型不产生仇恨；不锁定破风骑士，避免骑士横扫误伤自己召唤的雷云）
+            if (!source.is(DamageTypes.LIGHTNING_BOLT) && !(isFireImmune() && source.is(DamageTypes.IN_FIRE))
+                    && source.getEntity() instanceof LivingEntity living && living.isAlive()
+                    && !(living instanceof WindKnightEntity)) {
+                this.setTarget(living);
             }
         }
         if (source.is(DamageTypes.LIGHTNING_BOLT) || (isFireImmune() && source.is(DamageTypes.IN_FIRE)))
