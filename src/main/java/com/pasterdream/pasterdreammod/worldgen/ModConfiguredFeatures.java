@@ -1110,11 +1110,12 @@ public class ModConfiguredFeatures {
                         Blocks.MUD.defaultBlockState(),
                         ModBlocks.CYAN_MOSS_STONE.get().defaultBlockState(),
                         UniformInt.of(1, 1))));
-        // 小石堆 — 原作 ground_feature_wind_journey_6: tries=2, xz=5, y=2，仅空气上方/固体下方
+        // 小石堆 — 原作 ground_feature_wind_journey_6: tries=2, xz=5, y=2，底部仅限苍青岩/苍青苔岩
         context.register(WIND_JOURNEY_SMALL_STONE_SPIRIT, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(2, 5, 2,
-                        simpleBlockOnSolidGround(BlockStateProvider.simple(
-                                ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get().defaultBlockState())))));
+                        simpleBudInAir(BlockStateProvider.simple(
+                                ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get().defaultBlockState()),
+                                WIND_JOURNEY_GROUND))));
         // 茸毛苔 — 原作 grass_13: tries=48（xz/y 走默认 7/3），仅替换空气
         context.register(WIND_JOURNEY_HAIRY_MOSS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(48, 7, 3,
