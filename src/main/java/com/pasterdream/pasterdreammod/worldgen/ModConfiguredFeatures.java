@@ -454,6 +454,12 @@ public class ModConfiguredFeatures {
             ModBlocks.DYEDREAM_BUDDING_BLOCK.get()
     );
 
+    /** 风之旅途萤火虫巢地面 — 仅苍青岩/苍青苔岩 */
+    private static final List<Block> WIND_JOURNEY_GROUND = List.of(
+            ModBlocks.CYAN_STONE.get(),
+            ModBlocks.CYAN_MOSS_STONE.get()
+    );
+
     /** 绯红森林地面（可生成在绯红菌岩，下界岩，岩浆块上） */
     private static final List<Block> CRIMSON_FOREST_GROUND = List.of(
             Blocks.CRIMSON_NYLIUM,Blocks.NETHERRACK,Blocks.MAGMA_BLOCK
@@ -1089,10 +1095,11 @@ public class ModConfiguredFeatures {
         context.register(WIND_JOURNEY_PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(5, 7, 3,
                         simpleBlockOnSolidGround(BlockStateProvider.simple(ModBlocks.PEBBLE.get())))));
-        // 萤火虫巢 — 原作 ground_feature_wind_journey_4: tries=1, xz=2, y=1
+        // 萤火虫巢 — 原作 ground_feature_wind_journey_4: tries=1, xz=2, y=1，底部仅限苍青岩/苍青苔岩
         context.register(WIND_JOURNEY_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 2, 1,
-                        simpleBlockOnSolidGround(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get())))));
+                        simpleBudInAir(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get()),
+                                WIND_JOURNEY_GROUND))));
         // 染梦森林萤火虫巢 — 底部仅限染梦草/染梦土，不会刷在树叶上
         context.register(DYEDREAM_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 2, 1,
