@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:fishing_rod",
+      "count": 1
+    },
+    {
+      "item": "minecraft:powder_snow_bucket",
+      "count": 1
+    },
+    {
+      "item": "minecraft:diamond",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:melt_dream_crystal_fragment",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:snow_vow_head",
+      "count": 1
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:star_wish_rod",
+      "count": 1
+    }
+  ]
+}

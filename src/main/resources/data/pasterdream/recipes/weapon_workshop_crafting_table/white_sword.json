@@ -3,23 +3,23 @@
   "itemInputs":
   [
     {
-      "item": "pasterdream:sword_embryo",
+      "item": "pasterdream:titanium_sword",
       "count": 1
     },
     {
-      "item": "pasterdream:chenjingmen_desert_sword",
+      "item": "pasterdream:shadow_light",
+      "count": 9
+    },
+    {
+      "item": "pasterdream:white_crystal",
       "count": 1
     },
     {
-      "item": "pasterdream:beihairuo_tide_sword",
+      "item": "minecraft:nether_star",
       "count": 1
     },
     {
-      "item": "pasterdream:murakumo_kusanagi",
-      "count": 1
-    },
-    {
-      "item": "pasterdream:sharp_melt_dream_sword",
+      "item": "pasterdream:melt_dream_crystal_fragment",
       "count": 1
     }
   ],
@@ -33,7 +33,7 @@
   "itemOutputs":
   [
     {
-      "item": "pasterdream:debug_sword",
+      "item": "pasterdream:white_sword",
       "count": 1
     }
   ]

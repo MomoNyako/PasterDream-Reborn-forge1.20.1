@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:shadow_erosion_dagger",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:nightmare_fuel",
+      "count": 17
+    },
+    {
+      "item": "pasterdream:shadow_hilt",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:black_metal_ingot",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:pergamyn",
+      "count": 3
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:shadow_sword",
+      "count": 1
+    }
+  ]
+}
