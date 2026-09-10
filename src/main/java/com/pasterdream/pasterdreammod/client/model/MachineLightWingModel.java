@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.client.model;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MachineLightWingItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

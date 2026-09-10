@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.client;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.renderer.AngelWingRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ForsakensWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.MachineLightWingRenderer;
 import com.pasterdream.pasterdreammod.init.ModItemModels;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
@@ -42,6 +43,7 @@ public class ClientModEvents
         ModItemModels.getBakedModel(event);
         CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
         CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
+        CuriosRendererRegistry.register(ModItems.MACHINE_LIGHT_WING.get(), MachineLightWingRenderer::new);
     }
 
     @SubscribeEvent

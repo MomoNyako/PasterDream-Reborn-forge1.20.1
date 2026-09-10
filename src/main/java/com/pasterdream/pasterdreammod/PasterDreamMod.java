@@ -15,7 +15,6 @@ import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
-import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -110,7 +109,6 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAdvancementEarned);
         MinecraftForge.EVENT_BUS.addListener(QymArmorEvents::onEquipChange);
-        MinecraftForge.EVENT_BUS.addListener(MachineLightWingItem::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onItemAttributeModifier);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onShelterLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onGuardLivingHurt);
