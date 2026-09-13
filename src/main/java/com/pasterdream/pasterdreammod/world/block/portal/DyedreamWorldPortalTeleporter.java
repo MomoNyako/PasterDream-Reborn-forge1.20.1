@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.portal;
 
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
 import net.minecraft.BlockUtil;
@@ -95,6 +96,7 @@ public final class DyedreamWorldPortalTeleporter {
 
         if (entity instanceof ServerPlayer player) {
             player.teleportTo(target, landing.x, landing.y, landing.z, player.getYRot(), player.getXRot());
+            TeleportHelper.resendActiveEffects(player);
         } else {
             transferNonPlayer(entity, target, landing);
         }

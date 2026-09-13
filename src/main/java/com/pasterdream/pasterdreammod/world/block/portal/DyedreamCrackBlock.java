@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.portal;
 
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -161,6 +162,8 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
             case WEST  -> player.teleportTo(targetLevel, pos.getX() - 1.5, pos.getY() + 0.5, pos.getZ() + 0.5, 270, 30);
             case NORTH -> player.teleportTo(targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() - 1.5, 0, 30);
         }
+        // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+        TeleportHelper.resendActiveEffects(player);
     }
 
     private void placePortalStructure(ServerLevel level, BlockState state, BlockPos portalPos)

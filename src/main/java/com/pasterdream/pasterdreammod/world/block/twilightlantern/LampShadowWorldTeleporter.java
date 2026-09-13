@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.twilightlantern;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
@@ -38,6 +39,7 @@ public class LampShadowWorldTeleporter {
         double targetY = low ? 104 : 154;
 
         player.teleportTo(destination, 0.5, targetY, 0.5, player.getYRot(), player.getXRot());
+        TeleportHelper.resendActiveEffects(player);
     }
 
     /**
@@ -65,6 +67,7 @@ public class LampShadowWorldTeleporter {
                 destZ = overworld.getLevelData().getZSpawn() + 0.5;
             }
             player.teleportTo(overworld, destX, destY, destZ, player.getYRot(), player.getXRot());
+            TeleportHelper.resendActiveEffects(player);
             player.fallDistance = 0;
             player.connection.send(new ClientboundBlockUpdatePacket(overworld, sourcePos));
         });
