@@ -49,7 +49,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), "药引瓶");
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "风植萃取液");
         add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "梦境果汁");
-        add("tooltip.pasterdreammod.glass_jar_of_dream_juice", "§7§o甜美而梦幻的味道 让你交融与梦");
+        add("tooltip.pasterdreammod.glass_jar_of_dream_juice", "§7§o--甜美而梦幻的味道 让你交融与梦");
         add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "秋麒麟茶");
         add(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get(), "染梦香水");
         add(ModItems.GLASS_JAR_OF_INK.get(), "墨水罐");
@@ -88,7 +88,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CHOCOLATE_MATCHA_CAKE.get(), "巧克力抹茶蛋糕");
         add(ModItems.MAGIC_STONE.get(), "魔法石");
         add(ModItems.RICE_CAKE.get(), "年糕");
-        add("item.pasterdream.rice_cake.describe", "§7§o某个沙漠遗魂可能对这个感兴趣……");
+        add("item.pasterdream.rice_cake.describe", "§7§o某个沙漠遗魂可能对这个感兴趣......");
         add(ModItems.DYEDREAM_POPSICLE.get(), "染梦冰棒");
         add(ModItems.FRIED_EGG.get(), "煎蛋");
         add(ModItems.BACON_AND_EGG.get(), "培根煎蛋");
@@ -138,7 +138,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "传说龙角冰淇淋");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.0", "§9幸运值永久+10（直至死亡）");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.1", "§9效果不叠加");
-        add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§e味道有些熟悉，好像是来自雪泪寒……等等？");
+        add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§e味道有些熟悉，好像是来自雪泪寒......等等？");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7你已经品尝过这个冰淇淋的味道了");
         add(ModItems.ELIXIR_BOTTLE.get(), "灵药瓶");
         add("tooltip.pasterdreammod.elixir_bottle_of_potion.uses", "§7剩余饮用次数：%s");
@@ -146,7 +146,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "狂暴战意灵药");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7饮用后获得效果：");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9技能冷却时间-15%，攻击伤害+20%（直至死亡）");
-        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5你感到一股力量在身体内涌动……");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5你感到一股力量在身体内涌动......");
         add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7你已经饮用过这个药水了");
         add(ModItems.BUBBLE_TEA.get(), "珍珠奶茶");
         add(ModItems.SWEET_DREAM_MUSIC_DISC.get(), "音乐唱片");
@@ -284,7 +284,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "融梦极光钢锭");
-        add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o孩子们，问了吗？");
+        add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o--孩子们，问了吗？");
         add("block.pasterdream.shadow_liquid", "熔融阴影");
         add("block.pasterdream.melt_dream_liquid", "融梦涌泉");
 
@@ -552,8 +552,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.break_wind_knight_altar.need_arms", "需要 [凝风铁锭] 组装手臂");
         add("block.pasterdream.break_wind_knight_altar.need_head", "需要 [凝风铁锭] 组装头颅");
         add("block.pasterdream.break_wind_knight_altar.throw_lightning", "需要 [雷电药剂瓶]：右键祭坛，或将药剂瓶投掷到祭坛附近以唤醒傀儡");
-        add("block.pasterdream.golden_fox_sculpture.no_reaction", "雕像没有反应...");
-        add("block.pasterdream.golden_fox_sculpture.cooldown", "雕像还在沉睡... 还需等待 %s 秒");
+        add("block.pasterdream.golden_fox_sculpture.no_reaction", "雕像没有反应......");
+        add("block.pasterdream.golden_fox_sculpture.cooldown", "雕像还在沉睡...... 还需等待 %s 秒");
         add(ModBlocks.FOX_SCULPTURE.get(), "狐狸雕像");
         add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "生态玻璃罐");
         add(ModBlocks.FIREFLY_GLASS_JAR.get(), "萤火虫玻璃罐");
@@ -678,7 +678,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.dyedream_juice","染梦果汁（流体）");
         add("fluid.pasterdream.dyedream_perfume","染梦香水（流体）");
         add("fluid.pasterdream.goldenrod_tea","秋麒麟茶（流体）");
-        add("fluid.pasterdream.guiding_drug","药引瓶（流体）");
+        add("fluid.pasterdream.guiding_drug","药引（流体）");
         add("fluid.pasterdream.honey_juice","蜂蜜汁（流体）");
         add("fluid.pasterdream.rage_elixir","狂暴战意灵药（流体）");
         add("fluid.pasterdream.potion","药水（流体）");
@@ -1001,7 +1001,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.content.来往于梦", "致后来者：\n这份文字记录了我在这里的所见所闻和一些推测，我不知道这个世界究竟是怎样的。\n但（被划去的文字）“奇迹”，我只能用这样一个词语来形容眼前的世界。\n无处不在的粉色，永明的天空，黑暗中也不会滋生令人厌恶的邪恶，如梦境一般，不，或许它就是梦境\n虽说在唯物主义教育下长大，可面对这幅完全无法以现有知识解释的景象，我不由自主地发出了疑问：\n这世界上，会不会真的有什么神明一类的存在。（这样的神明又是唯心的“神”，还是更高级的“存在”）\n不过，这里也存在不少疑点，任何事物都具有相对性。\n既然有如此美好的世界，那有没有一个与之截然相反的地方；而且，这个世界无处不有着一种古怪的虚幻感，明明一切都那么真实却处处有种疏离感。（大概类似于清明梦？）\n这一奇迹究竟由谁创造，又由谁维持。（监管？）\n§m-大片被划去的文字-\n或许有人曾在此停留（定居？），毕竟有烟熏炉、花盆、书架这些有着生活气息的物件出现。\n不过屋主大概已经离开很久了（奇怪的是物品大多崭新如初，窗台上的花甚至还活着）\n至于这方世界，暂且称其为“梦境”。\n更多结论仍需进一步的探索才能验明，或许我需要一种更稳定的方式来往于现实和“梦境”间。\nBy 流华");
         add("book.pasterdream.content.染梦世界树", "偶然远眺风景时，我在视野的尽头发现了这棵参天巨树。走到树底仰望，树干高耸入云，甚至难以望见枝叶。\n挖掘根部周围的泥土，可以发现其根茎延伸不算很长，似乎难以解释其异常的高度。\n蜿蜒的树干形成了一条天然的阶梯，可以让人较为轻松地攀爬而上，但有些地方仍要自行徒手攀登。爬到枝干的顶端后，能看到其内部存在一个小空洞。\n闪烁着光芒的白色涌泉从侧面的树干中流出，无论哪里都显得尤为反常——但是相比于这个世界本身的神奇，这点景象已经不足以使我感到惊奇。\n回到树下后，我开始思考这棵树得以形成和正常生长的原因。对此，我做出了某种猜想：\n这个世界属于某种梦境，而其大气中存在的梦境能量的分布是不均匀的。\n就像大气现象导致天候变化一样，这种融于梦境大气中的能量——融梦能量的分布应该也是不均匀的。\n融梦能量沉积较多的区域，能量沉积下来化作了实体，形成了大陆、空岛、树木等这个世界的一切。而那些融梦能量小范围大量聚集的结果，就是融梦水晶箱——这也解释了为什么打开箱子时会有融梦能量逸散而出。\n照这个理论进行推论，在这个梦境世界的中心——融梦能量最为富集的地方，理应会形成一种体积巨大的结构；而丰富的融梦能量会化为大量的融梦水晶箱积蓄其中。\n想到这里，我回头看向了参天巨木所在的方向。它有可能正是这个梦境世界的世界树，融梦能量的富集场所，有着大量融梦水晶箱的梦幻之地。\n我理应再次登上这棵树，对其内部结构一探究竟。之前的一无所获一定是我遗漏了什么......\nBy 极星");
         add("book.pasterdream.content.代达罗斯之翼与浮空岛", "代达罗斯之翼与浮空岛\n在我从那颗参天大树中悻然离开后不久，千夜追上了我，打断了我重新探索的计划\n”看到那些悬浮在半空的岛了吗？我想上去看看那里有没有什么宝藏。”我向千夜提议\n没想到千夜直接给我泼了桶冷水，”我看你是失了智。我们又不会飞，怎么上去呢？”\n”关于这点，我有个大胆的想法……”\n在千夜难以置信的目光中，我拿出了之前路上捡到的那些粉红色的鸡掉落的羽毛。之后，我把之前捡到的蜡烛重新熔成蜡，用这些蜡把羽毛粘在了一起，费了不少力做出了两对羽翼。”\n”所以你是想当伊卡洛斯。”\n”不，我觉得我会是代达罗斯。毕竟这里的太阳可不会融化这些蜡。而且不试试怎么知道呢？毕竟……”\n事情超乎寻常的顺利——虽然按照常理来说，人是没法用这种羽翼飞翔的；但不知为何，这里的风像是托着羽翼般，使我们能毫不费力地飞行。我们很轻松地就飞到了我之前只能抬头仰望的浮空岛上。\n抵达岛上后，千夜直接冲进了那间小屋中。我也紧随其后，在这里找了个地儿坐下来，和她交谈起来。\n\n”话说回来，这个世界也太超乎常理了吧”千夜把那对羽翼卸了下来，开始观察它有没有散架。\n\n”所以我说了，这个世界应该是属于某种梦境或者幻境吧\n\n毕竟我完全搞不懂这种岛屿是怎么安然无恙地悬浮在空中，在我们踩上去后又能纹丝不动的。”\n\n”这个房子也是，虽然一看就像是人为制造的，但根本没有人类生活过的迹象。另外，我还是无法理解这玩意凭什么能运作。”千夜抖了抖手上的羽翼说。\n”别较真了，梦里啥都有可能嘛。”\nBy 极星");
-        add("book.pasterdream.content.星河果冻和浮空岛", "在我从那颗参天大树中悻然离开后不久，千夜追上了我，打断了我接下来的探索计划，我认为现在我还是把我的探索计划和她说明了比较好......\n“看到那些悬浮在半空的岛了吗？我想上去看看那里有没有什么宝藏。”我向千夜提议\n没想到千夜直接给我泼了桶冷水，“我看你是失了智。我们又不会飞，怎么上去呢？”\n“关于这点，我有个大胆的想法……”\n在千夜难以置信的目光中，我拿出了之前在这个世界中的一些建筑中搜寻得到的果冻状物品\n“这是什么东西？”\n“这是我从那些建筑中搜寻到的物品，吃了它似乎会‘嗖’地一下飞到天上去，所以......”\n  她很快明白了我的想法：“所以你是想当阿姆斯特朗？”\n  “不，我觉得我顶多是万户，这只是登上浮空岛而已。好了，我们来试试吧”\n事情超乎寻常的顺利——虽然按照常理来说，现实中并不存在这种只要吃掉就会让人高高飞起的果冻，不过幸亏有这东西，我们很轻松地就飞到了我之前只能抬头仰望的浮空岛上。\n-抵达岛上后，千夜直接冲进了那间小屋中。我也紧随其后，在这里找了个地儿坐下来，和她交谈起来。\n“话说回来，这个世界也太超乎常理了吧”千夜也坐了下来，开始整理被风吹乱的头发。\n“所以我说了，这个世界应该是属于某种梦境或者幻境吧，毕竟我完全搞不懂这种岛屿是怎么安然无恙地悬浮在空中，在我们踩上去后又能纹丝不动的。”\n“这个房子也是，虽然一看就像是人为制造的，但根本没有人类生活过的迹象。另外，我还是无法理解这种果冻凭什么吃了能让我们飞起来。”\n“别较真了，梦里啥都有可能嘛。”\nBy 极星");
+        add("book.pasterdream.content.星河果冻和浮空岛", "在我从那颗参天大树中悻然离开后不久，千夜追上了我，打断了我接下来的探索计划，我认为现在我还是把我的探索计划和她说明了比较好......\n“看到那些悬浮在半空的岛了吗？我想上去看看那里有没有什么宝藏。”我向千夜提议\n没想到千夜直接给我泼了桶冷水，“我看你是失了智。我们又不会飞，怎么上去呢？”\n“关于这点，我有个大胆的想法......”\n在千夜难以置信的目光中，我拿出了之前在这个世界中的一些建筑中搜寻得到的果冻状物品\n“这是什么东西？”\n“这是我从那些建筑中搜寻到的物品，吃了它似乎会‘嗖’地一下飞到天上去，所以......”\n  她很快明白了我的想法：“所以你是想当阿姆斯特朗？”\n  “不，我觉得我顶多是万户，这只是登上浮空岛而已。好了，我们来试试吧”\n事情超乎寻常的顺利——虽然按照常理来说，现实中并不存在这种只要吃掉就会让人高高飞起的果冻，不过幸亏有这东西，我们很轻松地就飞到了我之前只能抬头仰望的浮空岛上。\n-抵达岛上后，千夜直接冲进了那间小屋中。我也紧随其后，在这里找了个地儿坐下来，和她交谈起来。\n“话说回来，这个世界也太超乎常理了吧”千夜也坐了下来，开始整理被风吹乱的头发。\n“所以我说了，这个世界应该是属于某种梦境或者幻境吧，毕竟我完全搞不懂这种岛屿是怎么安然无恙地悬浮在空中，在我们踩上去后又能纹丝不动的。”\n“这个房子也是，虽然一看就像是人为制造的，但根本没有人类生活过的迹象。另外，我还是无法理解这种果冻凭什么吃了能让我们飞起来。”\n“别较真了，梦里啥都有可能嘛。”\nBy 极星");
         add("book.pasterdream.content.融梦釜与融梦炼金术", "我在那粉色的世界转了很久，直到我在那棵巨型的树下面发现了那个机器，我的炼金研究有了进展。\n我通过在梦境里面解构分析这台机器，终于明白了这个机器的运行原理，这台机器本质上是使用梦境特殊的能量，来进行炼金合成，而这种能量，在梦境里面某种闪亮的泉水：融梦涌泉中含量最多。\n接下来是最关键的步骤，融梦涌泉水能为现在那近乎死板的炼金术带来什么？研究这件事是最难的也是最枯燥的。首先，我需要能承载这种药水的容器，通过我不断实验，我最终确定使用耐腐蚀极强的钛金以及和融梦涌泉相性更好的材料，而我叫它：灵药瓶。\n接下来寻找相性材料也耗费了我一部分时间，在实验中，我才发现我低估了融梦涌泉和这台机器的潜力，融梦涌泉水使用这台机器进行炼金时，可以为原本生效时间很短的药水延长时间，甚至可以加强某些药水的效力，古书写的那死板的炼金术在那台机器面前根本不值一提。不过那么厉害的东西，总得有个名字，我就姑且叫它：融梦釜，而这种炼金术我叫它融梦炼金术。\nBy 青岚");
         add("book.pasterdream.content.探求秘辛", "为了收集一些必要的资源，我在长途跋涉后来到了一片沙漠。\n基于我要寻找的资源相当罕见这一情况，我可能不得不在此停留一段时间，因此，我设法找到了位于沙漠边缘的一座村庄，并建造了这座供我居住的小屋。\n每天日出时出门探索，日落前回到这座临时居所中；晚上或是刮起沙暴无法出门的时候，则和村中的村民攀谈或者是在家里打发时间——这就是我在这片沙漠的日常。\n转眼间半年过去了，白天的探索没有任何进展，但我和村民间的关系却日渐熟络起来。\n大人们对我在夜晚保护他们不受怪物侵扰的行动感激不尽，孩童们则醉心于我分享的游历各方时的冒险故事——渐渐的，村民们开始向我透露一些从未给其他旅者讲述过的“秘辛”：\n“我们村的铁匠几乎从不出门，所以你应该也没怎么见过他。据说他曾是某个国家的御用工匠，他的家族专门为王室锻造各式各样的精兵利器；但在王国毁灭后，他的家族就此没落，最后流浪到我们这里定居了。他好像还不太能接受自己的处境，把工坊造的离我们村子有点远，我们平时也跟他交往不深，只有工作层面的交流......但如果是你的话，应该能和他打好关系吧......”\n村民们似乎想让我去开导孤僻的没落锻造贵族（虽然我觉得他们只是指望在我跟那位打好关系后，让他们能用更便宜的价格修理工具罢了）。于是我带着我珍藏多年的陈酿，造访了铁匠的工坊。\n......\n虽然中间经历了许多波折，但我们最终成为了挚友。在一次对饮中，我向年事已高的他表示，希望他家族的精湛锻造技术能流传下去；虽然我已经在与他的相处中对他的锻造技法有所了解，但我无论如何也无法独自还原出他的技术，像他那样锻造出能力优越的装备。\n他在长时间的沉思后，掏出纸笔，为我绘制了一张设计图，并告诉我：只有严格按照他的工坊的布局，才能最大程度地将大气中的某种......物质？引导并汇聚起来，从而锻造出超凡而新颖的工具。折服于他的慷慨与信任，我将我携带的几乎所有值钱的物件全部留下作为谢礼，并带着这份设计图离开了此处。\n不知不觉，好像已经在这片沙漠停留太久了啊......\n是时候踏上新的旅途了——等我下一次在某地停留时，就试着按照这份设计图来建造一座工坊吧。\nBy 极星");
         add("book.pasterdream.content.研究笔记:黑金属", "要说起这段研究的起因，得归溯于我在这片漆黑的梦境发现的一些古怪的金属。\n就在那些倒挂的灯笼，遗迹，或者是一些陶罐宝盒里，质地看起来就像铁一样，不过锈迹却不是那种褐色的层皮，而是很多黑色的小洞的那种奇怪金属。\n但是用一般的熔炉去熔炼它不会有任何的反应，我索性把它丢进了岩浆，当然是不出意外地直接熔化，和岩浆合而为一了。\n我和夜岚为了研究这个金属，就在这附近去找了一个破旧的梯形房子。\n在一次巧合中，二楼滴落下来的流体阴影滴进了装有这些金属的罐子，然后这些阴影好像有意识一样，自己填补进了这些锈蚀的洞里。“这些还不够”，“看来这些金属可能只是一种载体，真正缺少的是那些影子”。\n随着不断地研究，我们得出了以下的配方：“高温，流动的阴影，以及那种影子怪物的身体”。\n我们从这里醒来，带上了一些材料设备，再一次躺在了前往灯影之下的床上......\n随着机器的轰鸣声，以及融合，熔化，凝结......最终一块黑色的金属应声落在了地上......\nBy 琴雨梦");
@@ -1162,14 +1162,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.UNKNOWN_NOTE.get(), "未解析的笔记");
         add(ModItems.PALE_BONENEEDLE.get(), "苍白骨针");
         add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "溯源苍白骨针");
-        add("tooltip.pasterdream.broken_note", "§7我们还需要了解更多...");
+        add("tooltip.pasterdream.broken_note", "§7我们还需要了解更多......");
         add("tooltip.pasterdream.unknown_note.1", "未知内容");
         add("tooltip.pasterdream.unknown_note.2", "§7需要使用§e研究台§7解析笔记");
 
         // 苍白骨针
-        add("tooltip.pasterdream.pale_boneneedle", "§7让你从梦中清醒...");
+        add("tooltip.pasterdream.pale_boneneedle", "§7让你从梦中清醒......");
         add("tooltip.pasterdream.pale_boneneedle.use", "§7左键对其他玩家使用 | 右键对自己使用");
-        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7让你从梦中清醒...并回到标记的位置");
+        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7让你从梦中清醒......并回到标记的位置");
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7潜行右键以设置标记点");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7如未设置标记将默认返回重生点");
         add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7左键对其他玩家使用 | 右键对自己使用");
@@ -1237,7 +1237,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 受到致命伤害时：");
         add("tooltip.pasterdream.blessing_of_cecilia.effect2", "§7▪ §9获得5秒的伤害免疫");
         add("tooltip.pasterdream.blessing_of_cecilia.effect3", "§7▪ §9并在10秒内获得抗性提升V、生命恢复X、伤害吸收V与速度II");
-        add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--我会守护你，直到永远...");
+        add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--我会守护你，直到永远......");
         add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "失色塞西莉亚的加护");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.effect0", "§7▪ §9常驻：抗性提升I");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.hint", "§7或许我们应该亲手将它浸泡于融梦涌泉");
@@ -1650,7 +1650,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9击杀敌人获得战意效果，每击杀一个敌人增加1级，最高3级");
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9效果持续期间增加攻击并提升回血速度");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9该效果可以共享给周围玩家");
-        add("tooltip.pasterdream.war_flag.description", "§7§o--这面旗帜上流淌的暗影似乎在述说遥远的过往……");
+        add("tooltip.pasterdream.war_flag.description", "§7§o--这面旗帜上流淌的暗影似乎在述说遥远的过往......");
         add("effect.pasterdream.war_flag", "战意");
         add("effect.pasterdream.bind", "束缚");
         add("effect.pasterdream.shadow_silence", "暗影沉默");
@@ -1659,9 +1659,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_spyon", "暗影窥视");
         add("message.pasterdream.shadow_intrude.start_1", "§5你感到一丝凉意，眼前被笼罩了一层黑雾");
         add("message.pasterdream.shadow_intrude.start_2", "§5附近的的影子开始蠕动");
-        add("message.pasterdream.shadow_intrude.end", "§5影子归于平息...");
+        add("message.pasterdream.shadow_intrude.end", "§5影子归于平息......");
         add("message.pasterdream.shadow_intrude.end_1", "§7你对这些暗影生物会来到这里感到疑惑");
-        add("message.pasterdream.shadow_intrude.end_2", "§7或许我们应该再去找一次无名...");
+        add("message.pasterdream.shadow_intrude.end_2", "§7或许我们应该再去找一次无名......");
 
         // 灯与影选择界面
         add("gui.pasterdream.shadow_select_end.label_choose", "请根据自己的第一直觉做出选择");
@@ -1671,11 +1671,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("dialogue.pasterdream.nameless.first_1", "？？？：嗯......？");
         add("dialogue.pasterdream.nameless.first_2", "？？？：......你是怎么来到这里的？");
         add("dialogue.pasterdream.nameless.first_3", "？？？：已经很久没有人来到这里了......");
-        add("dialogue.pasterdream.nameless.first_4", "？？？：虽然我知道你对于我的过去可能有兴趣，但是...经历了太多，我也不想回忆。");
+        add("dialogue.pasterdream.nameless.first_4", "？？？：虽然我知道你对于我的过去可能有兴趣，但是......经历了太多，我也不想回忆。");
         add("dialogue.pasterdream.nameless.first_5", "？？？：至于我的名字......时间过去太久，我也失去了曾经的\"自己\"。你就叫我\"无名\"吧。");
-        add("dialogue.pasterdream.nameless.first_6", "无名：这里很危险。每次进入这个暗影地牢，它都会产生一些变化，是更多的威胁还是更多的宝藏...我也不得而知。");
+        add("dialogue.pasterdream.nameless.first_6", "无名：这里很危险。每次进入这个暗影地牢，它都会产生一些变化，是更多的威胁还是更多的宝藏......我也不得而知。");
         add("dialogue.pasterdream.nameless.first_7", "无名：请不要冒着生命危险探索这里，尽快离开吧。");
-        add("dialogue.pasterdream.nameless.first_8", "无名：我为什么还在这里？因为我无法逃离，也不再想尝试逃离这里了。在你还可以回家的时候...尽快回头吧。");
+        add("dialogue.pasterdream.nameless.first_8", "无名：我为什么还在这里？因为我无法逃离，也不再想尝试逃离这里了。在你还可以回家的时候......尽快回头吧。");
         add("dialogue.pasterdream.nameless.first_9", "无名：......");
         add("dialogue.pasterdream.nameless.first_10", "无名：你为什么还在这里......");
         add("dialogue.pasterdream.nameless.first_11", "无名：一直待在这里只会侵蚀你的精神......我不能让你向下深入了，这种渴求未知的想法只会让阴影更容易控制你的精神......这也是为了你好。");
@@ -1721,7 +1721,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc", "音乐唱片");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - 亚伦柯斯之触");
         add("item.pasterdream.pure_horror", "纯粹恐惧");
-        add("tooltip.pasterdream.pure_horror", "§7它让我的脊椎发出了可怕的颤抖...");
+        add("tooltip.pasterdream.pure_horror", "§7它让我的脊椎发出了可怕的颤抖......");
         add("tooltip.pasterdream.dyedream_world_leapstone", "§7可搭建传送门框架；用染梦粉尘右键框架内部即可开启通往染梦世界的传送门");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
@@ -1733,7 +1733,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
         add("tooltip.pasterdream.shadow_hand_trap", "§7§o--你挖下来这个做什么？");
         add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
-        add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
+        add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明......");
         add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
         add("message.pasterdream.shadow_brazier.extinguished", "火盆燃尽熄灭，坠落在地上破碎");
         add("message.pasterdream.shadow_brazier.key_dropped", "在火盆的夹层里掉落出一把钥匙");
@@ -1797,7 +1797,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.galaxy_jelly.title", "星辰凝胶");
         add("advancements.pasterdream.story.galaxy_jelly.description", "获得星河果冻，一种能在梦境中的深海秘宝和箱子中找到的果冻，它能让你飞至云霄。");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "太空专业配音员");
-        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "在建筑高度上限吃下星河果冻……卡兹这下有伴了……");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "在建筑高度上限吃下星河果冻......卡兹这下有伴了......");
         add("advancements.pasterdream.story.look_at_pink_sheep.title", "方块人会梦见粉红羊吗");
         add("advancements.pasterdream.story.look_at_pink_sheep.description", "方块人当然只会梦见方块羊");
 
@@ -1805,7 +1805,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "被遗忘的剑冢");
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "发现失落剑冢，深藏于丛林深处的剑冢");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "遗忘之剑");
-        add("advancements.pasterdream.story.get_the_lost_sword.description", "获得失落之剑，它与丛林的力量似乎共鸣……");
+        add("advancements.pasterdream.story.get_the_lost_sword.description", "获得失落之剑，它与丛林的力量似乎共鸣......");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "侵染教堂");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "阅读寻梦者笔记\"侵染教堂-黑面\"");
         add("advancements.pasterdream.story.bastion_guard.title", "据点守卫");
@@ -1840,7 +1840,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "暗影入侵");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "完成暗影入侵事件");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
-        add("advancements.pasterdream.story.dig_up_a_tomb.description", "你……你把什么东西挖下来了？？？");
+        add("advancements.pasterdream.story.dig_up_a_tomb.description", "你......你把什么东西挖下来了？？？");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "因为你拔不出这把剑，气急败坏之下，索性你把你的敌人当作了开石头的工具！");
         add("advancements.pasterdream.craft_kusanagi.title", "丛林之力");
@@ -1849,11 +1849,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_murakumo_kusanagi.description", "通过杀戮，让草雍得到进一步进化");
 
         add("advancements.pasterdream.adventure.find_desert_fortress.title", "沙漠英灵");
-        add("advancements.pasterdream.adventure.find_desert_fortress.description", "发现沙漠遗迹，里面住着一个还没完成遗愿的英灵，或许你应当考虑先杀死附近的敌人……");
+        add("advancements.pasterdream.adventure.find_desert_fortress.description", "发现沙漠遗迹，里面住着一个还没完成遗愿的英灵，或许你应当考虑先杀死附近的敌人......");
         add("advancements.pasterdream.adventure.get_desert_sword.title", "英灵之剑");
         add("advancements.pasterdream.adventure.get_desert_sword.description", "从英灵的手中得到朔漠大剑，完成他的遗愿让这把武器得以进化");
         add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.title", "遗志已成");
-        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "完成英灵的遗愿让朔漠大剑得以进化为『沉荆门』朔漠，看来那位曾经的英雄最终得以安息了……");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "完成英灵的遗愿让朔漠大剑得以进化为『沉荆门』朔漠，看来那位曾经的英雄最终得以安息了......");
 
         // 进度 - 下界拓展
         add("advancements.pasterdream.get_molten_gold_ingot.title", "真金不怕火炼");
@@ -1866,20 +1866,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 进度 - 农牧业拓展
         add("advancements.pasterdream.get_deep_sea_treasure.title", "海之馈赠");
         add("advancements.pasterdream.get_deep_sea_treasure.description", "获得一份海洋的秘宝，它来自于深海和染梦冻洋");
-        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite...");
-        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "获得更高级的海洋秘宝，你应该为此找到一个更强大的钓竿……");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite......");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "获得更高级的海洋秘宝，你应该为此找到一个更强大的钓竿......");
         add("advancements.pasterdream.get_blue_dew.title", "海洋之泪");
         add("advancements.pasterdream.get_blue_dew.description", "获得湛蓝露滴，它来自于深海的海洋秘宝");
         add("advancements.pasterdream.get_blue_heart_of_the_sea.title", "深蓝之心");
-        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "获得蔚蓝海洋之心，你会知道什么武器需要用上它的……");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "获得蔚蓝海洋之心，你会知道什么武器需要用上它的......");
         add("advancements.pasterdream.get_beihairuo_tide_sword.title", "潮汐之神");
-        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "获得『北海若』引潮，它掌握着潮涌和激流的力量……");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "获得『北海若』引潮，它掌握着潮涌和激流的力量......");
 
         // 进度 - 染梦珍藏
         add("advancements.pasterdream.root_dyedream_treasure.title", "染梦珍藏");
         add("advancements.pasterdream.root_dyedream_treasure.description", "在粉红的世界又会有什么宝藏。");
         add("advancements.pasterdream.get_sand_of_time.title", "你的时间非常值钱");
-        add("advancements.pasterdream.get_sand_of_time.description", "获得时之沙，一个可以转换昼夜的沙漏，不过它工作完以后会休息……");
+        add("advancements.pasterdream.get_sand_of_time.description", "获得时之沙，一个可以转换昼夜的沙漏，不过它工作完以后会休息......");
         add("advancements.pasterdream.get_broken_hero_sword.title", "日食遗物");
         add("advancements.pasterdream.get_broken_hero_sword.description", "获得断裂英雄剑。等等？这个玩意不是打一个大扑棱蛾子掉的吗？");
         add("advancements.pasterdream.get_terra_sword.title", "和乌龟赛跑");
@@ -2465,7 +2465,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.black_beetle_vocalcord", "§7还能隐约感觉到它的震动");
         add("message.pasterdream.black_beetle.easter_egg_1", "来,小亮给大家整个活！");
         add("message.pasterdream.black_beetle.easter_egg_2", "草,走,忽略!ጿ ኈ ቼ ዽ ጿ");
-        add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
+        add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后变回了雕像......");
         add("entity.pasterdream.golden_fox_pet", "金狐狸");
         add("entity.pasterdream.golden_fox.tamed", "金色狐狸成为了你的伙伴！");
         add("message.pasterdream.golden_fox_pet.sit", "金狐狸进入待命状态");
@@ -2477,8 +2477,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dyedream_crack.first_contact.3", "§5现在可能还不是时候，让我们交给在日夜轮转之间的时光中给予答案。");
         add("message.pasterdream.dyedream_crack.first_contact.4", "§5也许你该翻翻那本旧梦归引……或许其中有关于这类裂隙的记载。");
         add("message.pasterdream.sleep.dream_of_crack.1", "§5你在睡梦中惊醒，背后冒出了些许冷汗，你回忆起自己梦见了往日探索中遇见的奇怪裂隙，在慢慢靠近并凝视着你。");
-        add("message.pasterdream.sleep.dream_of_crack.2", "§5那裂隙很可能有古怪，或许应该返回那里去调查一下");
-        add("message.pasterdream.sleep.dream_of_crack.3", "§5我必须知道发生了什么...");
+        add("message.pasterdream.sleep.dream_of_crack.2", "§5那裂隙很可能有古怪，或许应该返回那里去调查一下。");
+        add("message.pasterdream.sleep.dream_of_crack.3", "§5我必须知道发生了什么......");
         add("message.pasterdream.sleep.dream_of_crack.4", "一张寻梦者笔记出现在了你的口袋里");
         add("message.pasterdream.dyedream_world.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story.pure_and_flawless.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
@@ -2487,13 +2487,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.story_guide.not_entered_lamp_shadow", "你尚未踏足灯影之下");
         add("message.pasterdream.story_guide.all_done", "灯影之下的所有笔记都已解析完毕");
 
-        add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过...");
-        add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
-        add("message.pasterdream.dream_train_ticket.already_used", "这个维度的逐梦列车已经呼啸而过了...");
-        add("message.pasterdream.dream_train_ticket.dimension_used", "这个维度的逐梦列车已经被召唤过了...");
+        add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过......");
+        add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息...... §aX：%s §aZ：%s");
+        add("message.pasterdream.dream_train_ticket.already_used", "这个维度的逐梦列车已经呼啸而过了......");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "这个维度的逐梦列车已经被召唤过了......");
 
         // 沙漠英雄墓 - 任务对话
-        add("message.pasterdream.desert_hero_tomb.line1", "不意今日，遇着一位能听俺言语的好汉……");
+        add("message.pasterdream.desert_hero_tomb.line1", "不意今日，遇着一位能听俺言语的好汉......");
         add("message.pasterdream.desert_hero_tomb.line2", "俺不曾有甚么歹念，却有一桩杂事，要烦劳好汉相助。");
         add("message.pasterdream.desert_hero_tomb.line3", "这周遭的贼寇妖魔着实搅扰得人不得安枕。");
         add("message.pasterdream.desert_hero_tomb.line4", "这口剑且借与好汉，替俺将四下的恶贼妖魔都除了，如何？");
@@ -2687,7 +2687,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end", "§8阴影不再从四周向外涌出，暮影之笼也逐渐归为平静，上空逐渐出现一道裂缝");
         add("message.pasterdream.twilight_lantern.event_end_3", "§5不要抗拒，顺从内心，一同永生");
         add("message.pasterdream.twilight_lantern.event_end_4", "§5顺从！顺从！！顺从！！！");
-        add("message.pasterdream.twilight_lantern.event_end_5", "§5来吧，来吧~ 来吧！……与我们拥抱，与我们共眠，与我们融为一体，这里是你唯一的归属");
+        add("message.pasterdream.twilight_lantern.event_end_5", "§5来吧，来吧~ 来吧！......与我们拥抱，与我们共眠，与我们融为一体，这里是你唯一的归属");
         add("message.pasterdream.twilight_lantern.event_end_2", "§8声音逐渐清晰，不断重复的语言让你似乎有一些烦躁");
         add("message.pasterdream.twilight_lantern.event_ready", "§5可以与暮影之笼发生共鸣，与暗影长床互动");
         add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
@@ -2722,14 +2722,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.5", "当前风向：§a西南风");
         add("message.pasterdream.wind_vane.direction.6", "当前风向：§a西风");
         add("message.pasterdream.wind_vane.direction.7", "当前风向：§a西北风");
-        add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起... 呼啸的风正吹往 §a南方");
-        add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起... 呼啸的风正吹往 §a西南方");
-        add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起... 呼啸的风正吹往 §a西方");
-        add("message.pasterdream.wind_direction.announce.3", "§7§o朝阳升起... 呼啸的风正吹往 §a西北方");
-        add("message.pasterdream.wind_direction.announce.4", "§7§o朝阳升起... 呼啸的风正吹往 §a北方");
-        add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起... 呼啸的风正吹往 §a东北方");
-        add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a东方");
-        add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a东南方");
+        add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起...... 呼啸的风正吹往 §a南方");
+        add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起...... 呼啸的风正吹往 §a西南方");
+        add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起...... 呼啸的风正吹往 §a西方");
+        add("message.pasterdream.wind_direction.announce.3", "§7§o朝阳升起...... 呼啸的风正吹往 §a西北方");
+        add("message.pasterdream.wind_direction.announce.4", "§7§o朝阳升起...... 呼啸的风正吹往 §a北方");
+        add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起...... 呼啸的风正吹往 §a东北方");
+        add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起...... 呼啸的风正吹往 §a东方");
+        add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起...... 呼啸的风正吹往 §a东南方");
 
         // 画作
         add("painting.pasterdream.pasterdream_title.title", "帕斯特之梦");

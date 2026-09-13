@@ -47,7 +47,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "Glass Jar of Wind Plant Extract");
         add(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get(), "Glass Jar of Dyedream Perfume");
         add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "Glass Jar of Dream Juice");
-        add("tooltip.pasterdreammod.glass_jar_of_dream_juice", "§7§oA sweet and dreamy taste that melds you into the dream");
+        add("tooltip.pasterdreammod.glass_jar_of_dream_juice", "§7§o--A sweet and dreamy taste that melds you into the dream");
         add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "Glass Jar of Goldenrod Tea");
         add(ModItems.GLASS_JAR_OF_INK.get(), "Glass Jar of Ink");
         add(ModItems.FEATHER_PEN.get(), "Feather Pen");
@@ -85,7 +85,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CHOCOLATE_MATCHA_CAKE.get(), "Chocolate Matcha Cake");
         add(ModItems.MAGIC_STONE.get(), "Magic Stone");
         add(ModItems.RICE_CAKE.get(), "Rice Cake");
-        add("item.pasterdream.rice_cake.describe", "A lingering spirit of desert might be interested in this...");
+        add("item.pasterdream.rice_cake.describe", "A lingering spirit of desert might be interested in this......");
         add(ModItems.DYEDREAM_POPSICLE.get(), "Dyedream Popsicle");
         add(ModItems.FRIED_EGG.get(), "Fried Egg");
         add(ModItems.BACON_AND_EGG.get(), "Bacon and Egg");
@@ -135,7 +135,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "Legendary Dragon Horn Ice Cream");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.0", "§9Permanently +10 Luck (until death)");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.1", "§9Effect does not stack");
-        add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold... wait, what?");
+        add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold...... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");
         add(ModItems.ELIXIR_BOTTLE.get(), "Elixir Bottle");
         add("tooltip.pasterdreammod.elixir_bottle_of_potion.uses", "§7Remaining uses: %s");
@@ -143,7 +143,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7Effects after drinking:");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9-15% Skill cooldown, +20% Attack damage (until death)");
-        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5You feel a surge of power coursing through your body...");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5You feel a surge of power coursing through your body......");
         add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7You have already drunk this potion.");
         add(ModItems.BUBBLE_TEA.get(), "Bubble Tea");
         add(ModItems.SWEET_DREAM_MUSIC_DISC.get(), "Music Disc");
@@ -538,8 +538,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.break_wind_knight_altar.need_arms", "Need [Congeal Wind Iron Ingot] to assemble the arms");
         add("block.pasterdream.break_wind_knight_altar.need_head", "Need [Congeal Wind Iron Ingot] to assemble the head");
         add("block.pasterdream.break_wind_knight_altar.throw_lightning", "Requires a Lightning Potion Bottle: right-click the altar, or throw the bottle near the altar to awaken it");
-        add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond...");
-        add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering... %s seconds remaining");
+        add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond......");
+        add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering...... %s seconds remaining");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
         add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "Ecology Glass Jar");
         add(ModBlocks.FIREFLY_GLASS_JAR.get(), "Firefly Glass Jar");
@@ -648,7 +648,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "Melt Dream Aurorian Steel");
-        add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§oKids, did you ask?");
+        add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o--Kids, did you ask?");
 
 
         add(ModItems.DEBUG_SWORD.get(), "Debug Sword");
@@ -996,14 +996,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.UNKNOWN_NOTE.get(), "Unknown Note");
         add(ModItems.PALE_BONENEEDLE.get(), "Pale Boneneedle");
         add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "Roots Pale Boneneedle");
-        add("tooltip.pasterdream.broken_note", "§7We still need to learn more...");
+        add("tooltip.pasterdream.broken_note", "§7We still need to learn more......");
         add("tooltip.pasterdream.unknown_note.1", "Unknown Content");
         add("tooltip.pasterdream.unknown_note.2", "§7Needs to be analyzed at a §eResearch Table");
 
         // Pale Boneneedle
-        add("tooltip.pasterdream.pale_boneneedle", "§7Awakens you from dreams...");
+        add("tooltip.pasterdream.pale_boneneedle", "§7Awakens you from dreams......");
         add("tooltip.pasterdream.pale_boneneedle.use", "§7Left-click on other players | Right-click on yourself");
-        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7Awakens you from dreams... and returns to the marked location");
+        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7Awakens you from dreams...... and returns to the marked location");
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7Sneak + right-click to set a waypoint");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7If no waypoint is set, returns to spawn by default");
         add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7Left-click on other players | Right-click on yourself");
@@ -1074,7 +1074,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 Upon receiving fatal damage:");
         add("tooltip.pasterdream.blessing_of_cecilia.effect2", "§7▪ §9Grants 5s of damage immunity");
         add("tooltip.pasterdream.blessing_of_cecilia.effect3", "§7▪ §9And grants 10s of Resistance V, Regeneration X, Absorption V and Speed II");
-        add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--I will protect you, forever and ever...");
+        add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--I will protect you, forever and ever......");
         add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "Faded Blessing of Cecilia");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.effect0", "§7▪ §9Passive: Resistance I");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.hint", "§7Perhaps we should submerge it in Melt Dream Spring");
@@ -1476,7 +1476,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9 Give a battle intention effect when killing enemies. Each kill increases it by 1 level, up to a maximum of 3 levels.");
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9Increase attack damage and increase healing speed while the effect lasts.");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
-        add("tooltip.pasterdream.war_flag.description", "§7§o--The shadows flowing on this flag seem to be telling stories of a distant past...");
+        add("tooltip.pasterdream.war_flag.description", "§7§o--The shadows flowing on this flag seem to be telling stories of a distant past......");
         add("effect.pasterdream.war_flag", "Battle Intention");
         add("effect.pasterdream.bind", "Bind");
         add("effect.pasterdream.shadow_silence", "Shadow Silence");
@@ -1485,9 +1485,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_spyon", "Shadow Gaze");
         add("message.pasterdream.shadow_intrude.start_1", "§5You feel a chill, your vision veiled by a layer of black fog");
         add("message.pasterdream.shadow_intrude.start_2", "§5The nearby shadows begin to stir");
-        add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent...");
+        add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent......");
         add("message.pasterdream.shadow_intrude.end_1", "§7You feel puzzled that these shadow creatures have come here");
-        add("message.pasterdream.shadow_intrude.end_2", "§7Perhaps we should go find Nameless again...");
+        add("message.pasterdream.shadow_intrude.end_2", "§7Perhaps we should go find Nameless again......");
 
         // Shadow choice screen
         add("gui.pasterdream.shadow_select_end.label_choose", "Follow your first instinct to make your choice");
@@ -1497,9 +1497,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("dialogue.pasterdream.nameless.first_1", "???: Hmm...?");
         add("dialogue.pasterdream.nameless.first_2", "???: ...How did you get here?");
         add("dialogue.pasterdream.nameless.first_3", "???: It has been a long time since anyone came here...");
-        add("dialogue.pasterdream.nameless.first_4", "???: You may be curious about my past, but... I have been through too much, and I would rather not recall it.");
+        add("dialogue.pasterdream.nameless.first_4", "???: You may be curious about my past, but...... I have been through too much, and I would rather not recall it.");
         add("dialogue.pasterdream.nameless.first_5", "???: As for my name... too much time has passed, and I have lost my former \"self.\" Just call me \"Nameless.\"");
-        add("dialogue.pasterdream.nameless.first_6", "Nameless: It is dangerous here. Every time you enter this shadow dungeon, it changes — more threats or more treasure... I cannot tell.");
+        add("dialogue.pasterdream.nameless.first_6", "Nameless: It is dangerous here. Every time you enter this shadow dungeon, it changes — more threats or more treasure...... I cannot tell.");
         add("dialogue.pasterdream.nameless.first_7", "Nameless: Please do not risk your life exploring here. Leave as soon as you can.");
         add("dialogue.pasterdream.nameless.first_8", "Nameless: Why am I still here? Because I cannot escape, and I no longer want to try. Go back while you still can.");
         add("dialogue.pasterdream.nameless.first_9", "Nameless: ......");
@@ -1547,7 +1547,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc", "Aaroncos Music Disc");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - Aaroncos's Touch");
         add("item.pasterdream.pure_horror", "Pure Horror");
-        add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine...");
+        add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine......");
         add("tooltip.pasterdream.dyedream_world_leapstone", "§7Used to build a portal frame; right-click the inside with Dyedream Dust to open a portal to the Dyedream World");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
@@ -1559,7 +1559,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_blast_furnace_core", "Shadow Blast Furnace Core");
         add("tooltip.pasterdream.shadow_hand_trap", "§7§o--Why would you dig this up?");
         add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
-        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light...");
+        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light......");
         add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
         add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
         add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
@@ -1621,7 +1621,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");
         add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
-        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit... Kaz finally has company now...");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit...... Kaz finally has company now......");
         add("advancements.pasterdream.story.look_at_pink_sheep.title", "Do Block People Dream of Pink Sheep?");
         add("advancements.pasterdream.story.look_at_pink_sheep.description", "Block people only dream of block sheep, of course.");
 
@@ -1629,7 +1629,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "Discovered the lost sword tomb, a sword tomb hidden deep in the jungle.");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "Sword of Oblivion");
-        add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle…");
+        add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle......");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "Infested Church");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church - Black Face\"");
         add("advancements.pasterdream.story.bastion_guard.title", "Bastion Guard");
@@ -1664,7 +1664,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "Shadow Intrusion");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "Complete the shadow intrusion event");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "Sweet Sixteen, with the Strength of a Titan");
-        add("advancements.pasterdream.story.dig_up_a_tomb.description", "You... what exactly did you dig up???");
+        add("advancements.pasterdream.story.dig_up_a_tomb.description", "You...... what exactly did you dig up???");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "New Standard Sword Drawing");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "Because you couldn't pull out the sword, you ended up using your enemy as a tool to break stones!");
         add("advancements.pasterdream.craft_kusanagi.title", "Power of the Jungle");
@@ -1672,11 +1672,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_murakumo_kusanagi.title", "Lost Souls Under the Sword");
         add("advancements.pasterdream.get_murakumo_kusanagi.description", "Let Kusanagi further evolve by killing enemies.");
         add("advancements.pasterdream.adventure.find_desert_fortress.title", "Desert Heroic Spirit");
-        add("advancements.pasterdream.adventure.find_desert_fortress.description", "Discover a desert fortress, where a heroic spirit who hasn't completed his aspiration. Maybe you should think about killing the nearby enemies first…");
+        add("advancements.pasterdream.adventure.find_desert_fortress.description", "Discover a desert fortress, where a heroic spirit who hasn't completed his aspiration. Maybe you should think about killing the nearby enemies first......");
         add("advancements.pasterdream.adventure.get_desert_sword.title", "Sword of the Heroic Spirit");
         add("advancements.pasterdream.adventure.get_desert_sword.description", "Get the Desert Sword from the hero and fulfill his last wish to let this weapon evolve.");
         add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.title", "The wish has come true");
-        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "Fulfilling the heroic spirit's last wish allowed Desert Sword to evolve into ChenJingmen Desert Sword. The former hero can finally rest in peace...");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "Fulfilling the heroic spirit's last wish allowed Desert Sword to evolve into ChenJingmen Desert Sword. The former hero can finally rest in peace......");
 
         // Advancements - Nether Expansion
         add("advancements.pasterdream.get_molten_gold_ingot.title", "Real Gold Does Not Fear Fire");
@@ -1689,20 +1689,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Advancements - Husbandry Expansion
         add("advancements.pasterdream.get_deep_sea_treasure.title", "Gift from the Sea");
         add("advancements.pasterdream.get_deep_sea_treasure.description", "Get a treasure of the ocean, coming from the deep sea and the dyedream frozen ocean.");
-        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite...");
-        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it...");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite......");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it......");
         add("advancements.pasterdream.get_blue_dew.title", "Tears of the Ocean");
         add("advancements.pasterdream.get_blue_dew.description", "Get the blue dew, it comes from that enchanting ocean treasure glowing with magic light.");
         add("advancements.pasterdream.get_blue_heart_of_the_sea.title", "Heart of Deep Blue");
-        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "Once you get the Blue Heart of the Sea, you'll know which weapon needs it...");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "Once you get the Blue Heart of the Sea, you'll know which weapon needs it......");
         add("advancements.pasterdream.get_beihairuo_tide_sword.title", "God of Tides");
-        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide...");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide......");
 
         // Advancements - Dyedream Treasure
         add("advancements.pasterdream.root_dyedream_treasure.title", "Dyedream Collection");
         add("advancements.pasterdream.root_dyedream_treasure.description", "What kind of treasures could there be in a pink world? ");
         add("advancements.pasterdream.get_sand_of_time.title", "Your Time is really Valuable");
-        add("advancements.pasterdream.get_sand_of_time.description", "Get the Sand of Time, a sandglass that can switch day and night, but it takes a break after working...");
+        add("advancements.pasterdream.get_sand_of_time.description", "Get the Sand of Time, a sandglass that can switch day and night, but it takes a break after working......");
         add("advancements.pasterdream.get_broken_hero_sword.title", "Solar Eclipse Relic");
         add("advancements.pasterdream.get_broken_hero_sword.description", "Got the Broken Hero Sword. Wait a minute? Isn't this thing drop from a big flappy moth?");
         add("advancements.pasterdream.get_terra_sword.title", "Racing with a Turtle");
@@ -1883,7 +1883,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.black_beetle_vocalcord", "§7You can still faintly feel its vibration");
         add("message.pasterdream.black_beetle.easter_egg_1", "Come on, Xiao Liang, show us what you got!");
         add("message.pasterdream.black_beetle.easter_egg_2", "Grass, walk, ignore! ጿ ኈ ቼ ዽ ጿ");
-        add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
+        add("entity.pasterdream.golden_fox.vanish", "After fulfilling the wish you made, the golden fox turned back into a statue......");
         add("entity.pasterdream.golden_fox_pet", "Golden Fox");
         add("entity.pasterdream.golden_fox.tamed", "The golden fox became your companion!");
         add("message.pasterdream.golden_fox_pet.sit", "Golden Fox is now staying");
@@ -1896,7 +1896,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dyedream_crack.first_contact.4", "§5Maybe you should flip through the Seniors Dream... there might be records about this kind of crack.");
         add("message.pasterdream.sleep.dream_of_crack.1", "§5You wake up startled from your sleep, with cold sweat on your back. You recall dreaming of the strange crack you encountered during your past explorations, slowly approaching and staring at you.");
         add("message.pasterdream.sleep.dream_of_crack.2", "§5That crack is likely suspicious. Perhaps you should return there to investigate.");
-        add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened...");
+        add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened......");
         add("message.pasterdream.sleep.dream_of_crack.4", "A Dream Seeker's note appeared in your pocket");
         add("message.pasterdream.dyedream_world.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story.pure_and_flawless.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
@@ -1905,12 +1905,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.story_guide.not_entered_lamp_shadow", "You have not yet set foot in the Lamp Shadow World");
         add("message.pasterdream.story_guide.all_done", "All Lamp Shadow World notes have been resolved");
 
-        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
-        add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
-        add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension...");
-        add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension...");
+        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past......");
+        add("message.pasterdream.dream_train.location_info", "The train revealed a location...... §aX：%s §aZ：%s");
+        add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension......");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension......");
 
-        add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words...");
+        add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words......");
         add("message.pasterdream.desert_hero_tomb.line2", "I mean no harm, yet I have a small matter I must trouble you with.");
         add("message.pasterdream.desert_hero_tomb.line3", "These bandits and demons around here have robbed me of my rest.");
         add("message.pasterdream.desert_hero_tomb.line4", "Take this sword, friend, and rid me of all the villains and demons around here. How about it?");
@@ -2439,7 +2439,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.content.来往于梦", "To those who come later:\nThis writing records what I have seen and heard here, along with some speculations. I don't know what kind of world this truly is.\nBut (crossed-out text) \"miracle\" — that's the only word I can use to describe the world before my eyes.\nPink everywhere, an eternally bright sky, and darkness that breeds no loathsome evil — like a dream. No, perhaps it IS a dream.\nThough raised on materialist education, facing a scene completely inexplicable by existing knowledge, I can't help but ask:\nCould there really be some kind of deity in this world? (And would such a deity be the idealist \"god\", or a higher \"existence\"?)\nStill, there are no small number of doubts here; everything is relative.\nSince such a beautiful world exists, is there a place completely opposite to it? Moreover, this world has a strange sense of unreality everywhere — everything is so real, yet every place feels alienating. (Somewhat like a lucid dream?)\nWho created this miracle, and who sustains it? (Oversees it?)\n§m-Large tracts of crossed-out text-\nPerhaps someone once stayed here (settled?), given the presence of smokers, flower pots, and bookshelves — objects full of the flavor of life.\nBut the owner has likely been gone a long time (strangely, most items look brand new, and the flowers on the windowsill are still alive).\nAs for this world, for now let me call it a \"dream\".\nMore conclusions await further exploration to verify; perhaps I need a more stable way to travel between reality and this \"dream\".\nBy Liuhua");
         add("book.pasterdream.content.染梦世界树", "While gazing at the scenery from afar, I spotted this towering giant tree at the edge of my vision. Standing at its base and looking up, the trunk soared into the clouds, its canopy barely visible.\nDigging the soil around the roots, I found its roots don't extend very far — hard to explain its extraordinary height.\nThe winding trunk formed a natural staircase that made climbing fairly easy, though some parts still required free-climbing. When I reached the top of the branches, I could see a small hollow inside.\nA glowing white spring flowed from the trunk's side, anomalous in every way — but compared to the wonder of this world itself, this sight was hardly enough to astonish me.\nBack under the tree, I began to ponder what enabled this tree to form and grow normally. On this, I made a conjecture:\nThis world belongs to some kind of dream, and the dream energy in its atmosphere is unevenly distributed.\nJust as atmospheric phenomena cause weather changes, this energy dissolved in the dream's air — Melt Dream Energy — should also be unevenly distributed.\nIn regions where Melt Dream Energy settles more, the energy condenses into physical forms, creating continents, sky islands, trees, and everything else in this world. And where Melt Dream Energy gathers in large amounts within a small area, the result is a Melt Dream Crystal Chest — which also explains why energy escapes when you open one.\nExtrapolating from this theory, at the center of this dream world — where Melt Dream Energy is most abundant — a colossal structure should form; and the rich energy would manifest as countless Melt Dream Crystal Chests accumulated within it.\nAt that thought, I turned to look back toward the giant tree. It may well be the Worldtree of this dream world — a place of concentrated Melt Dream Energy, a dreamland holding countless Melt Dream Crystal Chests.\nI ought to climb that tree again and explore its inner structure. My earlier fruitless search must mean I missed something...\nBy Jixing");
         add("book.pasterdream.content.代达罗斯之翼与浮空岛", "Daedalus' Wings and the Floating Island\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my plan to explore anew.\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\n\"About that... I have a bold idea...\"\nUnder Qianye's incredulous gaze, I took out the feathers dropped by those pink chickens I'd picked up along the way. Then I melted down the candles I'd found into wax and stuck the feathers together with it, working hard to craft two pairs of wings.\n\"So you want to be Icarus.\"\n\"No, I think I'll be Daedalus. After all, the sun here won't melt this wax. And how would we know without trying? After all...\"\nThings went surprisingly smoothly — though by all logic, humans can't fly with such wings; yet somehow, the wind here seemed to carry the wings, letting us fly with no effort. We easily reached the floating island I'd previously only been able to gaze up at.\nAfter landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\n\n\"Come to think of it, this world is way beyond common sense.\" Qianye took off the wings and started checking whether they'd fallen apart.\n\n\"That's why I said this world must be some kind of dream or illusion.\nAfter all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\n\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this thing works.\" Qianye shook the wings in her hand and said.\n\"Don't be so serious — anything can happen in a dream.\"\nBy Jixing");
-        add("book.pasterdream.content.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my exploration plans. I think it's best to explain my plan to her now...\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\n\"About that... I have a bold idea...\"\nUnder Qianye's incredulous gaze, I took out the jelly-like items I'd found searching through some buildings in this world.\n\"What's this?\"\n\"It's something I found in those buildings. Eating it seems to make you shoot 'whoosh' into the sky, so...\"\nShe caught on quickly: \"So you want to be Armstrong?\"\n\"No, I'm at most Wan Hu — this is just about reaching a floating island. Come on, let's try.\"\nThings went surprisingly smoothly — though in reality no such jelly exists that launches you into the sky when eaten, thank goodness for it; we easily flew to the floating island I'd previously only been able to gaze up at.\n-After landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\n\"Come to think of it, this world is way beyond common sense.\" Qianye sat down too and began tidying her windblown hair.\n\"That's why I said this world must be some kind of dream or illusion. After all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this jelly lets us fly when we eat it.\"\n\"Don't be so serious — anything can happen in a dream.\"\nBy Jixing");
+        add("book.pasterdream.content.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my exploration plans. I think it's best to explain my plan to her now......\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\n\"About that...... I have a bold idea......\"\nUnder Qianye's incredulous gaze, I took out the jelly-like items I'd found searching through some buildings in this world.\n\"What's this?\"\n\"It's something I found in those buildings. Eating it seems to make you shoot 'whoosh' into the sky, so......\"\nShe caught on quickly: \"So you want to be Armstrong?\"\n\"No, I'm at most Wan Hu — this is just about reaching a floating island. Come on, let's try.\"\nThings went surprisingly smoothly — though in reality no such jelly exists that launches you into the sky when eaten, thank goodness for it; we easily flew to the floating island I'd previously only been able to gaze up at.\n-After landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\n\"Come to think of it, this world is way beyond common sense.\" Qianye sat down too and began tidying her windblown hair.\n\"That's why I said this world must be some kind of dream or illusion. After all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this jelly lets us fly when we eat it.\"\n\"Don't be so serious — anything can happen in a dream.\"\nBy Jixing");
         add("book.pasterdream.content.融梦釜与融梦炼金术", "I wandered through that pink world for a long time, until I found that machine beneath the giant tree — my alchemy research made a breakthrough.\nBy deconstructing and analyzing the machine within the dream, I finally understood its operating principle: essentially, the machine uses the dream's special energy to perform alchemical synthesis — and that energy is most abundant in a certain shining spring in the dream: the Melt Dream Liquid Well.\nThe next and most crucial step: what could the Melt Dream spring water bring to the currently near-rigid alchemy? Researching this was the hardest and most tedious part. First, I needed a container that could hold this potion. Through constant experimentation, I settled on Titanium — extremely corrosion-resistant — and materials with better compatibility with the Melt Dream spring; I named it: the Elixir Bottle.\nFinding compatible materials also cost me some time. During experiments, I realized I'd underestimated the potential of the Melt Dream spring and this machine: when used with the machine, the Melt Dream spring water can extend the duration of potions that originally last a short time, and can even strengthen the potency of certain potions. The rigid alchemy of ancient tomes is nothing before this machine. But such a marvelous thing deserves a name, so I'll call it: the Dream Cauldron, and this alchemy I call Melt Dream Alchemy.\nBy Qinglan");
         add("book.pasterdream.content.探求秘辛", "In order to gather some necessary resources, I came to a desert after a long journey.\nSince the resources I sought were quite rare, I might have to stay for a while; so I managed to find a village on the desert's edge and built this little hut to live in.\nSetting out at sunrise each day and returning before sunset; chatting with the villagers at night or when sandstorms kept me indoors — this was my daily life in the desert.\nHalf a year passed in the blink of an eye. My daytime explorations made no progress, but my bonds with the villagers grew warmer by the day.\nThe adults were endlessly grateful that I protected them from monsters at night, while the children reveled in the adventure stories I shared from my travels — gradually, the villagers began to reveal \"secrets\" never told to other travelers:\n\"Our village blacksmith almost never leaves his home, so you've probably hardly seen him. They say he was once a royal craftsman of some kingdom, whose family forged all manner of elite weapons for the royal family; but after the kingdom fell, his family declined, and finally wandered here to settle. He still doesn't seem to accept his situation, and built his workshop a bit far from the village. We don't have much contact with him either, only work-related dealings... but if it's you, you should be able to get along with him...\"\nThe villagers seemed to want me to talk some sense into the reclusive, fallen forging aristocrat (though I suspect they just hope that once I get friendly with him, they can get their tools repaired at a cheaper price). So, bearing my aged vintage brew, I visited the blacksmith's workshop.\n...\nThough there were many twists and turns along the way, we eventually became close friends. During a drink together, I told the elderly smith that I hoped his family's exquisite forging skills would be passed on; though I'd learned much of his technique through our time together, I could never reproduce his skill on my own, nor forge equipment of such superior capability as he did.\nAfter a long silence, he took out paper and a pen, drew me a blueprint, and told me: only by strictly following his workshop's layout could one guide and gather some... substance? from the atmosphere to its fullest, thereby forging extraordinary and novel tools. Moved by his generosity and trust, I left behind almost all my valuables as thanks, and departed with this blueprint.\nBefore I knew it, I'd stayed in this desert for far too long...\nTime to set out on a new journey — when I next stop somewhere, I'll try building a workshop according to this blueprint.\nBy Jixing");
         add("book.pasterdream.content.研究笔记:黑金属", "To trace the origin of this research, I must go back to some strange metal I found in this pitch-dark dream.\nIt appears in those hanging lanterns, ruins, and some pottery jars and treasure boxes. Its texture looks like iron, but its rust isn't a brown peeling layer — rather, many small black holes.\nSmelting it in an ordinary furnace had no effect at all, so I simply threw it into lava — which, unsurprisingly, melted it straight away, merging it with the magma.\nTo study this metal, Yelan and I found a run-down trapezoidal building nearby.\nBy a stroke of luck, some dripping fluid shadow from the second floor fell into the jar holding this metal — and the shadow, as if conscious, filled the rusted holes by itself. \"This isn't enough,\" \"it seems this metal may just be a carrier; what's truly missing are those shadows.\"\nThrough continuous research, we arrived at the following formula: \"high heat, flowing shadow, and the bodies of those shadow monsters.\"\nWe woke up from here, brought some materials and equipment, and once again lay down on the bed heading under the Lamp Shadow...\nAmid the roar of the machine, and the fusing, melting, condensing... at last, a piece of black metal fell to the ground with a clang...\nBy QYM");
@@ -2586,7 +2586,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end", "§8Shadows no longer surge outward, the Twilight Lantern gradually returns to calm, a rift slowly appears in the sky above.");
         add("message.pasterdream.twilight_lantern.event_end_3", "§5\"Do not resist, surrender to your heart, together in eternal life\"");
         add("message.pasterdream.twilight_lantern.event_end_4", "§5\"Submit! Submit!! Submit!!!\"");
-        add("message.pasterdream.twilight_lantern.event_end_5", "§5\"Come, come~ Come! ...Embrace us, sleep with us, merge with us, here is your only home\"");
+        add("message.pasterdream.twilight_lantern.event_end_5", "§5\"Come, come~ Come! ......Embrace us, sleep with us, merge with us, here is your only home\"");
         add("message.pasterdream.twilight_lantern.event_end_2", "§8The voices grow clearer, the repetitive words begin to irritate you.");
         add("message.pasterdream.twilight_lantern.event_ready", "§5You can now resonate with the Twilight Lantern, interact with the True Shadow Bed");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
@@ -2621,14 +2621,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.5", "Current wind: §aSouthwest Wind");
         add("message.pasterdream.wind_vane.direction.6", "Current wind: §aWest Wind");
         add("message.pasterdream.wind_vane.direction.7", "Current wind: §aNorthwest Wind");
-        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises... The howling wind blows toward §aSouth");
-        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises... The howling wind blows toward §aSouthwest");
-        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises... The howling wind blows toward §aWest");
-        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises... The howling wind blows toward §aNorthwest");
-        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises... The howling wind blows toward §aNorth");
-        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
-        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aEast");
-        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
+        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises...... The howling wind blows toward §aSouth");
+        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises...... The howling wind blows toward §aSouthwest");
+        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises...... The howling wind blows toward §aWest");
+        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises...... The howling wind blows toward §aNorthwest");
+        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises...... The howling wind blows toward §aNorth");
+        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises...... The howling wind blows toward §aNortheast");
+        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises...... The howling wind blows toward §aEast");
+        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises...... The howling wind blows toward §aSoutheast");
 
         // Paintings
         add("painting.pasterdream.pasterdream_title.title", "Pasterdream Title");
