@@ -1723,6 +1723,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.pure_horror", "纯粹恐惧");
         add("tooltip.pasterdream.pure_horror", "§7它让我的脊椎发出了可怕的颤抖......");
         add("tooltip.pasterdream.dyedream_world_leapstone", "§7可搭建传送门框架；用染梦粉尘右键框架内部即可开启通往染梦世界的传送门");
+        add("tooltip.pasterdream.dyedream_world_leapstone_0_2_0_test", "§c0.2.0版本独有测试");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");

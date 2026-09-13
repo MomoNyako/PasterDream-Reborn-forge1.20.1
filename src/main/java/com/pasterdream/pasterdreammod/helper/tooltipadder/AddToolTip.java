@@ -95,6 +95,7 @@ public class AddToolTip
         }
         if(stack.is(ModItems.DYEDREAM_WORLD_LEAPSTONE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.dyedream_world_leapstone"));
+            tooltip.add(Component.translatable("tooltip.pasterdream.dyedream_world_leapstone_0_2_0_test"));
         }
     }
 }

@@ -17,7 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * 染梦侵染 JEI 分类，布局为：原方块 → 传送门方块图标 → 产物。
+ * 染梦侵染 JEI 分类，布局为：原方块 → 染梦裂隙方块图标 → 产物。
  */
 public class DyedreamContaminationRecipeCategory implements IRecipeCategory<DyedreamContaminationJEIRecipe> {
     public static final RecipeType<DyedreamContaminationJEIRecipe> RECIPE_TYPE =
@@ -28,7 +28,7 @@ public class DyedreamContaminationRecipeCategory implements IRecipeCategory<Dyed
     private final IDrawable arrow;
 
     public DyedreamContaminationRecipeCategory(IGuiHelper helper) {
-        this.icon = new BlockStateDrawable(ModBlocks.DYEDREAM_WORLD_PORTAL.get().defaultBlockState(), 1.5F);
+        this.icon = new BlockStateDrawable(ModBlocks.DYEDREAM_CRACK.get().defaultBlockState(), 1.5F);
         this.arrow = helper.getRecipeArrow();
     }
 
