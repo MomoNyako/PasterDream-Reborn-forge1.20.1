@@ -1670,6 +1670,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("gui.pasterdream.shadow_select_end.label_choose", "请根据自己的第一直觉做出选择");
         add("gui.pasterdream.shadow_select_end.label_outcome", "这会使探索在未来走向不同的结局");
 
+        // 流体槽位操作提示
+        add("gui.pasterdream.fluid_slot.hint", "用流体容器交互该槽位时，左键取液，右键注液");
+
         // 无名对话：第一次对话
         add("dialogue.pasterdream.nameless.first_1", "？？？：嗯......？");
         add("dialogue.pasterdream.nameless.first_2", "？？？：......你是怎么来到这里的？");
