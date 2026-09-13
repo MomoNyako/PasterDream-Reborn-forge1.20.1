@@ -1549,6 +1549,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.pure_horror", "Pure Horror");
         add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine......");
         add("tooltip.pasterdream.dyedream_world_leapstone", "§7Used to build a portal frame; right-click the inside with Dyedream Dust to open a portal to the Dyedream World");
+        add("tooltip.pasterdream.dyedream_world_leapstone_0_2_0_test", "§cExclusive test for version 0.2.0");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
