@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.helper.GameModeHelper;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -143,6 +144,8 @@ public class PaleBoneneedleItem extends Item {
             }
             sp.teleportTo(spawnX, spawnY, spawnZ);
             sp.fallDistance = 0;
+            // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+            TeleportHelper.resendActiveEffects(sp);
             // 离开梦境维度后恢复进入前的游戏模式（防止卡在冒险模式）
             GameModeHelper.restorePreDreamGameMode(sp);
         }
