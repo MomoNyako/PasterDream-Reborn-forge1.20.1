@@ -20,19 +20,19 @@ public class ResearchTableResearchRecipeMatch
         for(ResearchTableResearchRecipe recipe : recipes)
         {
             matchedFluidInput = SingleFluidMatcher.match(recipe.getFluidInput(), inventory.fluidStack());
-            if(matchedFluidInput == null)
+            if(matchedFluidInput.isEmpty())
             {
                 continue;
             }
 
             matchedPen = SingleItemMatcher.matchWithNotCompareNBT(recipe.getPen(), inventory.pen());
-            if(matchedPen == null)
+            if(matchedPen.isEmpty())
             {
                 continue;
             }
 
             matchedUnresolvedNote = SingleItemMatcher.matchWithNotCompareNBT(recipe.getUnresolvedNote(), inventory.unresolvedNote());
-            if(matchedUnresolvedNote == null)
+            if(matchedUnresolvedNote.isEmpty())
             {
                 continue;
             }
