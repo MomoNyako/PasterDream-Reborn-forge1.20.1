@@ -28,11 +28,6 @@ public class SandofTimeItem extends Item {
     }
 
     @Override
-    public boolean isFoil(ItemStack stack) {
-        return stack.getOrCreateTag().getLong(TAG_COOLDOWN) == 0;
-    }
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
