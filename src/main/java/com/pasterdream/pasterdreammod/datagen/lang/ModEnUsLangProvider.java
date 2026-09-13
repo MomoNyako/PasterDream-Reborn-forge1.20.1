@@ -1496,6 +1496,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("gui.pasterdream.shadow_select_end.label_choose", "Follow your first instinct to make your choice");
         add("gui.pasterdream.shadow_select_end.label_outcome", "This will lead your exploration to a different future");
 
+        // Fluid slot operation hint
+        add("gui.pasterdream.fluid_slot.hint", "When interacting with this slot using a fluid container: left-click to take fluid, right-click to add fluid");
+
         // Nameless dialogue: first dialogue
         add("dialogue.pasterdream.nameless.first_1", "???: Hmm...?");
         add("dialogue.pasterdream.nameless.first_2", "???: ...How did you get here?");
