@@ -1173,7 +1173,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7潜行右键以设置标记点");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7如未设置标记将默认返回重生点");
         add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7左键对其他玩家使用 | 右键对自己使用");
+        add("tooltip.pasterdream.roots_pale_boneneedle.5", "§7仅可在主世界记录坐标点");
+        add("tooltip.pasterdream.roots_pale_boneneedle.6", "§7单独放入合成栏可清除已记录坐标");
         add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "已记录坐标点");
+        add("message.pasterdream.roots_pale_boneneedle.overworld_only", "只能在主世界记录坐标点");
 
         // 其他道具
         add(ModItems.SAND_OF_TIME.get(), "时之沙");

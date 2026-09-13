@@ -1007,7 +1007,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7Sneak + right-click to set a waypoint");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7If no waypoint is set, returns to spawn by default");
         add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7Left-click on other players | Right-click on yourself");
+        add("tooltip.pasterdream.roots_pale_boneneedle.5", "§7Waypoints can only be set in the Overworld");
+        add("tooltip.pasterdream.roots_pale_boneneedle.6", "§7Place it alone in a crafting grid to clear the waypoint");
         add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "Waypoint recorded");
+        add("message.pasterdream.roots_pale_boneneedle.overworld_only", "Waypoints can only be set in the Overworld");
 
         //Other Items
         add(ModItems.SAND_OF_TIME.get(), "Sand of Time");
