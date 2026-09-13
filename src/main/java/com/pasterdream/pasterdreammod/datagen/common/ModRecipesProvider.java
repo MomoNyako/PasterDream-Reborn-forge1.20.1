@@ -2954,6 +2954,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.ECHO_SHARD)
                 .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
                 .save(pWriter);
+        // 溯源苍白骨针（已记录坐标）→ 溯源苍白骨针（清除坐标）
+        CompoundTag waypointTag = new CompoundTag();
+        waypointTag.putBoolean("switch", true);
+        saveShapelessWithNbt(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ROOTS_PALE_BONENEEDLE.get(), 1)
+                        .requires(ModItems.ROOTS_PALE_BONENEEDLE.get())
+                        .unlockedBy(getHasName(ModItems.ROOTS_PALE_BONENEEDLE.get()), has(ModItems.ROOTS_PALE_BONENEEDLE.get())),
+                pWriter, "roots_pale_boneneedle_clear", null, Map.of(0, waypointTag));
 
         // 苍白骨针护符 = 线 + 苍白骨针
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), 1)
