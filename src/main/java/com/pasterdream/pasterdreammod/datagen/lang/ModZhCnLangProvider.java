@@ -2216,6 +2216,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world", "寻梦者笔记");
         add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world.page0", "你并非第一个进入梦境的寻梦者，在你之前有多位前辈曾踏入梦境之中。在梦中的各个角落，你可以找到他们留下的笔记，有些笔记是他们亲笔写就，也有一些笔记是梦境将他们的所见具现成文。有些笔记只是他们的心事或者碎碎念，但有一些则记载了梦境中更深层的隐秘。$(br)如果是想要更进一步追寻梦境的秘辛的话，或许你应该搜寻一下这些笔记，并好好阅读一下？");
 
+        // 染梦世界跃迁石
+        add("pasterdream.seniors_dream.entry.dyedream_world_leapstone", "染梦世界跃迁石");
+        add("pasterdream.seniors_dream.entry.dyedream_world_leapstone.page0", "作为寻梦者，你可能需要经常在主世界和染梦世界之间穿行，但是目前常用的办法要么比较劳神费力，要么需要各种材料，都难以作为长期稳定的梦境入口，所幸的是，寻梦的魔法使研发出一种跃迁石，可以用于搭建稳定的传送门框架，让你能建立起染梦世界和主世界的稳定通道，使用染梦粉尘就能激活传送门。$(br)在染梦世界和主世界，你可能会找到纯白的魔法使有关这次实验的痕迹，或许可以重新搭建一下框架？");
+        add("pasterdream.seniors_dream.entry.dyedream_world_leapstone.page1", "值得注意的是，传送门的原理是建立人工裂隙，自然会带来一定的侵染，请谨慎选择建造传送门的位置。$(br)$(#ff0000)该方块为0.2.0独有的测试性内容，相关的结构并未实际生成在游戏内。");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
         add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
@@ -2376,11 +2381,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.break_wind_curtain.page1", "——什么叫你撞到破风幕帐的边框上了?");
 
         add("pasterdream.seniors_dream.entry.christmas_tree_island", "圣诞树岛");
-        add("pasterdream.seniors_dream.entry.christmas_tree_island.page0", "这是一座似乎不属于这里的岛屿，这里常年积雪，四季如冬，闪烁的彩灯、喧嚣的动物更为这里添加一份生机。$(br)环顾一圈岛屿，相信你会不由得感叹：这地方简直富得流油！圣诞树上居然会用钻石块点缀！$(br)岛屿的正中间，最大的树下有许多箱子，里面藏着一个雪白的发卡。这个发卡凝结了寒冬气息，带上它，冰雪也会庇佑你，让你免受火焰灼伤之痛。");
+        add("pasterdream.seniors_dream.entry.christmas_tree_island.page0", "这是一座似乎不属于这里的岛屿，这里常年积雪，四季如冬，闪烁的彩灯、喧嚣的动物更为这里添加一份生机。$(br)环顾一圈岛屿，相信你会不由得感叹：这地方简直富得流油！圣诞树上居然会用钻石块点缀！$(br)岛屿的正中间，最大的树下有许多箱子，里面藏着一个雪白的发卡。这个发卡凝结了寒冬气息，带上它，冰雪也会庇佑你，让你免受火焰灼伤和极寒冻结之痛。");
         add("pasterdream.seniors_dream.entry.christmas_tree_island.page1", "——那些骑飞天扫帚的女巫要是能飞到这里拿到发卡，应该就不用怕烧死了。");
 
         add("pasterdream.seniors_dream.entry.break_wind_knight_altar", "破风骑士祭坛");
-        add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page0", "在风泊群岛的上方，还有一座面积不小的岛屿，也就是破风骑士祭坛。断壁残垣似乎在讲述过去的恶战，如今的一片寂静不禁让人感叹沧海桑田。角斗场正中央，有一册永恒书卷，看来琴雨梦已经研究清楚了如何唤醒骑士。$(br)想要召唤破风骑士，需要在祭坛的正中央插入这个岛屿埋藏的水晶，然后用蕴含狂风力量的铁锭组装它的躯干与头部，最后，需要一点闪电的力量激活它……$(br)破风骑士会驱逐一切入侵者，如果想要挑战它，请做好充足的准备。");
+        add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page0", "在风泊群岛的上方，还有一座面积不小的岛屿，也就是破风骑士祭坛。如今，斗兽场只剩遗迹，象征守护的骑士也逐渐沉睡。$(br)想要唤醒破风骑士，需要一点闪电的力量。即使沉睡许久，再度醒来它也会仍然执行守护她的使命，只是……$(br)或许是梦境之力的强化，如果是用空岛的金属和宝石组装成骑士的样子，此时再用闪电充能，它也会苏醒。");
         add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page1", "——搞半天搞要自己拼啊。");
         add("pasterdream.seniors_dream.entry.windbell_cage", "风铃笼");
         add("pasterdream.seniors_dream.entry.windbell_cage.page0", "这是一个悬浮在迷梦云层的巨大结构，上方是巨大的鸟笼，下面悬挂着巨大的……花？$(br)笼子里有一些基础的物资，还有些融梦水晶箱，记得不要错过哦。不过悬挂花里没什么东西，也不必大费周章再下去了。$(br)既然都叫风铃笼了，整个结构里没有一点和声音/音乐有关的东西，似乎不太合理吧。于是，你抬头看向笼顶，那里似乎有一束光源，说不定藏着什么东西。");
