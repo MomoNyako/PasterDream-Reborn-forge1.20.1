@@ -84,6 +84,7 @@ public class PasterDreamMod
         ModTreeDecoratorTypes.register(modEventBus); //注册树木装饰器类型
         ModFoliagePlacerTypes.register(modEventBus); //注册树叶放置器类型
         ModFeatures.register(modEventBus);          //注册自定义特征
+        ModStructurePlacementTypes.register(modEventBus); //注册自定义结构放置类型
         ModEntities.register(modEventBus);          //注册实体
         ModLootTables.register(modEventBus);        //注册自定义战利品函数类型
         ModNetwork.register();                      //注册网络包
