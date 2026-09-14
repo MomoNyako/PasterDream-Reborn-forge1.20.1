@@ -81,7 +81,7 @@ public class ModDimensionTypes {
                 true,                       // 有天空光照
                 false,                      // 无基岩天花板
                 false,                      // 非地狱干燥环境
-                false,                      // 非自然维度（无天气循环，浮空岛）
+                true,                       // 自然维度（1.20.1 必须在 natural=true 的维度才能入睡，浮空岛）
                 1.0,                        // 坐标缩放倍率
                 true,                       // 允许睡觉
                 false,                      // 不允许重生锚

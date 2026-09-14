@@ -73,7 +73,8 @@ public class PlayerEvents {
                     if (player instanceof ServerPlayer serverPlayer && player.isSleeping()) {
                         boolean toDyedream = player.getPersistentData()
                                 .getBoolean("pasterdream:dream_teleport_dyedream");
-                        if (toDyedream && !player.level().dimension().equals(DYEDREAM_WORLD)) {
+                        if (toDyedream
+                                && player.level().dimension().equals(Level.OVERWORLD)) {
                             resetBedOccupied(player);
                             ServerLevel dyedream = serverPlayer.server.getLevel(DYEDREAM_WORLD);
                             if (dyedream != null) {
@@ -241,7 +242,8 @@ public class PlayerEvents {
             }
         }
 
-        if (player.hasEffect(ModEffects.DREAM_WISH.get())) {
+        if (player.hasEffect(ModEffects.DREAM_WISH.get())
+                && player.level().dimension().equals(Level.OVERWORLD)) {
             scheduleSleepTeleport(player, event.getPos(), true);
             return;
         }
