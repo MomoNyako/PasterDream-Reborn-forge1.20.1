@@ -360,8 +360,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.LARGE_STORAGE_BAG.get());
         basicItem(ModItems.STRAWBERRY_HEART.get());
         basicItem(ModItems.SLIVER_BELL.get());
-
         basicItem(ModItems.EMPTY_PROPHECY_CARD.get());
+        basicItem(ModItems.DEBUG_TOOL.get());
 
         basicItem(ModItems.BLACK_METAL_INGOT.get());
         basicItem(ModItems.BLACK_METAL_GRAIN.get());

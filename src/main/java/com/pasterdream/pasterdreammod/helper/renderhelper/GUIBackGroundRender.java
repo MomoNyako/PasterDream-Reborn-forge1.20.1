@@ -86,6 +86,7 @@ public class GUIBackGroundRender
     public static final ResourceLocation MINECRAFT_GUI_LEFT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_bottom.png");
     public static final ResourceLocation MINECRAFT_GUI_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_bottom.png");
     public static final ResourceLocation MINECRAFT_GUI_RIGHT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_bottom.png");
+    public static final ResourceLocation MINECRAFT_SINGLE_SLOT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/single_slot.png");
 
     public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
     public static ResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_dyedream_world.png");
@@ -351,6 +352,26 @@ public class GUIBackGroundRender
         guiGraphics.blit(MINECRAFT_GUI_LEFT_BOTTOM, x, y + height - 4, 0, 0, 4, 4, 4, 4);
         guiGraphics.blit(MINECRAFT_GUI_BOTTOM, x + 4, y + height - 4, 0, 0, width - 8, 4, 1, 4);
         guiGraphics.blit(MINECRAFT_GUI_RIGHT_BOTTOM, x + width - 4, y + height - 4, 0, 0, 4, 4, 4, 4);
+
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+    }
+
+    public static void rendMinecraftSingleSlot(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(MINECRAFT_SINGLE_SLOT, x, y, 0, 0, 18, 18, 18, 18);
+    }
+
+    public static void rendMinecraftArraySlot(GuiGraphics guiGraphics, int x, int y, int col, int row)
+    {
+        for (int i = 0; i < row; i++)
+        {
+            for(int j = 0; j < col; j++)
+            {
+                rendMinecraftSingleSlot(guiGraphics, x + j * 18, y + i * 18);
+            }
+        }
     }
 
     public static void rendDreamNotesBookGUI(GuiGraphics guiGraphics, int x, int y)

@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowD
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeDisplayItem;
@@ -1952,6 +1953,7 @@ public class ModItems {
             EmptyVesselItem::new);
     public static final RegistryObject<Item> REBIRTH_DREAM_CRYSTAL = ITEMS.register("rebirth_dream_crystal",
             RebirthDreamCrystalItem::new);
+    public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugToolItem::new);
     public static final RegistryObject<Item> QYM_CAT_EARS = ITEMS.register("qym_cat_ears",
             () -> new QymCatEarsItem(ModArmorMaterials.QYM, ArmorItem.Type.HELMET,
                     new Item.Properties().fireResistant().rarity(ModRarities.MIRACLE)));
