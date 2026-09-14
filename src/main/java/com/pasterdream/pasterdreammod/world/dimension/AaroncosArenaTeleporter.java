@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.dimension;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.helper.GameModeHelper;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -70,6 +71,7 @@ public final class AaroncosArenaTeleporter {
     /** 传送到竞技场（结构内眼方块位于 (0,44,-1)，传至其上方几格）+ 缓落 + 冒险模式 */
     private static void teleportPlayer(ServerPlayer player, ServerLevel destination) {
         player.teleportTo(destination, 0.5, 47, -0.5, player.getYRot(), player.getXRot());
+        TeleportHelper.resendActiveEffects(player);
         // 实测：同 tick 连发的重生包+位置包，客户端处理重生时位置包会被忽略/覆盖，
         // 客户端停留在传送门坐标并继续上报移动，服务端确认窗口超时后接受旧坐标，把玩家拖回门口。
         // 因此改为下一 tick 起连续 3 tick 强制同步（客户端重生处理完毕后位置包必定生效）。
@@ -113,6 +115,7 @@ public final class AaroncosArenaTeleporter {
             z = overworld.getLevelData().getZSpawn() + 0.5;
         }
         player.teleportTo(overworld, x, y, z, player.getYRot(), player.getXRot());
+        TeleportHelper.resendActiveEffects(player);
         if (!GameModeHelper.restorePreDreamGameMode(player))
             player.setGameMode(GameType.SURVIVAL);
     }

@@ -20,7 +20,7 @@ This project is released with permission from the original author "Aerolite_Dust
 
 ## License
 
-- **Code**: [MIT](LICENSE.md) — Free to use, modify, and distribute
+- **Code**: [PDR License](LICENSE.md) — Free to play, include in modpacks, and study; addon mods, ports, modified redistribution, and commercial use require prior written permission
 - **Art Assets**: [ARR](src/main/resources/LICENSE_ASSETS.md) — All Rights Reserved. Original mod assets copyright by the original author; rewrite team assets copyright by the rewrite team. See [Asset Manifest](src/main/resources/ASSETS_MANIFEST.md)
 
 ## Installation
@@ -71,7 +71,7 @@ Project documentation is available in the [`document/`](document/) directory:
 - **Programming**: 2884omgpy, ShiLiuYinYu, Garam
 - **Art**: GQ2529, Garam, Vulmoon_XwX
 - **Writing**: Yumihoshi, bei_xu, Akizuki Ayane, 月琴语
-- **Special Thanks**: 福米花_flow
+- **Special Thanks**: 福米花_flow, pig
 
 <a href="https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1" />

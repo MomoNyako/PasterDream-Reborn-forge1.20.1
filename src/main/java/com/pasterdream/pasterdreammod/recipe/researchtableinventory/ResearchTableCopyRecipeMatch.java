@@ -20,25 +20,25 @@ public class ResearchTableCopyRecipeMatch
         for(ResearchTableCopyRecipe recipe : recipes)
         {
             matchedFluidInput = SingleFluidMatcher.match(recipe.getFluidInput(), inventory.fluidStack());
-            if(matchedFluidInput == null)
+            if(matchedFluidInput.isEmpty())
             {
                 continue;
             }
 
             matchedPen = SingleItemMatcher.matchWithNotCompareNBT(recipe.getPen(), inventory.pen());
-            if(matchedPen == null)
+            if(matchedPen.isEmpty())
             {
                 continue;
             }
 
             matchedSourceBook = SingleItemMatcher.matchWithCompareContainerNBT(recipe.getSourceBook(), inventory.sourceBook());
-            if(matchedSourceBook == null)
+            if(matchedSourceBook.isEmpty())
             {
                 continue;
             }
 
             matchedMaterial = SingleItemMatcher.matchWithCompareContainerNBT(recipe.getMaterial(), inventory.material());
-            if(matchedMaterial == null)
+            if(matchedMaterial.isEmpty())
             {
                 continue;
             }

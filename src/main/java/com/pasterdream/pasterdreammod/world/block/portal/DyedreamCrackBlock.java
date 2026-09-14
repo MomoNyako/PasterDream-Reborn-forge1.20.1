@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.portal;
 
+import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -71,7 +73,18 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
         if (random.nextFloat() < 0.2f) {
             level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.5f, 1.0f);
         }
+        // 裂隙以自身的 10 tick 周期向外侵染，每次 30% 概率转换 1 格
+        if (Config.dyedreamCrackContaminationEnabled && random.nextFloat() < 0.3f) {
+            DyedreamContamination.tick(level, pos, Config.dyedreamCrackContaminationRadius, 1);
+        }
         level.scheduleTick(pos, this, 10);
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (Config.dyedreamCrackContaminationEnabled) {
+            DyedreamContamination.tick(level, pos, Config.dyedreamCrackContaminationRadius, 1);
+        }
     }
 
     @Override
@@ -113,6 +126,7 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                     player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.1"), false);
                     player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.2"), false);
                     player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.3"), false);
+                    player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.4"), false);
                     for (String criteria : progress.getRemainingCriteria())
                     {
                         player.getAdvancements().award(firstContactAdv, criteria);
@@ -148,6 +162,8 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
             case WEST  -> player.teleportTo(targetLevel, pos.getX() - 1.5, pos.getY() + 0.5, pos.getZ() + 0.5, 270, 30);
             case NORTH -> player.teleportTo(targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() - 1.5, 0, 30);
         }
+        // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+        TeleportHelper.resendActiveEffects(player);
     }
 
     private void placePortalStructure(ServerLevel level, BlockState state, BlockPos portalPos)

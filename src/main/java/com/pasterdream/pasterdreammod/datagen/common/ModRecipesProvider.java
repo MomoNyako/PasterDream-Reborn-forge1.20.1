@@ -254,6 +254,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         thickCloudRecipes(pWriter);
         curioRecipes(pWriter);
         windVaneRecipe(pWriter);
+        dyedreamContaminationRecipes(pWriter);
 
 
         // 校验所有涉及容器的配方是否能配平
@@ -2953,6 +2954,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.ECHO_SHARD)
                 .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
                 .save(pWriter);
+        // 溯源苍白骨针（已记录坐标）→ 溯源苍白骨针（清除坐标）
+        CompoundTag waypointTag = new CompoundTag();
+        waypointTag.putBoolean("switch", true);
+        saveShapelessWithNbt(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ROOTS_PALE_BONENEEDLE.get(), 1)
+                        .requires(ModItems.ROOTS_PALE_BONENEEDLE.get())
+                        .unlockedBy(getHasName(ModItems.ROOTS_PALE_BONENEEDLE.get()), has(ModItems.ROOTS_PALE_BONENEEDLE.get())),
+                pWriter, "roots_pale_boneneedle_clear", null, Map.of(0, waypointTag));
 
         // 苍白骨针护符 = 线 + 苍白骨针
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), 1)
@@ -3404,6 +3412,62 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('d', ModItems.DYEDREAM_DYE.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
+    }
+
+    // ===== 染梦侵染配方 =====
+
+    private void dyedreamContaminationRecipes(Consumer<FinishedRecipe> writer) {
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_to_dirt",
+                "#pasterdream:dyedream_contamination_to_dirt", "pasterdream:dyedream_dirt");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_to_grass_block",
+                "#pasterdream:dyedream_contamination_to_grass_block", "pasterdream:dyedream_grass_block");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_to_sand",
+                "#pasterdream:dyedream_contamination_to_sand", "pasterdream:dyedream_sand");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_to_log",
+                "#pasterdream:dyedream_contamination_to_log", "pasterdream:dyedream_log");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_to_leaves",
+                "#pasterdream:dyedream_contamination_to_leaves", "pasterdream:dyedream_leaves");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_tall_grass",
+                "minecraft:tall_grass", "pasterdream:tall_stem_grass");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_grass",
+                "minecraft:grass", "pasterdream:stem_grass");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_lily_of_the_valley",
+                "minecraft:lily_of_the_valley", "pasterdream:dyedream_lily_of_the_valley");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_ice",
+                "minecraft:ice", "pasterdream:dyedream_ice");
+        dyedreamContaminationRecipe(writer, "dyedream_contamination_packed_ice",
+                "#pasterdream:dyedream_contamination_to_packed_ice", "pasterdream:dyedream_packed_ice");
+    }
+
+    /** 生成一条染梦侵染配方：from（方块或 #标签）→ to 方块状态。 */
+    private void dyedreamContaminationRecipe(Consumer<FinishedRecipe> writer, String name, String from, String to) {
+        writer.accept(new FinishedRecipe() {
+            @Override
+            public void serializeRecipeData(JsonObject json) {
+                json.addProperty("from", from);
+                json.addProperty("to", to);
+            }
+
+            @Override
+            public ResourceLocation getId() {
+                return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name);
+            }
+
+            @Override
+            public RecipeSerializer<?> getType() {
+                return ModRecipes.DYEDREAM_CONTAMINATION_SERIALIZER.get();
+            }
+
+            @Override
+            public JsonObject serializeAdvancement() {
+                return null;
+            }
+
+            @Override
+            public ResourceLocation getAdvancementId() {
+                return null;
+            }
+        });
     }
 
     private void saveGoldenFoxTrade(Consumer<FinishedRecipe> writer, Ingredient ingredient, ItemStack result, String name) {

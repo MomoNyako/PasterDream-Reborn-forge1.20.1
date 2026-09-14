@@ -19,10 +19,15 @@ import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.CauldronBrewRecipeCatalog;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.ElixirBottleSubtypeInterpreter;
 import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationRecipeCategory;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.researchtablecopy.ResearchTableCopyJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.researchtablecopy.ResearchTableCopyRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.researchtableresearch.ResearchTableResearchJEIRecipe;
@@ -101,16 +106,23 @@ public class ModJEIPlugin implements IModPlugin
             List<DreamAccumulatorRecipe> dreamAccumulatorRecipes = recipeManager.getAllRecipesFor(ModRecipes.DREAM_ACCUMULATOR.get());
             List<ShadowBlastFurnaceRecipe> shadowBlastFurnaceRecipes = recipeManager.getAllRecipesFor(ModRecipes.SHADOW_BLAST_FURNACE.get());
             List<WeaponWorkshopCraftingTableRecipe> weaponWorkshopCraftingTableRecipes = recipeManager.getAllRecipesFor(ModRecipes.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+            List<DyedreamContaminationRecipe> dyedreamContaminationRecipes = recipeManager.getAllRecipesFor(ModRecipes.DYEDREAM_CONTAMINATION.get());
             List<FluidContainerRelation> fluidContainerRelations = GetAllFluidContainerCapability.getAllContainer();
 
             registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE, claypanRecipes.stream().map(ClaypanJEIRecipe::new).collect(Collectors.toList()));
-            registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE, dreamCauldronRecipes.stream().map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+            // 法术工厂：通用配方 + 药水模块模板页（酿造/融合/勾兑）合并注册到同一分类
+            List<DreamCauldronJEIRecipe> cauldronJeiRecipes = new ArrayList<>(
+                    dreamCauldronRecipes.stream().map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+            cauldronJeiRecipes.addAll(CauldronBrewRecipeCatalog.createAll().stream()
+                    .map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+            registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE, cauldronJeiRecipes);
             registration.addRecipes(MortarRecipeCategory.MORTAR_RECIPE_TYPE, mortarRecipes.stream().map(MortarJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(ResearchTableCopyRecipeCategory.RESEARCH_TABLE_COPY_RECIPE_TYPE, researchTableCopyRecipes.stream().map(ResearchTableCopyJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(ResearchTableResearchRecipeCategory.RESEARCH_TABLE_RESEARCH_RECIPE_TYPE, researchTableResearchRecipes.stream().map(ResearchTableResearchJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(DreamAccumulatorRecipeCategory.DREAM_ACCUMULATOR_RECIPE_TYPE, dreamAccumulatorRecipes.stream().map(DreamAccumulatorJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE, shadowBlastFurnaceRecipes.stream().map(ShadowBlastFurnaceJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(WeaponWorkshopCraftingTableRecipeCategory.WEAPON_WORKSHOP_CRAFTING_TABLE_RECIPE_TYPE, weaponWorkshopCraftingTableRecipes.stream().map(WeaponWorkshopCraftingTableJEIRecipe::new).collect(Collectors.toList()));
+            registration.addRecipes(DyedreamContaminationRecipeCategory.RECIPE_TYPE, dyedreamContaminationRecipes.stream().map(DyedreamContaminationJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(FluidContainerRecipeCategory.FLUID_CONTAINER_RELATION, fluidContainerRelations);
 
             // ===== 幸运药水酿造配方（原版样式，每步独立注册）=====
@@ -163,6 +175,8 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DREAM_ACCUMULATOR.get()), DreamAccumulatorRecipeCategory.DREAM_ACCUMULATOR_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SHADOW_BLAST_FURNACE.get()), ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get()), WeaponWorkshopCraftingTableRecipeCategory.WEAPON_WORKSHOP_CRAFTING_TABLE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get()), DyedreamContaminationRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DYEDREAM_CRACK.get()), DyedreamContaminationRecipeCategory.RECIPE_TYPE);
     }
 
     @Override
@@ -177,6 +191,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCategories(new ShadowBlastFurnaceRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new WeaponWorkshopCraftingTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new FluidContainerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new DyedreamContaminationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -208,6 +223,10 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 PotionBottleRegistry.POTION_BOTTLE.get(),
                 (stack, context) -> PotionBottleItem.getPotionType(stack));
+
+        // 灵药瓶按药水效果区分，让 R 查询精确命中对应法术工厂酿造配方
+        registration.registerSubtypeInterpreter(
+                ModItems.ELIXIR_BOTTLE.get(), ElixirBottleSubtypeInterpreter.INSTANCE);
 
         // 通用「药水」流体：按 NBT 中的 "Potion" 键区分不同药水流体
         registration.registerSubtypeInterpreter(ForgeTypes.FLUID_STACK, ModFluids.POTION.get(), (fluidStack, context) ->

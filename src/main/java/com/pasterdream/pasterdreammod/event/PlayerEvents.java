@@ -1,9 +1,11 @@
 package com.pasterdream.pasterdreammod.event;
 
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
 import net.minecraft.advancements.Advancement;
@@ -41,6 +43,8 @@ public class PlayerEvents {
             ResourceKey.create(Registries.DIMENSION,
                     ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_world"));
     private static final String NOTE_DELAY_TAG = "pasterdream:dream_note_delay";
+    /** 入睡进入风之旅途时使用的高空 Y，与迷梦传送的高空入口一致。 */
+    private static final double WIND_JOURNEY_ENTRY_Y = 310;
     private static final ResourceLocation FIRST_CONTACT_DYEDREAM_CRACK_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/first_contact_dyedream_crack");
     private static final ResourceLocation DYEDREAM_CRACK_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_crack");
     private static final ResourceLocation DYEDREAM_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
@@ -66,29 +70,36 @@ public class PlayerEvents {
                 dreamTeleportTicks--;
                 if (dreamTeleportTicks <= 0) {
                     // 只有玩家真正在床上入睡时才传送；白天点床未入睡或中途起床则取消传送
-                    if (player instanceof ServerPlayer serverPlayer
-                            && player.isSleeping()
-                            && !player.level().dimension().equals(DYEDREAM_WORLD)) {
-                        // 重置床的 OCCUPIED 状态
-                        CompoundTag data = player.getPersistentData();
-                        if (data.contains("pasterdream:dream_bed_x")) {
-                            BlockPos bedPos = new BlockPos(
-                                    data.getInt("pasterdream:dream_bed_x"),
-                                    data.getInt("pasterdream:dream_bed_y"),
-                                    data.getInt("pasterdream:dream_bed_z"));
-                            var bedState = player.level().getBlockState(bedPos);
-                            if (bedState.hasProperty(BedBlock.OCCUPIED)) {
-                                player.level().setBlock(bedPos,
-                                        bedState.setValue(BedBlock.OCCUPIED, false), 3);
+                    if (player instanceof ServerPlayer serverPlayer && player.isSleeping()) {
+                        boolean toDyedream = player.getPersistentData()
+                                .getBoolean("pasterdream:dream_teleport_dyedream");
+                        if (toDyedream && !player.level().dimension().equals(DYEDREAM_WORLD)) {
+                            resetBedOccupied(player);
+                            ServerLevel dyedream = serverPlayer.server.getLevel(DYEDREAM_WORLD);
+                            if (dyedream != null) {
+                                serverPlayer.teleportTo(dyedream, 0.5, 108, 0.5,
+                                        serverPlayer.getYRot(), serverPlayer.getXRot());
+                                TeleportHelper.resendActiveEffects(serverPlayer);
                             }
-                        }
-                        ServerLevel dyedream = serverPlayer.server.getLevel(DYEDREAM_WORLD);
-                        if (dyedream != null) {
-                            serverPlayer.teleportTo(dyedream, 0.5, 108, 0.5,
-                                    serverPlayer.getYRot(), serverPlayer.getXRot());
+                        } else if (!toDyedream
+                                && player.level().dimension().equals(Level.OVERWORLD)) {
+                            // 风行者：主世界睡觉进入风之旅途，xz 不变，y 取迷梦进入时的高空高度
+                            resetBedOccupied(player);
+                            ServerLevel windJourney = serverPlayer.server
+                                    .getLevel(WindJourneyDimension.WIND_JOURNEY_WORLD);
+                            if (windJourney != null) {
+                                serverPlayer.teleportTo(windJourney,
+                                        serverPlayer.getX(), WIND_JOURNEY_ENTRY_Y, serverPlayer.getZ(),
+                                        serverPlayer.getYRot(), serverPlayer.getXRot());
+                                // 高空传送后给予 20s 缓降，避免直接摔落
+                                serverPlayer.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING,
+                                        400, 0, false, false));
+                                TeleportHelper.resendActiveEffects(serverPlayer);
+                            }
                         }
                     }
                     player.getPersistentData().remove("pasterdream:dream_teleport_ticks");
+                    player.getPersistentData().remove("pasterdream:dream_teleport_dyedream");
                     player.getPersistentData().remove("pasterdream:dream_bed_x");
                     player.getPersistentData().remove("pasterdream:dream_bed_y");
                     player.getPersistentData().remove("pasterdream:dream_bed_z");
@@ -230,14 +241,39 @@ public class PlayerEvents {
             }
         }
 
-        if (!player.hasEffect(ModEffects.DREAM_WISH.get())) return;
+        if (player.hasEffect(ModEffects.DREAM_WISH.get())) {
+            scheduleSleepTeleport(player, event.getPos(), true);
+            return;
+        }
 
-        BlockPos pos = event.getPos();
+        if (player.hasEffect(ModEffects.WIND_RUNNER.get())
+                && player.level().dimension().equals(Level.OVERWORLD)) {
+            scheduleSleepTeleport(player, event.getPos(), false);
+        }
+    }
+
+    /** 安排入睡后的延迟传送；dyedream=true 前往染梦世界，否则前往风之旅途。 */
+    private static void scheduleSleepTeleport(Player player, BlockPos pos, boolean dyedream) {
         CompoundTag data = player.getPersistentData();
         data.putInt("pasterdream:dream_teleport_ticks", 60);
+        data.putBoolean("pasterdream:dream_teleport_dyedream", dyedream);
         data.putInt("pasterdream:dream_bed_x", pos.getX());
         data.putInt("pasterdream:dream_bed_y", pos.getY());
         data.putInt("pasterdream:dream_bed_z", pos.getZ());
+    }
+
+    /** 重置床的 OCCUPIED 状态，避免传送后床保持占用。 */
+    private static void resetBedOccupied(Player player) {
+        CompoundTag data = player.getPersistentData();
+        if (!data.contains("pasterdream:dream_bed_x")) return;
+        BlockPos bedPos = new BlockPos(
+                data.getInt("pasterdream:dream_bed_x"),
+                data.getInt("pasterdream:dream_bed_y"),
+                data.getInt("pasterdream:dream_bed_z"));
+        var bedState = player.level().getBlockState(bedPos);
+        if (bedState.hasProperty(BedBlock.OCCUPIED)) {
+            player.level().setBlock(bedPos, bedState.setValue(BedBlock.OCCUPIED, false), 3);
+        }
     }
 
     private static void tickNoteDelay(Player player)

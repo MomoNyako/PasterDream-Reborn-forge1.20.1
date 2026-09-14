@@ -498,10 +498,7 @@ public class Config
             .comment("重生之梦水晶 shift+右键 释放遗物中的灵魂时可随机获得的物品 ID 列表（格式：modid:item_id），"
                     + "\n例：pasterdream:melt_dream_crystal_fragment 为融梦水晶碎片")
             .defineListAllowEmpty("rebirthDreamCrystalLoot",
-                    List.of("pasterdream:melt_dream_crystal_fragment",
-                            "pasterdream:life_crystal",
-                            "pasterdream:white_crystal",
-                            "pasterdream:soul_gem_of_akizuki_ayane",
+                    List.of("pasterdream:soul_gem_of_akizuki_ayane",
                             "pasterdream:magnifying_glass_of_sherry",
                             "pasterdream:empty_vessel"),
                     obj -> obj instanceof String);
@@ -515,6 +512,30 @@ public class Config
     private static final ForgeConfigSpec.BooleanValue TRAIN_TICKET_ONE_PER_DIMENSION = BUILDER
             .comment("逐梦列车车票每个维度只能有1人使用（全服共享），默认 false")
             .define("trainTicketOnePerDimension", false);
+
+    // === 法术工厂（融梦釜）药水模块 ===
+    private static final ForgeConfigSpec.BooleanValue DREAM_CAULDRON_POTION_ENABLED = BUILDER
+            .comment("法术工厂（融梦釜）药水模块总开关。",
+                    "开启后支持基础酿造/融合/勾兑/装瓶（消耗染梦果基底），并在 JEI 展示对应页面；",
+                    "关闭后釜完全交还原通用配方系统。默认 true")
+            .define("dreamCauldronPotionEnabled", true);
+
+    // === 染梦侵染 ===
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_PORTAL_CONTAMINATION_ENABLED = BUILDER
+            .comment("染梦世界传送门是否进行染梦侵染行为，默认 true")
+            .define("dyedreamPortalContaminationEnabled", true);
+
+    private static final ForgeConfigSpec.IntValue DYEDREAM_PORTAL_CONTAMINATION_RADIUS = BUILDER
+            .comment("染梦世界传送门的侵染半径（格），默认 5")
+            .defineInRange("dyedreamPortalContaminationRadius", 5, 1, 32);
+
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_CRACK_CONTAMINATION_ENABLED = BUILDER
+            .comment("染梦裂隙是否进行染梦侵染行为，默认 true")
+            .define("dyedreamCrackContaminationEnabled", true);
+
+    private static final ForgeConfigSpec.IntValue DYEDREAM_CRACK_CONTAMINATION_RADIUS = BUILDER
+            .comment("染梦裂隙的侵染半径（格），默认 5")
+            .defineInRange("dyedreamCrackContaminationRadius", 5, 1, 32);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
@@ -538,6 +559,12 @@ public class Config
 
     // === 雪绒花转化 ===
     public static boolean destroyDeskOnEdelweissConversion;
+
+    // === 染梦侵染 ===
+    public static boolean dyedreamPortalContaminationEnabled = true;
+    public static int dyedreamPortalContaminationRadius = 5;
+    public static boolean dyedreamCrackContaminationEnabled = true;
+    public static int dyedreamCrackContaminationRadius = 5;
 
     // === SAN 阈值 ===
     public static double sanCheerUpThreshold;
@@ -618,6 +645,9 @@ public class Config
 
     // === 逐梦列车车票 ===
     public static boolean trainTicketOnePerDimension;
+
+    // === 法术工厂（融梦釜）药水模块 ===
+    public static boolean dreamCauldronPotionEnabled = true;
 
     /** 重生之梦水晶随机掉落缓存（解析后的 Item 列表） */
     private static List<Item> cachedRebirthDreamCrystalLoot = List.of();
@@ -900,6 +930,10 @@ public class Config
         meltDreamCrystalChestLegendYSpeed = MELT_DREAM_CRYSTAL_CHEST_LEGEND_Y_SPEED.get();
         destroyDeskOnDreamingLotusConversion = DESTROY_DESK_ON_DREAMING_LOTUS_CONVERSION.get();
         destroyDeskOnEdelweissConversion = DESTROY_DESK_ON_EDELWEISS_CONVERSION.get();
+        dyedreamPortalContaminationEnabled = DYEDREAM_PORTAL_CONTAMINATION_ENABLED.get();
+        dyedreamPortalContaminationRadius = DYEDREAM_PORTAL_CONTAMINATION_RADIUS.get();
+        dyedreamCrackContaminationEnabled = DYEDREAM_CRACK_CONTAMINATION_ENABLED.get();
+        dyedreamCrackContaminationRadius = DYEDREAM_CRACK_CONTAMINATION_RADIUS.get();
         mintakeeffectduration= MIN_TAKE_EFFECT_DURATION.get();
         maxtakeeffectduration= MAX_TAKE_EFFECT_DURATION.get();
         maxlevel= MAX_LEVEL.get();
@@ -996,6 +1030,8 @@ public class Config
         bastionGuardGrantRadius = BASTION_GUARD_GRANT_RADIUS.get();
 
         trainTicketOnePerDimension = TRAIN_TICKET_ONE_PER_DIMENSION.get();
+
+        dreamCauldronPotionEnabled = DREAM_CAULDRON_POTION_ENABLED.get();
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();

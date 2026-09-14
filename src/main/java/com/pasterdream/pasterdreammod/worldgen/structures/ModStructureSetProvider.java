@@ -30,6 +30,18 @@ public class ModStructureSetProvider implements DataProvider
         "wind_journey_structures", new int[]{52, 26}
     );
 
+    /**
+     * 共享结构集的排除区配置：key=groupSetId，value=被排除的其它结构集 + 区块半径。
+     * 结构集内任意结构不会生成在「其它结构集」的结构附近，用于避免固定结构被随机结构覆盖。
+     */
+    private record ExclusionZone(String otherSet, int chunkCount) {}
+
+    private static final Map<String, ExclusionZone> GROUP_EXCLUSIONS = Map.of(
+        // 染梦世界树固定生成在 (125, 70) 区块，模板约 6×6 区块，
+        // 取半径 10 保证浮空结构（最大半径约 4 区块）不会与它重叠
+        "dyedream_structures", new ExclusionZone("dyedream_worldtree_fixed", 10)
+    );
+
     public ModStructureSetProvider(PackOutput output, List<StructureGenerationConfig> configs)
     {
         this.output = output;
@@ -123,6 +135,15 @@ public class ModStructureSetProvider implements DataProvider
         placement.addProperty("salt", 987654321);
         placement.addProperty("separation", cfg[1]);
         placement.addProperty("spacing", cfg[0]);
+
+        ExclusionZone exclusion = GROUP_EXCLUSIONS.get(groupId);
+        if (exclusion != null)
+        {
+            JsonObject zone = new JsonObject();
+            zone.addProperty("other_set", first.modId() + ":" + exclusion.otherSet());
+            zone.addProperty("chunk_count", exclusion.chunkCount());
+            placement.add("exclusion_zone", zone);
+        }
 
         set.add("placement", placement);
 

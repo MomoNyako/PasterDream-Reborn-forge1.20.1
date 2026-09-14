@@ -45,7 +45,7 @@ public class RedDewRingItem extends Item implements ICurioItem {
      * 根据等级计算 ItemProperties 的 predicate 值（0~1）
      * 公式: 1 - 1/lv，lv=1 → 0, lv=2 → 0.5, lv=3 → 0.667, lv=4 → 0.75, lv→∞ → 1.0
      * 魔改作者添加新等级贴图时，在模型 JSON 的 overrides 中使用此值作为 predicate
-     * 如果不满意现在的属性加成那我建议你用kubejs curios或者hotai重写吧，我也没招了……
+     * 如果不满意现在的属性加成那我建议你用kubejs curios或者hotai重写吧，我也没招了......
      */
     public static float getPredicateValue(int lv) {
         if (lv <= 1) return 0.0f;

@@ -1,0 +1,17 @@
+{
+  "sortnum": 14,
+  "name": "pasterdream.seniors_dream.entry.dyedream_world_leapstone",
+  "icon": "pasterdream:dyedream_world_leapstone",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:dyedream_world_leapstone",
+      "text": "pasterdream.seniors_dream.entry.dyedream_world_leapstone.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_world_leapstone.page1"
+    }
+  ]
+}
