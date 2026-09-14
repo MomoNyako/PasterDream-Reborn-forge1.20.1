@@ -17,9 +17,6 @@ import java.util.Optional;
 
 public abstract class AbstractContainerScreenWithFluidSlot<T extends AbstractContainerMenuWithFluidSlot> extends AbstractContainerScreen<T>
 {
-    private static final long FLUID_SLOT_HINT_DURATION_MS = 3000L;
-    private long fluidSlotHintEndTime = 0L;
-
     public AbstractContainerScreenWithFluidSlot(T menu, Inventory playerInventory, Component title)
     {
         super(menu, playerInventory, title);
@@ -32,7 +29,6 @@ public abstract class AbstractContainerScreenWithFluidSlot<T extends AbstractCon
         {
             if (isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY) && slot.getFluid().isEmpty())
             {
-                this.fluidSlotHintEndTime = Util.getMillis() + FLUID_SLOT_HINT_DURATION_MS;
                 break;
             }
         }
@@ -62,12 +58,6 @@ public abstract class AbstractContainerScreenWithFluidSlot<T extends AbstractCon
             }
         }
 
-        if (Util.getMillis() < fluidSlotHintEndTime)
-        {
-            Component hint = Component.translatable("gui.pasterdream.fluid_slot.hint");
-            guiGraphics.drawString(font, hint, (this.width - font.width(hint)) / 2, 4, 0xFFFFFF, true);
-        }
-
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
@@ -78,17 +68,25 @@ public abstract class AbstractContainerScreenWithFluidSlot<T extends AbstractCon
 
         for (FluidSlot slot : menu.getFluidSlots())
         {
-            if (isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY) && !slot.getFluid().isEmpty())
+            if (isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY))
             {
-                FluidStack fluidStack = slot.getFluid();
                 List<Component> tooltip = new ArrayList<>();
-                tooltip.add(fluidStack.getDisplayName());
-                ResourceLocation fluidId = BuiltInRegistries.FLUID.getKey(fluidStack.getFluid());
-                tooltip.add(Component.literal("§8" + fluidId));
-                tooltip.add(Component.literal("§7" + fluidStack.getAmount() + " mB"));
-                String modId = fluidId.getNamespace();
-                String modName = net.minecraftforge.fml.ModList.get().getModContainerById(modId).map(mod -> mod.getModInfo().getDisplayName()).orElse(modId);
-                tooltip.add(Component.literal("§9§o" + modName));
+                if(!slot.getFluid().isEmpty())
+                {
+                    FluidStack fluidStack = slot.getFluid();
+                    tooltip.add(fluidStack.getDisplayName());
+                    ResourceLocation fluidId = BuiltInRegistries.FLUID.getKey(fluidStack.getFluid());
+                    tooltip.add(Component.literal("§8" + fluidId));
+                    tooltip.add(Component.literal("§7" + fluidStack.getAmount() + " mB"));
+                    String modId = fluidId.getNamespace();
+                    String modName = net.minecraftforge.fml.ModList.get().getModContainerById(modId).map(mod -> mod.getModInfo().getDisplayName()).orElse(modId);
+                    tooltip.add(Component.literal("§9§o" + modName));
+                }
+                    else
+                    {
+                        tooltip.add(Component.translatable("gui.pasterdream.fluid_slot.hint"));
+                    }
+
                 guiGraphics.renderTooltip(Minecraft.getInstance().font, tooltip, Optional.empty(), mouseX, mouseY);
                 break;
             }
