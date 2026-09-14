@@ -22,6 +22,8 @@
     "ShadowSpyonProtectionMixin",
     "WardenTargetMixin",
     "WorldGenRegionMixin",
+    "ServerLevelSleepTimeMixin",
+    "ServerLevelWeatherMixin",
     "ServerboundSetStructureBlockPacketMixin",
     "StructureBlockEntityMixin",
     "StructureTemplateMixin",
