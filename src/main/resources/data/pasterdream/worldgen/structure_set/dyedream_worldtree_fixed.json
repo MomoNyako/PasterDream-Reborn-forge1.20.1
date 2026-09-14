@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "pasterdream:dyedream_worldtree",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "pasterdream:fixed_chunk",
+    "salt": 0,
+    "chunk_x": 125,
+    "chunk_z": 70
+  }
+}
