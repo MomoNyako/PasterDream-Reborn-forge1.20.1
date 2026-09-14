@@ -22,7 +22,8 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 以下行为**任何情况下均禁止**，版权所有者不会授予许可：
 
 - **商业利用**：直接出售本模组，或以本模组为载体牟利（直接出售模组本身亦为 Minecraft EULA 明令禁止）。整合包内收录未修改官方版本不视为商业利用。
-- **名义使用**：将 "PasterDream"、"帕斯特之梦" 或其近似名称用于与原版帕斯特之梦、本模组及其他帕斯特之梦移植版无关的任何内容。
+- **名义使用**：将 "PasterDream: Reborn"、"帕斯特之梦：重生" 或其近似名称用于与本模组及其他 PasterDream: Reborn 移植版无关的任何内容。
+- **整合包收费**：完全免费的整合包可使用本模组；禁止包含本模组的整合包正式发布版本进行任何形式的收费与变相收费。
 
 ## 3. 需事先书面许可
 
@@ -32,6 +33,7 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 - **移植**：将本模组（或其任何部分）移植到其他 Minecraft 版本或模组加载器（Forge、NeoForge、Fabric、Quilt 等）。
 - **再分发修改版**：禁止修改代码后以任何形式再分发，包括所谓的"修复版""改进版"等。若出于玩法扩展等目的，请以**附属模组**的形式实现，并通过 Mixin 等技术在运行时修改，**不要修改模组本体**。发布资源包/光影包（其中可能包含翻译文件、物品/方块材质等）须经版权所有者书面许可。
 - **含本模组的地图出售**：出售使用、包含或展示本模组的地图、存档等制品，需事先获得书面许可。
+- **OC 二创**：对本模组剧情中的原创角色（OC）绫苒、青岚进行二次创作，需事先获得书面许可。
 
 许可申请方式：在本仓库 [GitHub Issues](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues) 提出申请，或直接联系版权所有者。在获得明确书面答复前，请勿实施上述行为。
 
@@ -77,7 +79,8 @@ Subject to full compliance with this license:
 The following are **prohibited under all circumstances**; the copyright holder will not grant permission:
 
 - **Commercial use**: selling the mod itself or profiting from it in any way (directly selling the mod is also prohibited by the Minecraft EULA). Including unmodified official releases in modpacks is not considered commercial use.
-- **Name use**: using "PasterDream", "Paster Dream", or "帕斯特之梦" (or similar) for any content unrelated to the original PasterDream, this mod, or other PasterDream ports.
+- **Name use**: using "PasterDream: Reborn", "Paster Dream: Reborn", or "帕斯特之梦：重生" (or similar) for any content unrelated to this mod or other PasterDream: Reborn ports.
+- **Modpack charges**: completely free modpacks may use this mod; charging any fees, direct or disguised, for the official release version of a modpack that includes this mod is prohibited.
 
 ### 3. Requires Prior Written Permission
 
@@ -87,6 +90,7 @@ The following **require prior written permission** from the copyright holder; wi
 - **Ports**: porting the mod (or any part of it) to other Minecraft versions or mod loaders (Forge, NeoForge, Fabric, Quilt, etc.).
 - **Modified redistribution**: redistributing modified versions of the code is prohibited, including so-called "fixed" or "improved" versions. For gameplay extensions or similar purposes, please implement them as **addon mods** and modify behavior at runtime via Mixin or similar techniques — **do not modify the mod itself**. Publishing resource packs or shader packs (which may contain translation files, item/block textures, etc.) requires prior written permission from the copyright holder.
 - **Map sales**: selling maps, worlds, or other creations that use, include, or feature this mod requires prior written permission.
+- **OC derivative works**: creating derivative works of the original characters (OCs) 绫苒 and 青岚 in this mod's story requires prior written permission.
 
 To request permission, open an issue on the [GitHub repository](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues) or contact the copyright holder. Do not proceed until you receive an explicit written reply.
 
