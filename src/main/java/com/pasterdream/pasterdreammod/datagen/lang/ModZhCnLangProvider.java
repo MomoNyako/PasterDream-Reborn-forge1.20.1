@@ -1605,6 +1605,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§7bei_xu的专属遗物。");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.9", "§6PasterDream: Reborn 文案");
 
+        add(ModItems.DEBUG_TOOL.get(), "调试工具");
+        add("tooltip.pasterdream.debug_tool.我将赐予你操控万物的能力", "§7LOGGER.info(\"我将赐予你操控万物的能力\");");
+        add("tooltip.pasterdream.debug_tool.拿在手上右键点击打开屏幕", "§7System.out.println(\"拿在手上右键点击打开屏幕\");");
+        add("tooltip.pasterdream.debug_tool.2884omgpy的专属遗物。", "§72884omgpy的专属遗物。");
+        add("tooltip.pasterdream.debug_tool.PasterDream: Reborn 程序", "§7PasterDream: Reborn 程序");
+        add("button.pasterdream.确认", "确认");
+        add("button.pasterdream.取消", "取消");
+        add("button.pasterdream.编辑NBT", "编辑NBT");
+
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9精神值始终为精神值上限");

@@ -13,6 +13,7 @@ import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.IsNotNeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MaxMeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
+import com.pasterdream.pasterdreammod.network.menu.SetSlotNbtPacket;
 import com.pasterdream.pasterdreammod.network.mortar.MortarCraftPacket;
 import com.pasterdream.pasterdreammod.network.mortar.MortarNbtSyncPacket;
 import com.pasterdream.pasterdreammod.network.researchtable.ResearchTableCopyPacket;
@@ -83,6 +84,8 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, WindAlloyMiningSpeedSyncPacket.class, WindAlloyMiningSpeedSyncPacket::encode, WindAlloyMiningSpeedSyncPacket::decode, WindAlloyMiningSpeedSyncPacket::handle);
 
         CHANNEL.registerMessage(id++, ShadowSelectEndButtonPacket.class, ShadowSelectEndButtonPacket::encode, ShadowSelectEndButtonPacket::decode, ShadowSelectEndButtonPacket::handle);
+
+        CHANNEL.registerMessage(id++, SetSlotNbtPacket.class, SetSlotNbtPacket::encode, SetSlotNbtPacket::new, SetSlotNbtPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

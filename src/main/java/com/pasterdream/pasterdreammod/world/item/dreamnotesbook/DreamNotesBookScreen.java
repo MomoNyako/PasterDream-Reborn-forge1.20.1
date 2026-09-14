@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
 import com.pasterdream.pasterdreammod.component.arrowbutton.LeftArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.RightArrowButton;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -210,21 +211,21 @@ public class DreamNotesBookScreen extends Screen
         rendPageContent(guiGraphics);
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-        drawCenteredStringWithOutShadow(guiGraphics, width / 2, height - 12, (currentPage + 1) + " / " + totalPage, 0xFFFFFFFF);
+        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height - 12, (currentPage + 1) + " / " + totalPage, 0xFFFFFFFF);
     }
 
     private void rendPageContent(GuiGraphics guiGraphics)
     {
         if(dreamNotesBookInfo == null)
         {
-            drawCenteredStringWithOutShadow(guiGraphics, width / 2, height / 2, "内容无法解析！", 0xFFFF0000);
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height / 2, "内容无法解析！", 0xFFFF0000);
             return;
         }
 
         if(currentPage == 0)
         {
-            drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, title.getString(), color);
-            drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, color);
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, title.getString(), color);
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, color);
         }
             else
             {
@@ -236,14 +237,6 @@ public class DreamNotesBookScreen extends Screen
                     guiGraphics.drawString(font, stringInPage.get(i), GUIStartX + contentStartX, GUIStartY + contentStartY + i * font.lineHeight, color, false);
                 }
             }
-    }
-
-    private void drawCenteredStringWithOutShadow(GuiGraphics guiGraphics, int x, int y, String string, int color)
-    {
-        int width = font.width(string);
-        int height = font.lineHeight;
-
-        guiGraphics.drawString(font, string, x - width / 2, y - height / 2, color, false);
     }
 
     @Override

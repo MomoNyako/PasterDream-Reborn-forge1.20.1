@@ -1428,6 +1428,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§7Exclusive memento of bei_xu.");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.9", "§6PasterDream: Reborn Copywriter");
 
+        add(ModItems.DEBUG_TOOL.get(), "Debug Tool");
+        add("tooltip.pasterdream.debug_tool.我将赐予你操控万物的能力", "§7LOGGER.info(\"I will give you Capability which control Anything\");");
+        add("tooltip.pasterdream.debug_tool.拿在手上右键点击打开屏幕", "§7System.out.println(\"Hold on hand and Right Click to open Screen\");");
+        add("tooltip.pasterdream.debug_tool.2884omgpy的专属遗物。", "§7Exclusive memento of 2884omgpy.");
+        add("tooltip.pasterdream.debug_tool.PasterDream: Reborn 程序", "§7PasterDream: Reborn Programmer");
+        add("button.pasterdream.确认", "confirm");
+        add("button.pasterdream.取消", "cancel");
+        add("button.pasterdream.编辑NBT", "Edit NBT");
+
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9SAN always at maximum");
